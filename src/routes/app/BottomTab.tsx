@@ -12,9 +12,9 @@ import { useTheme } from "@react-navigation/native";
 import CalendarStack from "./stacks/CalendarStack";
 import AnalyticStack from "./stacks/AnalyticStack";
 import MenuStack from "./stacks/MenuStack";
-import CreateTask from "screens/app/CreateTask";
+import CreateTask from "screens/app/stacks/CreateTask";
 import HomeStack from "./stacks/HomeStack";
-import { StyleSheet, Text } from "react-native";
+import {  Text } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
@@ -46,7 +46,7 @@ const BottomTab = () => {
 											<Text
 												style={{
 													color: iconColor(),
-													fontSize: 11,
+													fontSize: 10,
 												}}
 											>
 												Home
@@ -55,7 +55,7 @@ const BottomTab = () => {
 											<Text
 												style={{
 													color: iconColor(),
-													fontSize: 11,
+													fontSize: 10,
 												}}
 											>
 												Calendar
@@ -70,7 +70,7 @@ const BottomTab = () => {
 											<Text
 												style={{
 													color: iconColor(),
-													fontSize: 11,
+													fontSize: 10,
 												}}
 											>
 												Analytic
@@ -79,7 +79,7 @@ const BottomTab = () => {
 											<Text
 												style={{
 													color: iconColor(),
-													fontSize: 11,
+													fontSize: 10,
 												}}
 											>
 												Menu

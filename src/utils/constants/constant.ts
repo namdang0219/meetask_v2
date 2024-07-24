@@ -1,5 +1,5 @@
 export const globalConstants = {
-	padding: 20,
+	padding: 16,
 	borderRadius: 10,
-	activeOpacity: 0.6,
+	activeOpacity: 0.72,
 };
