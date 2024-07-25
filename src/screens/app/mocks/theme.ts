@@ -1,6 +1,7 @@
 import {Platform} from 'react-native';
+import { primaryColor } from 'utils/constants/ThemeColors';
 
-export const themeColor = '#00AAAF';
+export const themeColor = '#9A8DFF';
 export const lightThemeColor = '#f2f7f7';
 
 export function getTheme() {
@@ -14,9 +15,9 @@ export function getTheme() {
     expandableKnobColor: themeColor,
     // month
     monthTextColor: 'black',
-    textMonthFontSize: 16,
+    textMonthFontSize: 18,
     textMonthFontFamily: 'HelveticaNeue',
-    textMonthFontWeight: 'bold' as const,
+    textMonthFontWeight: 'semibold' as const,
     // day names
     textSectionTitleColor: 'black',
     textDayHeaderFontSize: 12,
@@ -27,7 +28,7 @@ export function getTheme() {
     todayTextColor: '#af0078',
     textDayFontSize: 18,
     textDayFontFamily: 'HelveticaNeue',
-    textDayFontWeight: '500' as const,
+    textDayFontWeight: '400' as const,
     textDayStyle: {marginTop: Platform.OS === 'android' ? 2 : 4},
     // selected date
     selectedDayBackgroundColor: themeColor,
@@ -38,6 +39,6 @@ export function getTheme() {
     dotColor: themeColor,
     selectedDotColor: 'white',
     disabledDotColor: disabledColor,
-    dotStyle: {marginTop: -2}
+    dotStyle: {marginTop: 0}
   };
 }

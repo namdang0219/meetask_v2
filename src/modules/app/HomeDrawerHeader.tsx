@@ -5,6 +5,7 @@ import { SimpleLineIcons } from "@expo/vector-icons";
 import { ThemedText } from "components/themed";
 import { useTheme } from "@react-navigation/native";
 import { Avatar } from "react-native-ui-lib";
+import { CustomTouchableOpacity } from "components/customs";
 
 const HomeDrawerHeader = ({ navigation }: { navigation: any }) => {
 	const { colors } = useTheme();
@@ -33,7 +34,7 @@ const HomeDrawerHeader = ({ navigation }: { navigation: any }) => {
 					</ThemedText>
 				</View>
 			</View>
-			<View>
+			<CustomTouchableOpacity onPress={() => navigation.navigate('Profile')}>
 				<Avatar
 					size={38}
 					animate
@@ -42,7 +43,7 @@ const HomeDrawerHeader = ({ navigation }: { navigation: any }) => {
 					}}
 					label="avatar"
 				/>
-			</View>
+			</CustomTouchableOpacity>
 		</StaticHeader>
 	);
 };

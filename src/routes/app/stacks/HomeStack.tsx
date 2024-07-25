@@ -6,6 +6,7 @@ import StaticHeader from "../../../layouts/StaticHeader";
 import { SimpleLineIcons } from "@expo/vector-icons";
 
 import { ThemedText } from "components/themed";
+import Profile from "screens/app/stacks/menuStacks/Profile";
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,7 @@ const HomeStack = () => {
 			
 			<Stack.Navigator screenOptions={{ headerShown: false }}>
 				<Stack.Screen name="HomeDrawer" component={HomeDrawer} />
+				<Stack.Screen name="Profile" component={Profile} />
 			</Stack.Navigator>
 		</>
 	);

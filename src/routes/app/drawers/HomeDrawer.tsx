@@ -7,7 +7,6 @@ import HomeDrawerHeader from "modules/app/HomeDrawerHeader";
 const Drawer = createDrawerNavigator();
 
 function HomeDrawer() {
-	const { colors } = useTheme();
 	return (
 		<Drawer.Navigator
 			screenOptions={({ navigation }) => ({

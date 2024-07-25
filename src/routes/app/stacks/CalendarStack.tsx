@@ -2,7 +2,7 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { Calendar } from "react-native-calendars";
+import Calendar from "screens/app/stacks/calendarStacks/Calendar";
 
 const Stack = createNativeStackNavigator();
 
