@@ -12,7 +12,7 @@ const RootNavigation = () => {
 				headerShown: false,
 			}}
 		>
-			<Stack.Screen name="AuthStack" component={AuthStack} />
+			{/* <Stack.Screen name="AuthStack" component={AuthStack} /> */}
 			<Stack.Screen name="BottomTab" component={BottomTab} />
 		</Stack.Navigator>
 	);

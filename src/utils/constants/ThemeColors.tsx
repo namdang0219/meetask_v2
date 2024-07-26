@@ -3,19 +3,8 @@ import { DarkTheme, DefaultTheme } from "@react-navigation/native";
 export const primaryColor: string = "#6250EF";
 export const primaryColorDark: string = "#7463FF";
 
-type ColorTypes = {
-	colors: {
-		primary: string;
-    text: string;
-		subText: string;
-    background: string;
-    bottomIconDefault: string;
-    inputBackground: string;
-	}
-}
-
 // Light Theme Colors
-export const CustomLightTheme : ColorTypes = {
+export const CustomLightTheme = {
 	...DefaultTheme,
 	colors: {
 		...DefaultTheme.colors,
@@ -29,7 +18,7 @@ export const CustomLightTheme : ColorTypes = {
 };
 
 // Dark Theme Colors
-export const CustomDarkTheme : ColorTypes = {
+export const CustomDarkTheme = {
 	...DarkTheme,
 	colors: {
 		...DarkTheme.colors,

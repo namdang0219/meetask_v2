@@ -1,4 +1,3 @@
-import "./gesture-handler";
 import React from "react";
 import RootNavigation from "routes/global/RootNavigation";
 import { GestureHandlerRootView } from "react-native-gesture-handler";

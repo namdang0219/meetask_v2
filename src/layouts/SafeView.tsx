@@ -10,9 +10,8 @@ import { ThemedView } from "components/themed";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { globalConstants } from "utils/constants/constant";
 
-
 const SafeView = ({ children, style, ...props }: ViewProps) => {
-	const {top, bottom} = useSafeAreaInsets();
+	const { top, bottom } = useSafeAreaInsets();
 	const styles = StyleSheet.create({
 		container: {
 			flex: 1,
@@ -25,7 +24,9 @@ const SafeView = ({ children, style, ...props }: ViewProps) => {
 		<ThemedView style={[styles.container, style]} {...props}>
 			<TouchableWithoutFeedback
 				style={{ flex: 1 }}
-				onPress={() => Keyboard.dismiss()}
+				onPress={() => {
+					if (Keyboard.isVisible()) Keyboard.dismiss();
+				}}
 			>
 				<View style={{ flex: 1 }}>{children}</View>
 			</TouchableWithoutFeedback>

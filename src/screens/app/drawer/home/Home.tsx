@@ -6,12 +6,8 @@ import DayTask from "components/tasks/DayTask";
 const Home = () => {
 	const { width } = useWindowDimensions();
 	return (
-		<ScrollView>
-			{/* <DayTask></DayTask> */}
-			<Image
-				source={require("../../../../../assets/images/homec.png")}
-				style={{ width: width, height: 660 }}
-			></Image>
+		<ScrollView style={{paddingTop: 6}}>
+			<DayTask></DayTask>
 		</ScrollView>
 	);
 };
