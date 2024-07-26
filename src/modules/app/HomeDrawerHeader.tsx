@@ -10,7 +10,7 @@ import { CustomTouchableOpacity } from "components/customs";
 const HomeDrawerHeader = ({ navigation }: { navigation: any }) => {
 	const { colors } = useTheme();
 	return (
-		<StaticHeader>
+		<StaticHeader background="rgba(255,255,255,0.5)">
 			<View
 				style={{
 					flexDirection: "row",
