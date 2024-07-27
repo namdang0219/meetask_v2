@@ -8,6 +8,7 @@ const Home = () => {
 	return (
 		<ScrollView style={{paddingTop: 6}}>
 			<DayTask></DayTask>
+			<DayTask></DayTask>
 		</ScrollView>
 	);
 };

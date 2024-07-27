@@ -8,6 +8,7 @@ import {
 import React from "react";
 import { useTheme } from "@react-navigation/native";
 import { globalConstants } from "utils/constants/constant";
+import { CustomTouchableOpacity } from "components/customs";
 
 type ButtonProps = TouchableOpacityProps & {
 	textStyle?: TextProps["style"];
@@ -22,8 +23,7 @@ const Button = ({
 }: ButtonProps & { loading?: boolean }) => {
 	const { colors } = useTheme();
 	return (
-		<TouchableOpacity
-			activeOpacity={globalConstants.activeOpacity}
+		<CustomTouchableOpacity
 			style={[
 				{
 					backgroundColor: colors.primary,
@@ -37,7 +37,7 @@ const Button = ({
 			{...props}
 		>
 			{loading ?<ActivityIndicator color='white'  /> : <Text style={[{ color: "white" }, textStyle]}>{children}</Text>}
-		</TouchableOpacity>
+		</CustomTouchableOpacity>
 	);
 };
 

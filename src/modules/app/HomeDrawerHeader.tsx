@@ -6,11 +6,12 @@ import { ThemedText } from "components/themed";
 import { useTheme } from "@react-navigation/native";
 import { Avatar } from "react-native-ui-lib";
 import { CustomTouchableOpacity } from "components/customs";
+import { globalConstants } from "utils/constants/constant";
 
 const HomeDrawerHeader = ({ navigation }: { navigation: any }) => {
 	const { colors } = useTheme();
 	return (
-		<StaticHeader background="rgba(255,255,255,0.5)">
+		<StaticHeader>
 			<View
 				style={{
 					flexDirection: "row",
@@ -20,7 +21,7 @@ const HomeDrawerHeader = ({ navigation }: { navigation: any }) => {
 				}}
 			>
 				<Pressable onPress={() => navigation.openDrawer()}>
-					<SimpleLineIcons name="menu" size={22}></SimpleLineIcons>
+					<SimpleLineIcons name="menu" size={22} color={colors.text}></SimpleLineIcons>
 				</Pressable>
 				<View style={{ flex: 1 }}>
 					<ThemedText

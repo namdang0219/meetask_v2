@@ -118,7 +118,7 @@ const DayTask = () => {
 	};
 
 	return (
-		<View>
+		<View style={{marginBottom: 16}}>
 			{/* header  */}
 			<View style={styles.header}>
 				{/* header top  */}

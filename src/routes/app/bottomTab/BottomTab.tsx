@@ -9,12 +9,12 @@ import {
 } from "components/icons/tabIcons";
 import { primaryColor } from "utils/constants/ThemeColors";
 import { useTheme } from "@react-navigation/native";
-import CalendarStack from "./stacks/CalendarStack";
-import AnalyticStack from "./stacks/AnalyticStack";
-import MenuStack from "./stacks/MenuStack";
 import CreateTask from "screens/app/stacks/CreateTask";
-import HomeStack from "./stacks/HomeStack";
 import {  Text } from "react-native";
+import AnalyticStack from "../stacks/AnalyticStack";
+import CalendarStack from "../stacks/CalendarStack";
+import HomeStack from "../stacks/HomeStack";
+import MenuStack from "../stacks/MenuStack";
 
 const Tab = createBottomTabNavigator();
 
