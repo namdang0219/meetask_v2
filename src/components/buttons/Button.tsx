@@ -7,7 +7,6 @@ import {
 } from "react-native";
 import React from "react";
 import { useTheme } from "@react-navigation/native";
-import { globalConstants } from "utils/constants/constant";
 import { CustomTouchableOpacity } from "components/customs";
 
 type ButtonProps = TouchableOpacityProps & {

@@ -1,44 +1,52 @@
-import React, { useCallback, useMemo, useRef } from "react";
 import { View, Text, StyleSheet } from "react-native";
-import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
+import React from "react";
+import { CustomTouchableOpacity } from "components/customs";
+import { useTheme } from "@react-navigation/native";
+import { globalConstants } from "utils/constants/constant";
+import { primaryColor } from "utils/constants/ThemeColors";
+import { useBottomSheetModal } from "@gorhom/bottom-sheet";
+import Toast from "react-native-toast-message";
 
 const TaskAddSheet = () => {
-	// ref
-	const bottomSheetRef = useRef<BottomSheet>(null);
+	const { colors } = useTheme();
+	const { dismiss } = useBottomSheetModal();
 
-	// callbacks
-	const handleSheetChanges = useCallback((index: number) => {
-		console.log("handleSheetChanges", index);
-	}, []);
+	const styles = StyleSheet.create({
+		headerContainer: {
+			flexDirection: "row",
+			justifyContent: "space-between",
+			paddingHorizontal: globalConstants.padding,
+			paddingVertical: 10,
+			borderBottomColor: "#f4f4f4",
+			borderBottomWidth: 1,
+		},
+		headerText: {
+			color: primaryColor,
+			fontSize: 18,
+		},
+	});
 
-	// renders
+	const handleSaveTask = () => {
+		dismiss();
+		Toast.show({
+			text1: "保存済み!🎉",
+			type: "success",
+			text1Style: { fontSize: 20, fontWeight: "400" },
+		});
+	};
+
 	return (
-		<View style={styles.container}>
-			<BottomSheet
-				ref={bottomSheetRef}
-				onChange={handleSheetChanges}
-				snapPoints={[0.2, 0.5]}
-        
-			>
-				<BottomSheetView  style={styles.contentContainer}>
-					<Text>Awesome 🎉</Text>
-				</BottomSheetView>
-			</BottomSheet>
+		<View style={{ flex: 1 }}>
+			<View style={styles.headerContainer}>
+				<CustomTouchableOpacity onPress={() => dismiss()}>
+					<Text style={styles.headerText}>閉じる</Text>
+				</CustomTouchableOpacity>
+				<CustomTouchableOpacity onPress={handleSaveTask}>
+					<Text style={styles.headerText}>作成</Text>
+				</CustomTouchableOpacity>
+			</View>
 		</View>
 	);
 };
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		padding: 24,
-		backgroundColor: "grey",
-	},
-	contentContainer: {
-		height: 500,
-		alignItems: "center",
-		backgroundColor: "cyan",
-	},
-});
 
 export default TaskAddSheet;

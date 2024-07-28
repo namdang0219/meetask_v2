@@ -42,6 +42,7 @@
     "react-native-screens": "3.31.1",
     "react-native-shimmer-placeholder": "2.0.9",
     "react-native-svg": "15.2.0",
+    "react-native-toast-message": "^2.2.0",
     "react-native-ui-lib": "7.26.2",
     "react-native-vector-icons": "^10.1.0",
     "react-native-web": "~0.19.10",

@@ -15,8 +15,9 @@ import AnalyticStack from "../stacks/AnalyticStack";
 import CalendarStack from "../stacks/CalendarStack";
 import HomeStack from "../stacks/HomeStack";
 import MenuStack from "../stacks/MenuStack";
-import CustomBottomSheetModal from "modules/app/sheets/CustomBottomSheetModal";
 import { BottomSheetModal, useBottomSheetModal } from "@gorhom/bottom-sheet";
+import { CustomBottomSheetModal } from "components/customs";
+import TaskAddSheet from "modules/app/sheets/TaskAddSheet";
 
 const Tab = createBottomTabNavigator();
 
@@ -126,9 +127,9 @@ const BottomTab = () => {
 												/>
 											) : route.name === "CreateTask" ? (
 												<NewTaskIcon
-												onPress={
-												  handlePresentModalPress
-												}
+													onPress={
+														handlePresentModalPress
+													}
 												/>
 											) : route.name ===
 											  "AnalyticStack" ? (
@@ -164,7 +165,9 @@ const BottomTab = () => {
 				></Tab.Screen>
 				<Tab.Screen name="MenuStack" component={MenuStack}></Tab.Screen>
 			</Tab.Navigator>
-			<CustomBottomSheetModal ref={bottomSheetRef} />
+			<CustomBottomSheetModal ref={bottomSheetRef}>
+				<TaskAddSheet></TaskAddSheet>
+			</CustomBottomSheetModal>
 		</>
 	);
 };
