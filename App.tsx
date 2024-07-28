@@ -7,11 +7,9 @@ import { LogBox, useColorScheme } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { logMessage } from "utils/ignores/LogBoxMessage";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
-import Toast from "react-native-toast-message";
-import {
-	SafeAreaProvider,
-	useSafeAreaInsets,
-} from "react-native-safe-area-context";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { TaskProvider } from "contexts/task-context";
+import { CategoryProvider } from "contexts/category-context";
 
 const App = () => {
 	const scheme = useColorScheme();
@@ -30,7 +28,13 @@ const App = () => {
 									: CustomLightTheme
 							}
 						>
-							<RootNavigation></RootNavigation>
+							<TaskProvider>
+								<CategoryProvider>
+									{/* Here is your application  */}
+									<RootNavigation></RootNavigation>
+									{/* -----------  */}
+								</CategoryProvider>
+							</TaskProvider>
 						</NavigationContainer>
 					</BottomSheetModalProvider>
 				</GestureHandlerRootView>
