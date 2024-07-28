@@ -6,6 +6,7 @@ import { CustomDarkTheme, CustomLightTheme } from "utils/constants/ThemeColors";
 import { LogBox, useColorScheme } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { logMessage } from "utils/ignores/LogBoxMessage";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 
 const App = () => {
 	const scheme = useColorScheme();
@@ -13,14 +14,18 @@ const App = () => {
 	return (
 		<>
 			<StatusBar style={scheme === "dark" ? "light" : "dark"} />
-			<GestureHandlerRootView>
-				<NavigationContainer
-					theme={
-						scheme === "dark" ? CustomDarkTheme : CustomLightTheme
-					}
-				>
-					<RootNavigation></RootNavigation>
-				</NavigationContainer>
+			<GestureHandlerRootView style={{ flex: 1 }}>
+				<BottomSheetModalProvider>
+					<NavigationContainer
+						theme={
+							scheme === "dark"
+								? CustomDarkTheme
+								: CustomLightTheme
+						}
+					>
+						<RootNavigation></RootNavigation>
+					</NavigationContainer>
+				</BottomSheetModalProvider>
 			</GestureHandlerRootView>
 		</>
 	);
