@@ -38,48 +38,51 @@ const ClockOne = () => {
 	};
 
 	const styles = StyleSheet.create({
+		container: {
+			backgroundColor: "black",
+			flex: 1,
+			alignItems: "center",
+			justifyContent: "center",
+		},
+		containerCenter: { flexDirection: "row" },
 		text: {
-			fontSize: 250,
-			fontWeight: "bold",
-			color: "white",
+			fontSize: 300,
+			fontWeight: "900",
+			// color: "white",
+			opacity: 0.6,
+			// backgroundColor: 'pink'
 		},
 	});
 
 	return (
-		<View
-			style={{
-				backgroundColor: "black",
-				flex: 1,
-				alignItems: "center",
-				justifyContent: "center",
-        flexDirection: 'row',
-        
-			}}
-		>
-			{/* <Text style={[styles.text]}>
-				{formatTime(currentTime).slice(0, 1)}
-			</Text>
-			<Text style={[styles.text]}>
-				{formatTime(currentTime).slice(1, 2)}
-			</Text>
-			<Text style={[styles.text]}>
-				{formatTime(currentTime).slice(2, 3)}
-			</Text> */}
-			<Text style={[styles.text]}>
-				{formatTime(currentTime).slice(3, 4)}
-			</Text>
-			<Text style={[styles.text]}>
-				{formatTime(currentTime).slice(4, 5)}
-			</Text>
-			<Text style={[styles.text]}>
-				{formatTime(currentTime).slice(5, 6)}
-			</Text>
-			<Text style={[styles.text]}>
-				{formatTime(currentTime).slice(6, 7)}
-			</Text>
-			<Text style={[styles.text]}>
-				{formatTime(currentTime).slice(7, 8)}
-			</Text>
+		<View style={styles.container}>
+			<View style={styles.containerCenter}>
+				<View style={{ width: 200 }}>
+					<Text style={[styles.text, { color: "cyan" }]}>
+						{formatTime(currentTime).slice(3, 4)}
+					</Text>
+				</View>
+				<View style={{ width: 200, marginLeft: -68 }}>
+					<Text style={[styles.text, { color: "yellow" }]}>
+						{formatTime(currentTime).slice(4, 5)}
+					</Text>
+				</View>
+				<View style={{ marginLeft: -34 }}>
+					<Text style={[styles.text, { color: "pink" }]}>
+						{formatTime(currentTime).slice(5, 6)}
+					</Text>
+				</View>
+				<View style={{ width: 200, marginLeft: -50 }}>
+					<Text style={[styles.text, { color: "green" }]}>
+						{formatTime(currentTime).slice(6, 7)}
+					</Text>
+				</View>
+				<View style={{ width: 200, marginLeft: -68 }}>
+					<Text style={[styles.text, { color: "cyan" }]}>
+						{formatTime(currentTime).slice(7, 8)}
+					</Text>
+				</View>
+			</View>
 		</View>
 	);
 };

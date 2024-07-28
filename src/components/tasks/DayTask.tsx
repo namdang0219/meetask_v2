@@ -3,23 +3,13 @@ import React, { useState } from "react";
 import { ThemedText } from "components/themed";
 import { globalConstants } from "utils/constants/constant";
 import { useTheme } from "@react-navigation/native";
-import { RadioButton } from "react-native-ui-lib";
+import { Drawer, RadioButton } from "react-native-ui-lib";
+import { EventItem, TaskItem } from "components/items";
+import { Feather } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
 const DayTask = () => {
 	const { colors } = useTheme();
-
-	const setTaskColor = (type: string) => {
-		switch (type) {
-			case "work":
-				return "orange";
-			case "study":
-				return "green";
-			case "shopping":
-				return "blue";
-			default:
-				return colors.primary;
-		}
-	};
 
 	type initTaskType = {
 		id: number;
@@ -118,7 +108,7 @@ const DayTask = () => {
 	};
 
 	return (
-		<View style={{marginBottom: 16}}>
+		<View style={{ marginBottom: 16 }}>
 			{/* header  */}
 			<View style={styles.header}>
 				{/* header top  */}
@@ -171,29 +161,11 @@ const DayTask = () => {
 						) : (
 							tasks &&
 							tasks.map((task) => (
-								<View
+								<TaskItem
 									key={task.id}
-									style={{ paddingVertical: 6 }}
-								>
-									<RadioButton
-										label={task.content}
-										color={setTaskColor(task.type)}
-										size={22}
-										labelStyle={{
-											marginLeft: 10,
-											textDecorationLine: task.completed
-												? "line-through"
-												: "none",
-											color: task.completed
-												? colors.subText
-												: colors.text,
-										}}
-										selected={task.completed}
-										onPress={() =>
-											handleTaskStatus(task.id)
-										}
-									/>
-								</View>
+									task={task}
+									handleTaskStatus={handleTaskStatus}
+								></TaskItem>
 							))
 						)}
 					</View>
@@ -210,100 +182,55 @@ const DayTask = () => {
 				</View>
 
 				{/* event content  */}
-				<View style={{paddingVertical: 10, gap: 10}}>
+				<View style={{ paddingVertical: 10, gap: 10 }}>
 					{/* event content 1  */}
-					<View
-						style={{
-							flexDirection: "row",
-							paddingHorizontal: globalConstants.padding,
-							gap: 14,
-						}}
+					<Drawer
+						rightItems={[
+							{
+								width: 80,
+								customElement: (
+									<View
+										style={{ alignItems: "center", gap: 4 }}
+									>
+										<Ionicons
+											name="play-outline"
+											size={24}
+											color="white"
+										/>
+										<Text style={{ color: "white" }}>
+											開始
+										</Text>
+									</View>
+								),
+								background: "orange",
+								onPress: () => console.log("read pressed"),
+							},
+							{
+								width: 80,
+								customElement: (
+									<View
+										style={{ alignItems: "center", gap: 4 }}
+									>
+										<Feather
+											name="check"
+											size={24}
+											color="white"
+										/>
+										<Text style={{ color: "white" }}>
+											完成
+										</Text>
+									</View>
+								),
+								background: "#00CF6C",
+								onPress: () => console.log("read pressed"),
+							},
+						]}
 					>
-						{/* left spacing  */}
-						<View style={styles.leftCol}></View>
-						{/* right content  */}
-						<View style={{ flex: 1 }}>
-							<View
-								style={{
-									paddingHorizontal: 14,
-									paddingVertical: 10,
-									backgroundColor: "#00CF6C",
-									borderRadius: 15,
-									gap: 4,
-								}}
-							>
-								<Text
-									style={{
-										fontSize: 14,
-										fontWeight: "500",
-										color: "white",
-									}}
-								>
-									13:20
-								</Text>
-								<Text
-									numberOfLines={1}
-									style={{
-										fontSize: 18,
-										color: "white",
-										fontWeight: "500",
-									}}
-								>
-									Do home work
-								</Text>
-								<Text style={{ color: "white" }}>
-									at {"Your home"}
-								</Text>
-							</View>
-						</View>
-					</View>
+						<EventItem />
+					</Drawer>
 
 					{/* event content 2  */}
-					<View
-						style={{
-							flexDirection: "row",
-							paddingHorizontal: globalConstants.padding,
-							gap: 14,
-						}}
-					>
-						{/* left spacing  */}
-						<View style={styles.leftCol}></View>
-						{/* right content  */}
-						<View style={{ flex: 1 }}>
-							<View
-								style={{
-									paddingHorizontal: 14,
-									paddingVertical: 10,
-									backgroundColor: "#F8BD00",
-									borderRadius: 15,
-									gap: 4,
-								}}
-							>
-								<Text
-									style={{
-										fontSize: 14,
-										fontWeight: "500",
-										color: "white",
-									}}
-								>
-									13:20
-								</Text>
-								<Text
-									numberOfLines={1}
-									style={{
-										fontSize: 18,
-										color: "white",
-										fontWeight: "500",
-									}}
-								>
-									Do home work
-								</Text>
-								<Text style={{ color: "white" }}>
-									at {"Your home"}
-								</Text>
-							</View>
-						</View>
-					</View>
+					<EventItem />
 				</View>
 			</View>
 		</View>
