@@ -3,10 +3,17 @@ import { FlatList, Text, View } from "react-native";
 import Home from "screens/app/drawer/home/Home";
 import { useTheme } from "@react-navigation/native";
 import HomeDrawerHeader from "modules/app/HomeDrawerHeader";
+import { taskMocks } from "mocks";
+import { useCategory } from "contexts/category-context";
+import { CategoryType, TaskType } from "utils/types";
+import { useTask } from "contexts/task-context";
+import React from "react";
 
 const Drawer = createDrawerNavigator();
 
 function HomeDrawer() {
+	const { categories } = useCategory();
+
 	return (
 		<Drawer.Navigator
 			screenOptions={({ navigation }) => ({
@@ -17,45 +24,45 @@ function HomeDrawer() {
 				),
 			})}
 		>
-			<Drawer.Screen name="Home" component={Home} />
-			{categories.map((category) => (
-				<Drawer.Screen
-					key={category}
-					name={category}
-					component={CategoryScreen}
-					initialParams={{ category, tasks }}
-				/>
-			))}
+			<Drawer.Screen
+				name="Home"
+				component={Home}
+				options={{ drawerLabel: "すべてのタスク" }}
+			/>
+			{categories &&
+				categories.map((category) => (
+					<Drawer.Screen
+						key={category.categoryId}
+						name={category.name}
+						component={CategoryScreen}
+						initialParams={{ category }}
+					/>
+				))}
 		</Drawer.Navigator>
 	);
 }
 
 export default HomeDrawer;
 
-const categories = ["Work", "Personal", "Shopping", "Business"];
+const CategoryScreen = React.memo(({ route }: { route: any }) => {
+	const { category } = route.params;
+	const { tasks } = useTask();
 
-const tasks = [
-	{ id: 1, title: "Task 1", category: "Work" },
-	{ id: 2, title: "Task 2", category: "Personal" },
-	{ id: 3, title: "Task 5", category: "Personal" },
-	// Add more tasks here
-];
-
-const CategoryScreen = ({ route }: { route: any }) => {
-	const { category, tasks } = route.params;
-
-	const filteredTasks = tasks.filter(
-		(task: any) => task.category === category
-	);
+	const filteredTasks =
+		(tasks &&
+			tasks.filter(
+				(task: TaskType) => task.category === category.name
+			)) ||
+		[];
 
 	return (
 		<View>
-			<Text>Tasks for {category}:</Text>
+			<Text>Tasks for {category.name}:</Text>
 			<FlatList
 				data={filteredTasks}
-				keyExtractor={(item) => item.id.toString()}
+				keyExtractor={(item) => item.taskId}
 				renderItem={({ item }) => <Text>{item.title}</Text>}
 			/>
 		</View>
 	);
-};
+});

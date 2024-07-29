@@ -1,38 +1,19 @@
+import { taskMocks } from "mocks";
 import { createContext, ReactNode, useContext, useState } from "react";
 import { ViewProps } from "react-native";
+import { TaskContextType, TaskType } from "utils/types";
 
 // declare types
-type TaskType = {
-	taskId: string;
-	title: string;
-	description: string;
-	content: string;
-	category: string;
-	type: "TASK" | "EVENT";
-	status: "DONT" | "UNDONE";
-	start?: {
-		day: string;
-		time: string;
-	};
-	end?: {
-		day: string;
-		time: string;
-	};
-};
 
-type TaskContextType = {
-	tasks?: TaskType[];
-	addTask?: (task: TaskType) => void;
-	removeTask?: (taskId: string) => void;
-	updateTask?: (taskId: string, updatedTask: TaskType) => void;
-};
+
+
 
 // Create context
 const TaskContext = createContext<TaskContextType>({});
 
 // Create Provider
 const TaskProvider = ({ children }: ViewProps) => {
-	const [tasks, setTasks] = useState<TaskType[]>([]);
+	const [tasks, setTasks] = useState<TaskType[]>(taskMocks);
 
 	const addTask = (task: TaskType) => {
 		setTasks((prevTasks) => [...prevTasks, task]);

@@ -15,6 +15,7 @@ import Language from "screens/app/stacks/menuStacks/Language";
 import Privacy from "screens/app/stacks/menuStacks/Privacy";
 import Setting from "screens/app/stacks/menuStacks/Setting";
 import Notification from "screens/app/stacks/menuStacks/Notification";
+import { categoryMocks } from "mocks";
 
 const Stack = createNativeStackNavigator();
 
