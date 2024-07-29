@@ -1,10 +1,11 @@
 import { DarkTheme, DefaultTheme } from "@react-navigation/native";
+import { CustomColorType } from "utils/types";
 
 export const primaryColor: string = "#6250EF";
 export const primaryColorDark: string = "#7463FF";
 
 // Light Theme Colors
-export const CustomLightTheme = {
+export const CustomLightTheme: CustomColorType = {
 	...DefaultTheme,
 	colors: {
 		...DefaultTheme.colors,
@@ -18,7 +19,7 @@ export const CustomLightTheme = {
 };
 
 // Dark Theme Colors
-export const CustomDarkTheme = {
+export const CustomDarkTheme: CustomColorType = {
 	...DarkTheme,
 	colors: {
 		...DarkTheme.colors,
@@ -30,5 +31,3 @@ export const CustomDarkTheme = {
 		inputBackground: "#505050",
 	},
 };
-
-export type Theme = typeof CustomDarkTheme;

@@ -9,7 +9,11 @@ import { LinearGradient } from "expo-linear-gradient";
 
 const NewTaskIcon = ({ onPress }: TouchableOpacityProps) => {
 	return (
-		<TouchableOpacity activeOpacity={0.6} onPress={onPress}>
+		<TouchableOpacity
+			style={{ flex: 1, width: 100, alignItems: "center", justifyContent: 'center', height: 60 }}
+			activeOpacity={0.6}
+			onPress={onPress}
+		>
 			<LinearGradient
 				colors={["#A230ED", "#6B00D7"]}
 				start={{ x: 0, y: 0 }}
@@ -31,8 +35,8 @@ const styles = StyleSheet.create({
 	container: {
 		alignItems: "center",
 		justifyContent: "center",
-		width: 52,
-		height: 52,
+		width: 55,
+		height: 55,
 		borderRadius: 1000,
 	},
 });

@@ -1,11 +1,9 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { FlatList, Text, View } from "react-native";
 import Home from "screens/app/drawer/home/Home";
-import { useTheme } from "@react-navigation/native";
 import HomeDrawerHeader from "modules/app/HomeDrawerHeader";
-import { taskMocks } from "mocks";
 import { useCategory } from "contexts/category-context";
-import { CategoryType, TaskType } from "utils/types";
+import { TaskType } from "utils/types";
 import { useTask } from "contexts/task-context";
 import React from "react";
 

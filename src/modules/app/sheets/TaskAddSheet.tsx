@@ -1,15 +1,30 @@
-import { View, Text, StyleSheet } from "react-native";
-import React from "react";
+import {
+	View,
+	Text,
+	StyleSheet,
+	TouchableNativeFeedback,
+	Keyboard,
+	useColorScheme,
+	KeyboardAvoidingView,
+	Platform,
+	TextInput,
+} from "react-native";
+import React, { useState } from "react";
 import { CustomTouchableOpacity } from "components/customs";
 import { useTheme } from "@react-navigation/native";
 import { globalConstants } from "utils/constants/constant";
 import { primaryColor } from "utils/constants/ThemeColors";
 import { useBottomSheetModal } from "@gorhom/bottom-sheet";
 import Toast from "react-native-toast-message";
+import { TextField } from "react-native-ui-lib";
+import { useTintColor } from "hooks/useTintColor";
+import { CustomColorType } from "utils/types";
 
-const TaskAddSheet = () => {
-	const { colors } = useTheme();
+const TaskAddSheet = ({ handleFullOpen }: { handleFullOpen: () => void }) => {
 	const { dismiss } = useBottomSheetModal();
+	const [title, setTitle] = useState<any>();
+	const { colors } = useTheme();
+	const tintColor = useTintColor();
 
 	const styles = StyleSheet.create({
 		headerContainer: {
@@ -36,16 +51,61 @@ const TaskAddSheet = () => {
 	};
 
 	return (
-		<View style={{ flex: 1 }}>
-			<View style={styles.headerContainer}>
-				<CustomTouchableOpacity onPress={() => dismiss()}>
-					<Text style={styles.headerText}>閉じる</Text>
-				</CustomTouchableOpacity>
-				<CustomTouchableOpacity onPress={handleSaveTask}>
-					<Text style={styles.headerText}>作成</Text>
-				</CustomTouchableOpacity>
+		<TouchableNativeFeedback
+			onPress={() => {
+				if (Keyboard.isVisible()) {
+					Keyboard.dismiss();
+				}
+			}}
+			style={{ flex: 1 }}
+		>
+			<View style={{ flex: 1 }}>
+				{/* header container  */}
+				<View style={styles.headerContainer}>
+					<CustomTouchableOpacity onPress={() => dismiss()}>
+						<Text style={styles.headerText}>閉じる</Text>
+					</CustomTouchableOpacity>
+					<CustomTouchableOpacity onPress={handleSaveTask}>
+						<Text style={styles.headerText}>作成</Text>
+					</CustomTouchableOpacity>
+				</View>
+
+				{/* main container  */}
+				<View
+					style={{
+						flex: 1,
+						paddingHorizontal: globalConstants.padding,
+						paddingTop: 14,
+						flexDirection: "column",
+						gap: 20,
+					}}
+				>
+					<View>
+						<Text
+							style={{
+								fontWeight: "600",
+								color: "gray",
+								marginBottom: 8,
+								marginLeft: 4,
+							}}
+						>
+							タイトル
+						</Text>
+						<TextInput
+							style={{
+								paddingHorizontal: 10,
+								paddingVertical: 14,
+								borderWidth: 1,
+								borderColor: colors.border,
+								borderRadius: 6,
+							}}
+							onFocus={handleFullOpen}
+							placeholder="タイトル"
+						/>
+					</View>
+				</View>
 			</View>
-		</View>
+		</TouchableNativeFeedback>
 	);
 };
 

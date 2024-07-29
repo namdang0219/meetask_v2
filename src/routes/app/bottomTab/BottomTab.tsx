@@ -10,7 +10,7 @@ import {
 import { primaryColor } from "utils/constants/ThemeColors";
 import { useTheme } from "@react-navigation/native";
 import CreateTask from "screens/app/stacks/CreateTask";
-import { Text } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import AnalyticStack from "../stacks/AnalyticStack";
 import CalendarStack from "../stacks/CalendarStack";
 import HomeStack from "../stacks/HomeStack";
@@ -24,17 +24,17 @@ const Tab = createBottomTabNavigator();
 const BottomTab = () => {
 	const { colors } = useTheme();
 	const bottomSheetRef = useRef<BottomSheetModal>(null);
-	const { dismiss } = useBottomSheetModal();
 
 	const handlePresentModalPress = () => bottomSheetRef.current?.present();
+
+	const handleFullOpen = () => bottomSheetRef.current?.snapToIndex(1)
 
 	return (
 		<>
 			<Tab.Navigator
 				screenOptions={({ route }) => {
 					return {
-						tabBarStyle: { paddingHorizontal: 15, height: 86 },
-						// tabBarShowLabel: true,
+						tabBarStyle: { paddingHorizontal: 15, height: 90 },
 						tabBarLabelStyle: { fontSize: 10 },
 						headerShown: false,
 						tabBarActiveTintColor: primaryColor,
@@ -46,52 +46,52 @@ const BottomTab = () => {
 									return colors.bottomIconDefault;
 								}
 							}
+
+							const styles = StyleSheet.create({
+								labelStyle: {
+									color: iconColor(),
+									marginTop: -8,
+									fontSize: 10,
+								},
+							});
+
 							return (
 								<>
 									{
 										<>
 											{route.name === "HomeStack" ? (
-												<Text
-													style={{
-														color: iconColor(),
-														fontSize: 10,
-													}}
-												>
+												<Text style={styles.labelStyle}>
 													Home
 												</Text>
 											) : route.name ===
 											  "CalendarStack" ? (
-												<Text
-													style={{
-														color: iconColor(),
-														fontSize: 10,
-													}}
-												>
+												<Text style={styles.labelStyle}>
 													Calendar
 												</Text>
 											) : route.name === "CreateTask" ? (
-												<NewTaskIcon
-													onPress={
-														handlePresentModalPress
-													}
-												/>
-											) : route.name ===
-											  "AnalyticStack" ? (
-												<Text
+												<View
 													style={{
-														color: iconColor(),
-														fontSize: 10,
+														backgroundColor: "cyan",
+														flex: 1,
 													}}
 												>
+													<NewTaskIcon
+														style={{
+															backgroundColor:
+																"yellow",
+														}}
+														onPress={
+															handlePresentModalPress
+														}
+													/>
+												</View>
+											) : route.name ===
+											  "AnalyticStack" ? (
+												<Text style={styles.labelStyle}>
 													Analytic
 												</Text>
 											) : route.name === "MenuStack" ? (
-												<Text
-													style={{
-														color: iconColor(),
-														fontSize: 10,
-													}}
-												>
+												<Text style={styles.labelStyle}>
 													Menu
 												</Text>
 											) : (
@@ -166,7 +166,7 @@ const BottomTab = () => {
 				<Tab.Screen name="MenuStack" component={MenuStack}></Tab.Screen>
 			</Tab.Navigator>
 			<CustomBottomSheetModal ref={bottomSheetRef}>
-				<TaskAddSheet></TaskAddSheet>
+				<TaskAddSheet handleFullOpen={handleFullOpen}></TaskAddSheet>
 			</CustomBottomSheetModal>
 		</>
 	);

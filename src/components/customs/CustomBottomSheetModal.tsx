@@ -9,7 +9,7 @@ interface CustomBottomSheetModalProps {
 
 const CustomBottomSheetModal = forwardRef<Ref, CustomBottomSheetModalProps>(
 	({ children }, ref) => {
-		const snapPoints = useMemo(() => ["50%", "80%"], []);
+		const snapPoints = useMemo(() => ["50%", "86%"], []);
 
 		const renderBackdrop = useCallback(
 			(props: any) => (
@@ -23,16 +23,19 @@ const CustomBottomSheetModal = forwardRef<Ref, CustomBottomSheetModalProps>(
 		);
 
 		return (
-			<View>
+			<>
 				<BottomSheetModal
 					ref={ref}
 					index={0}
 					snapPoints={snapPoints}
 					backdropComponent={renderBackdrop}
+					keyboardBehavior="interactive"
 				>
-					<View style={{flex: 1}}>{children}</View>
+					<View style={{flex: 1}}>
+						{children}
+					</View>
 				</BottomSheetModal>
-			</View>
+			</>
 		);
 	}
 );
