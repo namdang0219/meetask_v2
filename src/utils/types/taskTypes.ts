@@ -1,10 +1,8 @@
-import { categoryMocks } from "mocks";
-
 // Task type
 export type TaskType = {
 	taskId: string;
 	title: string;
-	content: string;
+	desc: string;
 	category: "Shopping" | "Business" | "Study" | "School";
 	type: "TASK" | "EVENT";
 	status: "DONE" | "UNDONE";

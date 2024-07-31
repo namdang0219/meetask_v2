@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
 	AnalyticIcon,
@@ -17,7 +17,7 @@ import HomeStack from "../stacks/HomeStack";
 import MenuStack from "../stacks/MenuStack";
 import { BottomSheetModal, useBottomSheetModal } from "@gorhom/bottom-sheet";
 import { CustomBottomSheetModal } from "components/customs";
-import TaskAddSheet from "modules/app/sheets/TaskAddSheet";
+import { TaskAddSheet } from "modules/app/sheets";
 
 const Tab = createBottomTabNavigator();
 

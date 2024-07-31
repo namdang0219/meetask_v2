@@ -1,30 +1,35 @@
+import _ from "lodash";
 import {
 	View,
 	Text,
 	StyleSheet,
 	TouchableNativeFeedback,
 	Keyboard,
-	useColorScheme,
-	KeyboardAvoidingView,
-	Platform,
-	TextInput,
 } from "react-native";
 import React, { useState } from "react";
 import { CustomTouchableOpacity } from "components/customs";
-import { useTheme } from "@react-navigation/native";
 import { globalConstants } from "utils/constants/constant";
 import { primaryColor } from "utils/constants/ThemeColors";
 import { useBottomSheetModal } from "@gorhom/bottom-sheet";
 import Toast from "react-native-toast-message";
-import { TextField } from "react-native-ui-lib";
-import { useTintColor } from "hooks/useTintColor";
-import { CustomColorType } from "utils/types";
+import { AddTaskInput } from "components/inputs";
+import { categoryMocks } from "mocks";
+import {
+	PickerItemProps,
+	PickerSingleValue,
+} from "react-native-ui-lib/src/components/picker/types";
+import { Icon, Picker } from "react-native-ui-lib";
+import { useTheme } from "@react-navigation/native";
 
 const TaskAddSheet = ({ handleFullOpen }: { handleFullOpen: () => void }) => {
+	const pickerItems: PickerItemProps[] = categoryMocks.map((category) => ({
+		label: category.name,
+		value: category.categoryId,
+	}));
+
 	const { dismiss } = useBottomSheetModal();
-	const [title, setTitle] = useState<any>();
+	const [value, setValue] = useState<PickerSingleValue>(pickerItems[0].value);
 	const { colors } = useTheme();
-	const tintColor = useTintColor();
 
 	const styles = StyleSheet.create({
 		headerContainer: {
@@ -38,6 +43,26 @@ const TaskAddSheet = ({ handleFullOpen }: { handleFullOpen: () => void }) => {
 		headerText: {
 			color: primaryColor,
 			fontSize: 18,
+		},
+		inputFieldContainer: {
+			flex: 1,
+			paddingHorizontal: globalConstants.padding,
+			paddingTop: 14,
+			flexDirection: "column",
+			gap: 20,
+		},
+		inputLabel: {
+			fontWeight: "600",
+			color: "gray",
+			marginBottom: 8,
+			marginLeft: 4,
+		},
+		inputField: {
+			paddingHorizontal: 10,
+			paddingVertical: 14,
+			borderWidth: 1,
+			borderColor: colors.border,
+			borderRadius: 6,
 		},
 	});
 
@@ -71,37 +96,38 @@ const TaskAddSheet = ({ handleFullOpen }: { handleFullOpen: () => void }) => {
 				</View>
 
 				{/* main container  */}
-				<View
-					style={{
-						flex: 1,
-						paddingHorizontal: globalConstants.padding,
-						paddingTop: 14,
-						flexDirection: "column",
-						gap: 20,
-					}}
-				>
+				<View style={styles.inputFieldContainer}>
+					{/* title input  */}
 					<View>
-						<Text
-							style={{
-								fontWeight: "600",
-								color: "gray",
-								marginBottom: 8,
-								marginLeft: 4,
-							}}
-						>
-							タイトル
-						</Text>
-						<TextInput
-							style={{
-								paddingHorizontal: 10,
-								paddingVertical: 14,
-								borderWidth: 1,
-								borderColor: colors.border,
-								borderRadius: 6,
-							}}
-							onFocus={handleFullOpen}
-							placeholder="タイトル"
+						<AddTaskInput
+							handleFullOpen={handleFullOpen}
+							label="タイトル"
 						/>
+					</View>
+
+					{/* desc input  */}
+					<AddTaskInput
+						handleFullOpen={handleFullOpen}
+						label="説明"
+					/>
+
+					{/* category input  */}
+					<View style={{ flexDirection: "row", gap: 20 }}>
+						<View style={{ flex: 1 }}>
+							<Picker
+								label="Category"
+								labelStyle={styles.inputLabel}
+								fieldStyle={styles.inputField}
+								placeholder="Pick a Category"
+								useWheelPicker
+								value={value}
+								onChange={(item) => setValue(item as string)}
+								items={pickerItems}
+							/>
+						</View>
+						<View
+							style={{ backgroundColor: "cyan", flex: 1 }}
+						></View>
 					</View>
 				</View>
 			</View>

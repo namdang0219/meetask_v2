@@ -9,7 +9,7 @@ interface CustomBottomSheetModalProps {
 
 const CustomBottomSheetModal = forwardRef<Ref, CustomBottomSheetModalProps>(
 	({ children }, ref) => {
-		const snapPoints = useMemo(() => ["50%", "86%"], []);
+		const snapPoints = useMemo(() => ["50%", "92%"], []);
 
 		const renderBackdrop = useCallback(
 			(props: any) => (
