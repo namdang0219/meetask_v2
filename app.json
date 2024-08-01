@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "mee-task-v2",
-    "slug": "meetask",
+    "slug": "mee-task-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -13,14 +13,16 @@
     },
     "ios": {
       "supportsTablet": true,
-      "userInterfaceStyle": "automatic"
+      "userInterfaceStyle": "automatic",
+      "bundleIdentifier": "com.meowcopter.meetaskapp"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "userInterfaceStyle": "automatic"
+      "userInterfaceStyle": "automatic",
+      "package": "com.meowcopter.meetaskapp"
     },
     "web": {
       "favicon": "./assets/favicon.png",
@@ -29,7 +31,10 @@
     },
     "extra": {
       "eas": {
-        "projectId": "e1e41a77-3c6a-4a0c-b521-d91d17b5db46"
+        "projectId": "bfd196f0-2248-44b1-acb5-6691c595be6d"
+      },
+      "router": {
+        "origin": false
       }
     },
     "owner": "meowcopter",
