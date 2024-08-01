@@ -14,6 +14,9 @@ export type TaskType = {
 		day: string;
 		time: string;
 	};
+	hour?: string;
+	duration?: string;
+	location?: string
 };
 
 // Task context type

@@ -67,7 +67,7 @@ const ClockOne = () => {
 						{formatTime(currentTime).slice(4, 5)}
 					</Text>
 				</View>
-				<View style={{ marginLeft: -34 }}>
+				<View style={{ marginLeft: -40 }}>
 					<Text style={[styles.text, { color: "pink" }]}>
 						{formatTime(currentTime).slice(5, 6)}
 					</Text>

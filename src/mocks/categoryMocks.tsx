@@ -18,7 +18,7 @@ export const categoryMocks: CategoryType[] = [
 	},
 	{
 		categoryId: "4",
-		name: "Bussiness",
+		name: "Business",
 		color: "#ec4899", // pink 500
 	},
 ] as const;

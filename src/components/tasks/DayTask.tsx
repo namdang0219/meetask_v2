@@ -2,14 +2,17 @@ import { View, Text, StyleSheet } from "react-native";
 import React, { useState } from "react";
 import { ThemedText } from "components/themed";
 import { globalConstants } from "utils/constants/constant";
-import { useTheme } from "@react-navigation/native";
+import { useNavigation, useTheme } from "@react-navigation/native";
 import { Drawer, RadioButton } from "react-native-ui-lib";
 import { EventItem, TaskItem } from "components/items";
 import { Feather } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
+import EventItemWithDrawer from "../items/EventItemWithDrawer";
+import { taskMocks } from "mocks";
 
 const DayTask = () => {
 	const { colors } = useTheme();
+	const { navigate } = useNavigation<any>();
 
 	type initTaskType = {
 		id: number;
@@ -184,53 +187,14 @@ const DayTask = () => {
 				{/* event content  */}
 				<View style={{ paddingVertical: 10, gap: 10 }}>
 					{/* event content 1  */}
-					<Drawer
-						rightItems={[
-							{
-								width: 80,
-								customElement: (
-									<View
-										style={{ alignItems: "center", gap: 4 }}
-									>
-										<Ionicons
-											name="play-outline"
-											size={24}
-											color="white"
-										/>
-										<Text style={{ color: "white" }}>
-											開始
-										</Text>
-									</View>
-								),
-								background: "orange",
-								onPress: () => console.log("read pressed"),
-							},
-							{
-								width: 80,
-								customElement: (
-									<View
-										style={{ alignItems: "center", gap: 4 }}
-									>
-										<Feather
-											name="check"
-											size={24}
-											color="white"
-										/>
-										<Text style={{ color: "white" }}>
-											完成
-										</Text>
-									</View>
-								),
-								background: "#00CF6C",
-								onPress: () => console.log("read pressed"),
-							},
-						]}
-					>
-						<EventItem />
-					</Drawer>
+					{taskMocks &&
+						taskMocks.length > 0 &&
+						taskMocks.map((item) => (
+							<EventItemWithDrawer key={item.taskId} item={item} />
+						))}
 
 					{/* event content 2  */}
-					<EventItem />
+					{/* <EventItem /> */}
 				</View>
 			</View>
 		</View>

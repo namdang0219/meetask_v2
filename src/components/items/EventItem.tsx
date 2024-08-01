@@ -1,20 +1,22 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import { globalConstants } from "utils/constants/constant";
+import { CategoryType, TaskType } from "utils/types";
+import { categoryMocks } from "mocks";
 
-const EventItem = () => {
+const EventItem = ({ item }: { item: TaskType }) => {
 	const styles = StyleSheet.create({
 		leftCol: { width: 45 },
 		container: {
 			flexDirection: "row",
 			paddingHorizontal: globalConstants.padding,
 			gap: 14,
-      backgroundColor: 'white'
+			backgroundColor: "white",
 		},
 		itemContainer: {
 			paddingHorizontal: 14,
 			paddingVertical: 10,
-			backgroundColor: "#00CF6C",
+			backgroundColor: getCategoryColor(item.category),
 			borderRadius: 15,
 			gap: 4,
 		},
@@ -38,15 +40,22 @@ const EventItem = () => {
 			{/* right content  */}
 			<View style={{ flex: 1 }}>
 				<View style={styles.itemContainer}>
-					<Text style={styles.time}>13:20</Text>
+					<Text style={styles.time}>{item?.hour}</Text>
 					<Text numberOfLines={1} style={styles.content}>
-						Do home work
+						{item.title}
 					</Text>
-					<Text style={styles.location}>at {"Your home"}</Text>
+					<Text style={styles.location}>at {item.location}</Text>
 				</View>
 			</View>
 		</View>
 	);
+};
+
+const getCategoryColor = (
+	taskCategory: TaskType["category"]
+): string | undefined => {
+	const category = categoryMocks.find((c) => c.name === taskCategory);
+	return category ? category.color : undefined;
 };
 
 export default EventItem;

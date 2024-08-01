@@ -18,7 +18,7 @@ import {
 	PickerItemProps,
 	PickerSingleValue,
 } from "react-native-ui-lib/src/components/picker/types";
-import { Button, Icon, Picker } from "react-native-ui-lib";
+import { Button, DateTimePicker, Icon, Picker } from "react-native-ui-lib";
 import { useTheme } from "@react-navigation/native";
 import { useTintColor } from "hooks";
 
@@ -26,12 +26,18 @@ const TaskAddSheet = ({ handleFullOpen }: { handleFullOpen: () => void }) => {
 	const pickerItems: PickerItemProps[] = categoryMocks.map((category) => ({
 		label: category.name,
 		value: category.categoryId,
+		color: category.color,
 	}));
 
+	const taskTypes = [
+		{ label: "Task", value: "Task" },
+		{ label: "Event", value: "Event" },
+	];
+
 	const { dismiss } = useBottomSheetModal();
-	const [value, setValue] = useState<PickerSingleValue>(pickerItems[0].value);
+	const [category, setCategory] = useState(pickerItems[0]);
+	const [type, setType] = useState(taskTypes[0]);
 	const { colors } = useTheme();
-	const tint = useTintColor();
 
 	const styles = StyleSheet.create({
 		headerContainer: {
@@ -112,21 +118,113 @@ const TaskAddSheet = ({ handleFullOpen }: { handleFullOpen: () => void }) => {
 					/>
 
 					{/* category input  */}
-					<View style={{ flexDirection: "row", gap: 20 }}>
-						<View style={{ flex: 1 }}>
-							{/* <Picker
+					<View
+						style={{
+							flexDirection: "row",
+							gap: globalConstants.padding,
+						}}
+					>
+						<View style={{ flex: 1, position: "relative" }}>
+							<View
+								style={{
+									position: "absolute",
+									top: 6,
+									right: 10,
+									width: 20,
+									height: 12,
+									borderRadius: 10,
+									backgroundColor: "pink",
+								}}
+							></View>
+							<Picker
 								label="Category"
 								labelStyle={styles.inputLabel}
 								fieldStyle={styles.inputField}
 								placeholder="Pick a Category"
+								onChange={(item) => {
+									setCategory(item as any);
+									console.log(item);
+								}}
 								useWheelPicker
-								value={value}
+								value={category.value}
 								items={pickerItems}
-							/> */}
+							/>
 						</View>
-						<View
-							style={{ backgroundColor: "cyan", flex: 1 }}
-						></View>
+						<View style={{ flex: 1 }}>
+							<Picker
+								label="Type"
+								labelStyle={styles.inputLabel}
+								fieldStyle={styles.inputField}
+								placeholder="Pick a type"
+								onChange={(item) => {
+									setCategory(item as any);
+									console.log(item);
+								}}
+								useWheelPicker
+								value={type.value}
+								items={taskTypes}
+							/>
+						</View>
+					</View>
+
+					{/* start date time picker  */}
+					<View
+						style={{
+							flexDirection: "row",
+							gap: globalConstants.padding,
+						}}
+					>
+						{/* Start time  */}
+						<View style={{ flex: 1 }}>
+							<DateTimePicker
+								label="Start Date"
+								labelStyle={styles.inputLabel}
+								fieldStyle={styles.inputField}
+								placeholder={"Start Date"}
+								mode={"date"}
+							/>
+						</View>
+
+						{/* end time  */}
+						<View style={{ flex: 1 }}>
+							<DateTimePicker
+								label="Start Time"
+								labelStyle={styles.inputLabel}
+								fieldStyle={styles.inputField}
+								placeholder={"Start Time"}
+								mode={"time"}
+							/>
+						</View>
+					</View>
+
+					{/* end date time picker  */}
+					<View
+						style={{
+							flexDirection: "row",
+							gap: globalConstants.padding,
+						}}
+					>
+						{/* Start time  */}
+						<View style={{ flex: 1 }}>
+							<DateTimePicker
+								label="Start Date"
+								labelStyle={styles.inputLabel}
+								fieldStyle={styles.inputField}
+								placeholder={"Start Date"}
+								mode={"date"}
+							/>
+						</View>
+
+						{/* end time  */}
+						<View style={{ flex: 1 }}>
+							<DateTimePicker
+								label="Start Time"
+								labelStyle={styles.inputLabel}
+								fieldStyle={styles.inputField}
+								placeholder={"Start Time"}
+								mode={"time"}
+							/>
+						</View>
 					</View>
 				</View>
 			</View>

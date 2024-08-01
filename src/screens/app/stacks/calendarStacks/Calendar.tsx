@@ -11,8 +11,6 @@ import { agendaItems, getMarkedDates } from "screens/app/mocks/agendaItems";
 import { getTheme, themeColor, lightThemeColor } from "screens/app/mocks/theme";
 import testIDs from "screens/app/testIDs";
 
-// const leftArrowIcon = require('../img/previous.png');
-// const rightArrowIcon = require('../img/next.png');
 const ITEMS: any[] = agendaItems;
 
 interface Props {
@@ -38,6 +36,8 @@ const Calendar = (props: Props) => {
 	const renderItem = useCallback(({ item }: any) => {
 		return <AgendaItem item={item} />;
 	}, []);
+
+	
 
 	const vacation = {
 		key: "vacation",
@@ -77,7 +77,7 @@ const Calendar = (props: Props) => {
 						},
 						"2024-07-29": {
 							dots: [massage, workout],
-							disabled: true,
+							// disabled: true,
 						},
 					}}
 				/>
@@ -90,18 +90,6 @@ const Calendar = (props: Props) => {
 		</CalendarProvider>
 	);
 };
-
-type CategoryType = {
-	key: string;
-	color: string;
-};
-
-const categories: CategoryType[] = [
-	{ key: "Shopping", color: "#10b981" },
-	{ key: "Study", color: "#38bdf8" },
-	{ key: "Business", color: "#d946ef" },
-	{ key: "School", color: "#fbbf24" },
-];
 
 export default Calendar;
 

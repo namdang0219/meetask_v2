@@ -10,6 +10,8 @@ interface ItemProps {
 
 const AgendaItem = (props: ItemProps) => {
   const {item} = props;
+  console.log("🚀 ~ AgendaItem ~ item:", item)
+
 
   const buttonPressed = useCallback(() => {
     Alert.alert('Show me more');
