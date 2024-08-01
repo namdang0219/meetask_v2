@@ -10,6 +10,8 @@ import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SafeView } from "layouts";
 import { globalConstants } from "utils/constants/constant";
+import { auth } from "firebase-config";
+import { updateProfile } from "firebase/auth";
 
 interface CreateUserInfoProps {
 	firstName: string;
@@ -19,14 +21,14 @@ interface CreateUserInfoProps {
 // userInfo Validation Schema
 const userInfoSchema = Yup.object().shape({
 	firstName: Yup.string()
-		.required("First name is required")
-		.min(3, "First name must be at least 3 characters")
-		.max(8, "First name cannot exceed more than 8 characters"),
+		.required("名（ファーストネーム）は必須です")
+		.min(3, "名（ファーストネーム）は3文字以上でなければなりません")
+		.max(8, "名（ファーストネーム）は8文字を超えてはいけません"),
 
 	lastName: Yup.string()
-		.required("Last name is required")
-		.min(3, "Last name must be at least 3 characters")
-		.max(8, "Last name cannot exceed more than 8 characters"),
+		.required("姓（ラストネーム）は必須です")
+		.min(3, "姓（ラストネーム）は3文字以上でなければなりません")
+		.max(8, "姓（ラストネーム）は8文字を超えてはいけません"),
 });
 
 const CreateUserInfo = () => {
@@ -50,11 +52,11 @@ const CreateUserInfo = () => {
 	}: CreateUserInfoProps) => {
 		if (!isValid) return;
 		try {
-			// if (auth.currentUser) {
-			// 	await updateProfile(auth.currentUser, {
-			// 		displayName: `${firstName} ${lastName}`,
-			// 	});
-			// }
+			if (auth.currentUser) {
+				await updateProfile(auth.currentUser, {
+					displayName: `${firstName} ${lastName}`,
+				});
+			}
 			navigate("AuthStack", { screen: "UploadAvatar" });
 		} catch (error) {
 			console.log(error);
@@ -67,12 +69,12 @@ const CreateUserInfo = () => {
 	});
 
 	return (
-		<SafeView style={{paddingHorizontal: globalConstants.padding}}>
+		<SafeView style={{ paddingHorizontal: globalConstants.padding }}>
 			<TitleLarge style={{ marginTop: 54, marginBottom: 40 }}>
-				Create Your Info
+				情報入力
 			</TitleLarge>
 			<SubTitle style={{ marginBottom: 40 }}>
-				Let's us known about you
+				あなたについて教えてください
 			</SubTitle>
 			<View>
 				<Controller
@@ -113,7 +115,7 @@ const CreateUserInfo = () => {
 					loading={isSubmitting}
 					onPress={handleSubmit(handleCreateUserInfo)}
 				>
-					Save
+					保存
 				</Button>
 			</View>
 		</SafeView>

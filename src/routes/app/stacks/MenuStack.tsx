@@ -1,10 +1,9 @@
 import { View, Text } from "react-native";
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import HeaderText from "components/headers/HeaderText";
 import Menu from "screens/app/stacks/menuStacks/Menu";
 import Profile from "screens/app/stacks/menuStacks/Profile";
-import { StaticHeader, FullView } from "layouts";
+import { StaticHeader } from "layouts";
 import { ThemedText } from "components/themed";
 import { SimpleLineIcons } from "@expo/vector-icons";
 import { useNavigation, useTheme } from "@react-navigation/native";
@@ -15,7 +14,6 @@ import Language from "screens/app/stacks/menuStacks/Language";
 import Privacy from "screens/app/stacks/menuStacks/Privacy";
 import Setting from "screens/app/stacks/menuStacks/Setting";
 import Notification from "screens/app/stacks/menuStacks/Notification";
-import { categoryMocks } from "mocks";
 
 const Stack = createNativeStackNavigator();
 
@@ -47,7 +45,7 @@ const MenuStack = () => {
 							>
 								Menu
 							</ThemedText>
-							<CustomTouchableOpacity onPress={() => navigate('WalkThrough')}>
+							<CustomTouchableOpacity onPress={() => navigate('AuthStack', {screen: 'WalkThrough'})}>
 								<View
 									style={{
 										flexDirection: "row",

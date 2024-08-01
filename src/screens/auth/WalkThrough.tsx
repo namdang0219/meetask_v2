@@ -21,8 +21,8 @@ const WalkThrough = () => {
 					<View style={{ alignItems: "center", marginBottom: 32 }}>
 						<Image
 							source={require("../../../assets/images/walkthrough.png")}
-							style={{ width: 280, height: 280 }}
-						></Image>
+								style={{ width: 280, height: 280 }}
+							></Image>
 					</View>
 					<ThemedText
 						style={{
@@ -31,8 +31,16 @@ const WalkThrough = () => {
 							lineHeight: 35,
 						}}
 					>
-						Lorem Ipsum is simply dummy text of the printing and
-						typesetting industry.
+						MeeTaskへようこそ
+					</ThemedText>
+					<ThemedText
+						style={{
+							textAlign: "center",
+							fontSize: 24,
+							lineHeight: 35,
+						}}
+					>
+						タスクをシンプルに楽しく管理しましょう！
 					</ThemedText>
 				</View>
 			</View>
@@ -40,7 +48,7 @@ const WalkThrough = () => {
 				onPress={() => navigate("Register")}
 				style={{ marginBottom: 16 }}
 			>
-				Getting Started
+				開始
 			</Button>
 		</SafeView>
 	);

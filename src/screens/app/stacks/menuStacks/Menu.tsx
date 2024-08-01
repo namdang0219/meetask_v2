@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import React from "react";
 import { globalConstants } from "utils/constants/constant";
 import { Avatar } from "react-native-ui-lib";
@@ -15,100 +15,118 @@ const Menu = () => {
 	return (
 		<ThemedView>
 			<View style={{ backgroundColor: colors.inputBackground, gap: 8 }}>
-				<CustomTouchableOpacity
-					onPress={() => navigate("Profile")}
-					style={{
-						height: 86,
-						flexDirection: "row",
-						alignItems: "center",
-						justifyContent: "space-between",
-						paddingHorizontal: globalConstants.padding,
-						backgroundColor: "white",
-					}}
-				>
-					<View
-						style={{
-							flexDirection: "row",
-							gap: 12,
-							alignItems: "center",
-							flex: 1,
-						}}
-					>
-						<Avatar
-							size={68}
-							animate
-							source={{
-								uri: "https://i.pinimg.com/564x/f8/b1/8c/f8b18cb33351da5f6ef7be3461ac12c6.jpg",
+				<MenuProfile />
+				<MenuItem />
+			</View>
+		</ThemedView>
+	);
+};
+
+const MenuItem = () => {
+	const { colors } = useTheme();
+	const { navigate } = useNavigation<any>();
+	return (
+		<>
+			{menuItems.map((list, i) => (
+				<View key={i}>
+					{list.map((item, index) => (
+						<CustomTouchableOpacity
+							key={item.id}
+							onPress={() => navigate(item.navigate)}
+							style={{
+								flexDirection: "row",
+								alignItems: "center",
+								justifyContent: "space-between",
+								paddingHorizontal: globalConstants.padding + 6,
+								paddingVertical: 14,
+								borderBottomColor: colors.inputBackground,
+								borderBottomWidth:
+									index === list.length - 1 ? 0 : 1,
+								backgroundColor: "white",
 							}}
-							label="avatar"
-						/>
-						<View style={{ flex: 1 }}>
-							<ThemedText
-								style={{
-									fontSize: 26,
-									fontWeight: "500",
-									marginBottom: 4,
-								}}
-							>
-								Nyamu
-							</ThemedText>
-							<ThemedText style={{ color: colors.subText }}>
-								meowcopter@gmail.com
-							</ThemedText>
-						</View>
-					</View>
-					<Entypo name="chevron-thin-right" size={24} color="gray" />
-				</CustomTouchableOpacity>
-				{menuItems.map((list, i) => (
-					<View key={i}>
-						{list.map((item, index) => (
-							<CustomTouchableOpacity
-								key={item.id}
-								onPress={() => navigate(item.navigate)}
+						>
+							<View
 								style={{
 									flexDirection: "row",
 									alignItems: "center",
-									justifyContent: "space-between",
-									paddingHorizontal:
-										globalConstants.padding + 6,
-									paddingVertical: 14,
-									borderBottomColor: colors.inputBackground,
-									borderBottomWidth:
-										index === list.length - 1 ? 0 : 1,
-									backgroundColor: "white",
+									gap: 14,
 								}}
 							>
-								<View
+								{item.icon}
+								<ThemedText
 									style={{
-										flexDirection: "row",
-										alignItems: "center",
-										gap: 14,
+										fontSize: 16,
+										fontWeight: "500",
+										color: "black",
 									}}
 								>
-									{item.icon}
-									<ThemedText
-										style={{
-											fontSize: 16,
-											fontWeight: "500",
-											color: "black",
-										}}
-									>
-										{item.name}
-									</ThemedText>
-								</View>
-								<View>
-									<Entypo
-										name="chevron-thin-right"
-										size={24}
-										color="gray"
-									/>
-								</View>
-							</CustomTouchableOpacity>
-						))}
-					</View>
-				))}
+									{item.name}
+								</ThemedText>
+							</View>
+							<View>
+								<Entypo
+									name="chevron-thin-right"
+									size={24}
+									color="gray"
+								/>
+							</View>
+						</CustomTouchableOpacity>
+					))}
+				</View>
+			))}
+		</>
+	);
+};
+
+const MenuProfile = () => {
+	const { colors } = useTheme();
+	const { navigate } = useNavigation<any>();
+
+	return (
+		<CustomTouchableOpacity
+			onPress={() => navigate("Profile")}
+			style={{
+				height: 86,
+				flexDirection: "row",
+				alignItems: "center",
+				justifyContent: "space-between",
+				paddingHorizontal: globalConstants.padding,
+				backgroundColor: "white",
+			}}
+		>
+			<View
+				style={{
+					flexDirection: "row",
+					gap: 12,
+					alignItems: "center",
+					flex: 1,
+				}}
+			>
+				<Avatar
+					size={68}
+					animate
+					source={{
+						uri: "https://i.pinimg.com/564x/f8/b1/8c/f8b18cb33351da5f6ef7be3461ac12c6.jpg",
+					}}
+					label="avatar"
+				/>
+				<View style={{ flex: 1 }}>
+					<ThemedText
+						style={{
+							fontSize: 26,
+							fontWeight: "500",
+							marginBottom: 4,
+						}}
+					>
+						Nyamu
+					</ThemedText>
+					<ThemedText style={{ color: colors.subText }}>
+						meowcopter@gmail.com
+					</ThemedText>
+				</View>
 			</View>
-		</ThemedView>
+			<Entypo name="chevron-thin-right" size={24} color="gray" />
+		</CustomTouchableOpacity>
 	);
 };
 

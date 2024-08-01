@@ -4,6 +4,7 @@ import BottomTab from "routes/app/bottomTab/BottomTab";
 import FocusStack from "routes/app/stacks/FocusStack";
 import Toast from "react-native-toast-message";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import AuthStack from "routes/auth/AuthStack";
 
 const Stack = createNativeStackNavigator();
 
@@ -17,7 +18,7 @@ const RootNavigation = () => {
 					headerShown: false,
 				}}
 			>
-				{/* <Stack.Screen name="AuthStack" component={AuthStack} /> */}
+				<Stack.Screen name="AuthStack" component={AuthStack} />
 				<Stack.Screen name="BottomTab" component={BottomTab} />
 				<Stack.Screen name="FocusStack" component={FocusStack} />
 			</Stack.Navigator>

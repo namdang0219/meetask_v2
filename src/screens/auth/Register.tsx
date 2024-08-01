@@ -1,4 +1,4 @@
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Alert } from "react-native";
 import React from "react";
 import { TitleLarge } from "components/titles";
 import { SubTitle } from "components/subTitle";
@@ -13,6 +13,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { SafeView } from "layouts";
 import LoginMethod from "modules/auth/LoginMethod";
 import { globalConstants } from "utils/constants/constant";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "firebase-config";
 
 interface RegisterProps {
 	email: string;
@@ -22,17 +24,17 @@ interface RegisterProps {
 // Register Validation Schema
 const registerSchema = Yup.object().shape({
 	email: Yup.string()
-		.email("Please enter a valid email address")
-		.required("Email is required"),
+		.email("正しいメールアドレスを入力してください")
+		.required("メールアドレスを入力してください"),
 	password: Yup.string()
-		.required("Password is required")
-		.min(6, "Password length should be at least 6 characters")
-		.max(12, "Password cannot exceed more than 12 characters"),
+		.required("パスワードを入力してください")
+		.min(6, "パスワードの長さは6文字以上でなければなりません。")
+		.max(12, "パスワードの長さは12文字を超えてはなりません。"),
 	cpassword: Yup.string()
-		.required("Confirm Password is required")
-		.oneOf([Yup.ref("password")], "Passwords do not match")
-		.min(6, "Password length should be at least 6 characters")
-		.max(12, "Password cannot exceed more than 12 characters"),
+		.required("確認用パスワードは必須です。")
+		.oneOf([Yup.ref("password")], "パスワードが一致しません。")
+		.min(6, "パスワードの長さは6文字以上でなければなりません。")
+		.max(12, "パスワードの長さは12文字を超えてはなりません。"),
 });
 
 const Register = () => {
@@ -55,16 +57,16 @@ const Register = () => {
 
 	// handle Registration
 	const handleRegister = async ({ email, password }: RegisterProps) => {
-		if (!checked) return alert("Please accept the terms and conditions");
-		// if (!isValid) return;
-		// try {
-		// 	await createUserWithEmailAndPassword(auth, email, password);
-		navigate("AuthStack", { screen: "CreateUserInfo" });
-		// } catch (error: any) {
-		// 	if (error.code === "auth/email-already-in-use") {
-		// 		alert("Email already in use");
-		// 	}
-		// }
+		if (!checked) return alert("利用規約に同意してください。");
+		if (!isValid) return;
+		try {
+			await createUserWithEmailAndPassword(auth, email, password);
+			navigate("AuthStack", { screen: "CreateUserInfo" });
+		} catch (error: any) {
+			if (error.code === "auth/email-already-in-use") {
+				Alert.alert("このメールアドレスは既に使用されています。");
+			}
+		}
 	};
 
 	// Register styles
@@ -86,9 +88,9 @@ const Register = () => {
 	return (
 		<SafeView style={{ paddingHorizontal: globalConstants.padding }}>
 			<TitleLarge style={{ marginTop: 54, marginBottom: 40 }}>
-				Register
+				新規登録
 			</TitleLarge>
-			<SubTitle style={{ marginBottom: 40 }}>Welcome to MeeTask</SubTitle>
+			<SubTitle style={{ marginBottom: 40 }}>MeeTaskへようこそ</SubTitle>
 			<View>
 				<Controller
 					control={control}
@@ -155,11 +157,11 @@ const Register = () => {
 				onPress={handleSubmit(handleRegister)}
 				loading={isSubmitting}
 			>
-				Register
+				登録
 			</Button>
 			<Text style={{ textAlign: "center", marginTop: 20 }}>
 				<ThemedText>
-					Already have an account?<Text> </Text>
+					既にアカウントをお持ちですか？<Text> </Text>
 				</ThemedText>
 				<Text
 					style={{
@@ -168,7 +170,7 @@ const Register = () => {
 					}}
 					onPress={() => navigate("Login")}
 				>
-					Login
+					ログイン
 				</Text>
 			</Text>
 			<LoginMethod></LoginMethod>

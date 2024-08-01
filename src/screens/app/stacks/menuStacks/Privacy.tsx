@@ -4,7 +4,6 @@ import {
 	StyleSheet,
 	ScrollView,
 	Image,
-	useWindowDimensions,
 } from "react-native";
 import React from "react";
 import { globalConstants } from "utils/constants/constant";
@@ -34,33 +33,18 @@ const Privacy = () => {
 	return (
 		<ScrollView style={styles.container}>
 			<Text style={styles.content}>
-				Your privacy is important to us. It is Brainstorming's policy to
-				respect your privacy regarding any information we may collect
-				from you across our{" "}
-				<Text style={styles.contentHighlight}>website</Text>, and other
-				sites we own and operate. We only ask for personal information
-				when we truly need it to provide a service to you. We collect it
-				by fair and lawful means, with your knowledge and consent. We
-				also let you know why we’re collecting it and how it will be
-				used. We only retain collected information for as long as
-				necessary to provide you with your requested service. What data
-				we store, we’ll protect within commercially acceptable means to
-				prevent loss and theft, as well as unauthorized access,
-				disclosure, copying, use or modification. We don’t share any
-				personally identifying information publicly or with
-				third-parties, except when required to by law.
-			</Text>
+    あなたのプライバシーは私たちにとって重要です。Brainstormingは、お客様から収集する情報に関してプライバシーを尊重する方針を採っています。
+    これは、私たちの<Text style={styles.contentHighlight}>ウェブサイト</Text>や、私たちが所有および運営する他のサイトに適用されます。
+    サービスを提供するために本当に必要な場合にのみ、個人情報を求めます。公正かつ合法的な手段で、お客様の知識と同意のもとで収集します。
+    また、なぜそれを収集するのか、そしてどのように使用するのかをお知らせします。
+    要求されたサービスを提供するために必要な期間のみ収集した情報を保持します。
+    保管するデータは、紛失や盗難、無許可のアクセス、開示、複製、使用、改ざんを防ぐために、商業的に受け入れられる手段で保護します。
+    法律で要求される場合を除き、個人を特定できる情報を公にまたは第三者と共有することはありません。
+</Text>
+
 			<Image source={logo} style={styles.image}></Image>
 			<Text style={styles.content}>
-				Your privacy is important to us. It is Brainstorming's policy to
-				respect your privacy regarding any information we may collect
-				from you across our website, and other sites we own and operate.
-				We only ask for personal information when we truly need it to
-				provide a service to you. We collect it by fair and lawful
-				means, with your knowledge and consent. We also let you know why
-				we’re collecting it and how it will be used. We only retain
-				collected information for as long as necessary to provide you
-				with your requested service.
+			あなたのプライバシーは私たちにとって重要です。Brainstormingは、私たちが所有および運営するウェブサイトやその他のサイトを通じて収集する情報に関して、お客様のプライバシーを尊重する方針を採っています。サービスを提供するために本当に必要な場合にのみ、個人情報を求めます。公正かつ合法的な手段で、お客様の知識と同意のもとで収集します。また、なぜそれを収集するのか、そしてどのように使用するのかをお知らせします。要求されたサービスを提供するために必要な期間のみ収集した情報を保持します。ï
 			</Text>
       <View style={{height: 20}}></View>
 		</ScrollView>

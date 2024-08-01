@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import { globalConstants } from "utils/constants/constant";
-import { CategoryType, TaskType } from "utils/types";
+import { TaskType } from "utils/types";
 import { categoryMocks } from "mocks";
 
 const EventItem = ({ item }: { item: TaskType }) => {

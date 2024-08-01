@@ -19,6 +19,7 @@ import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import { CustomBottomSheetModal } from "components/customs";
 import { TaskAddSheet } from "modules/app/sheets";
 import { isIOS } from "utils/functions/isIOS";
+import { StatusBar } from "expo-status-bar";
 
 const Tab = createBottomTabNavigator();
 
@@ -28,14 +29,18 @@ const BottomTab = () => {
 
 	const handlePresentModalPress = () => bottomSheetRef.current?.present();
 
-	const handleFullOpen = () => bottomSheetRef.current?.snapToIndex(1)
+	const handleFullOpen = () => bottomSheetRef.current?.snapToIndex(1);
 
 	return (
 		<>
+			<StatusBar style="dark" />
 			<Tab.Navigator
 				screenOptions={({ route }) => {
 					return {
-						tabBarStyle: { paddingHorizontal: 15, height: isIOS() ? 90 : 75},
+						tabBarStyle: {
+							paddingHorizontal: 15,
+							height: isIOS() ? 90 : 75,
+						},
 						tabBarLabelStyle: { fontSize: 10 },
 						tabBarShowLabel: isIOS() ? true : false,
 						headerShown: false,
@@ -63,12 +68,12 @@ const BottomTab = () => {
 										<>
 											{route.name === "HomeStack" ? (
 												<Text style={styles.labelStyle}>
-													Home
+													ホーム
 												</Text>
 											) : route.name ===
 											  "CalendarStack" ? (
 												<Text style={styles.labelStyle}>
-													Calendar
+													カレンダー
 												</Text>
 											) : route.name === "CreateTask" ? (
 												<View
@@ -90,11 +95,11 @@ const BottomTab = () => {
 											) : route.name ===
 											  "AnalyticStack" ? (
 												<Text style={styles.labelStyle}>
-													Analytic
+													分析
 												</Text>
 											) : route.name === "MenuStack" ? (
 												<Text style={styles.labelStyle}>
-													Menu
+													メニュー
 												</Text>
 											) : (
 												<></>

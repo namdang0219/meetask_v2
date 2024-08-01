@@ -137,7 +137,7 @@ const TaskAddSheet = ({ handleFullOpen }: { handleFullOpen: () => void }) => {
 								}}
 							></View>
 							<Picker
-								label="Category"
+								label="カテゴリー"
 								labelStyle={styles.inputLabel}
 								fieldStyle={styles.inputField}
 								placeholder="Pick a Category"
@@ -152,7 +152,7 @@ const TaskAddSheet = ({ handleFullOpen }: { handleFullOpen: () => void }) => {
 						</View>
 						<View style={{ flex: 1 }}>
 							<Picker
-								label="Type"
+								label="タイプ"
 								labelStyle={styles.inputLabel}
 								fieldStyle={styles.inputField}
 								placeholder="Pick a type"
@@ -177,21 +177,21 @@ const TaskAddSheet = ({ handleFullOpen }: { handleFullOpen: () => void }) => {
 						{/* Start time  */}
 						<View style={{ flex: 1 }}>
 							<DateTimePicker
-								label="Start Date"
+								label="スタート日"
 								labelStyle={styles.inputLabel}
 								fieldStyle={styles.inputField}
-								placeholder={"Start Date"}
+								placeholder={"スタート日"}
 								mode={"date"}
 							/>
 						</View>
 
-						{/* end time  */}
+						{/* start time  */}
 						<View style={{ flex: 1 }}>
 							<DateTimePicker
-								label="Start Time"
+								label="スタート時間"
 								labelStyle={styles.inputLabel}
 								fieldStyle={styles.inputField}
-								placeholder={"Start Time"}
+								placeholder={"スタート時間"}
 								mode={"time"}
 							/>
 						</View>
@@ -207,7 +207,7 @@ const TaskAddSheet = ({ handleFullOpen }: { handleFullOpen: () => void }) => {
 						{/* Start time  */}
 						<View style={{ flex: 1 }}>
 							<DateTimePicker
-								label="Start Date"
+								label="終了日"
 								labelStyle={styles.inputLabel}
 								fieldStyle={styles.inputField}
 								placeholder={"Start Date"}
@@ -218,7 +218,7 @@ const TaskAddSheet = ({ handleFullOpen }: { handleFullOpen: () => void }) => {
 						{/* end time  */}
 						<View style={{ flex: 1 }}>
 							<DateTimePicker
-								label="Start Time"
+								label="終了時間"
 								labelStyle={styles.inputLabel}
 								fieldStyle={styles.inputField}
 								placeholder={"Start Time"}

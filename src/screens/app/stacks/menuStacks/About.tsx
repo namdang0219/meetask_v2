@@ -167,21 +167,21 @@ const About = () => {
 	return (
 		<View style={styles.container}>
 			<Text style={styles.content}>
-				This app was developed by{" "}
+				このアプリは{" "}
 				<Text style={styles.contentHighlight}>MeeNetwork, LTD</Text>
+				によって開発されました。
 			</Text>
 			<Text style={styles.content}>
-				With the mission of bringing simple and{" "}
+				個人タスク管理において{" "}
 				<Text style={styles.contentHighlight}>
-					wonderful experiences
+					シンプルで素晴らしい
 				</Text>{" "}
-				in personal task management, we would like to introduce MeeTask
-				- a great application that helps solve the difficulties of
-				personal task management. The kernel works cross-platform on iOS
-				and Android devices
+				体験を提供することを使命として、MeeTaskをご紹介します。MeeTaskは、個人タスク管理の課題を解決する優れたアプリケーションです。このアプリは、iOSおよびAndroidデバイスでクロスプラットフォームで動作します。
 			</Text>
 			<Image source={require(aboutImg)} style={styles.image}></Image>
-			<Text style={styles.extend}>Also follow Mee team on:</Text>
+			<Text style={styles.extend}>
+				Meeチームを以下でもフォローしてください：
+			</Text>
 			<View style={styles.socialContainer}>
 				{icons.map((icon) => (
 					<CustomTouchableOpacity key={icon.name}>
@@ -189,8 +189,12 @@ const About = () => {
 					</CustomTouchableOpacity>
 				))}
 			</View>
-			<Button style={styles.shareBtn} textStyle={styles.shareBtnContent} onPress={onShare}>
-				Share your friend
+			<Button
+				style={styles.shareBtn}
+				textStyle={styles.shareBtnContent}
+				onPress={onShare}
+			>
+				友達と共有する
 			</Button>
 		</View>
 	);

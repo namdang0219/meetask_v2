@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Alert } from "react-native";
 import React from "react";
 import { useNavigation, useTheme } from "@react-navigation/native";
 import { TitleLarge } from "components/titles";
@@ -13,6 +13,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { SafeView } from "layouts";
 import LoginMethod from "modules/auth/LoginMethod";
 import { globalConstants } from "utils/constants/constant";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "firebase-config";
 
 interface LoginProps {
 	email: string;
@@ -22,12 +24,12 @@ interface LoginProps {
 // login Validation Schema
 const loginSchema = Yup.object().shape({
 	email: Yup.string()
-		.email("Please enter a valid email address")
-		.required("Email is required"),
+		.email("有効なメールアドレスを入力してください")
+		.required("メールアドレスは必須です"),
 	password: Yup.string()
-		.required("Password is required")
-		.min(6, "Password length should be at least 6 characters")
-		.max(12, "Password cannot exceed more than 12 characters"),
+		.required("パスワードは必須です")
+		.min(6, "パスワードの長さは6文字以上である必要があります")
+		.max(12, "パスワードの長さは12文字を超えてはいけません"),
 });
 
 const Login = () => {
@@ -48,13 +50,20 @@ const Login = () => {
 	});
 
 	const handleLogin = async ({ email, password }: LoginProps) => {
-		// if (!isValid) return;
-		// try {
-		// 	await signInWithEmailAndPassword(auth, email, password);
-		// 	navigate("AppStack", { screen: "BottomTab" });
-		// } catch (error) {
-		// 	console.log(error);
-		// }
+		if (!isValid) return;
+		try {
+			await signInWithEmailAndPassword(auth, email, password);
+			navigate("BottomTab");
+		} catch (error: any) {
+			console.log(error.message);
+			if (
+				error.message === "Firebase: Error (auth/invalid-credential)."
+			) {
+				Alert.alert(
+					"メールかパスワードが間違っています。もう一度確認してください。"
+				);
+			}
+		}
 	};
 
 	// Register styles
@@ -63,11 +72,11 @@ const Login = () => {
 	});
 
 	return (
-		<SafeView style={{paddingHorizontal: globalConstants.padding}}>
+		<SafeView style={{ paddingHorizontal: globalConstants.padding }}>
 			<TitleLarge style={{ marginTop: 54, marginBottom: 40 }}>
-				Login
+				ログイン
 			</TitleLarge>
-			<SubTitle style={{ marginBottom: 40 }}>Hi, Welcome back!</SubTitle>
+			<SubTitle style={{ marginBottom: 40 }}>お帰りなさい</SubTitle>
 			<View>
 				<Controller
 					control={control}
@@ -105,15 +114,15 @@ const Login = () => {
 			</View>
 			<CustomTouchableOpacity style={{ marginBottom: 16 }}>
 				<ThemedText style={{ textAlign: "right" }}>
-					Forgot Password?
+					パスワード忘れた方
 				</ThemedText>
 			</CustomTouchableOpacity>
 			<Button onPress={handleSubmit(handleLogin)} loading={isSubmitting}>
-				Login
+				ログイン
 			</Button>
 			<Text style={{ textAlign: "center", marginTop: 20 }}>
 				<ThemedText>
-					Don't have an account?<Text> </Text>
+					アカウントをお持ちでないですか？<Text> </Text>
 				</ThemedText>
 				<Text
 					style={{
@@ -122,7 +131,7 @@ const Login = () => {
 					}}
 					onPress={() => navigate("Register")}
 				>
-					Register
+					登録
 				</Text>
 			</Text>
 			<LoginMethod></LoginMethod>
