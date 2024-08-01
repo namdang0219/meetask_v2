@@ -18,8 +18,9 @@ import {
 	PickerItemProps,
 	PickerSingleValue,
 } from "react-native-ui-lib/src/components/picker/types";
-import { Icon, Picker } from "react-native-ui-lib";
+import { Button, Icon, Picker } from "react-native-ui-lib";
 import { useTheme } from "@react-navigation/native";
+import { useTintColor } from "hooks";
 
 const TaskAddSheet = ({ handleFullOpen }: { handleFullOpen: () => void }) => {
 	const pickerItems: PickerItemProps[] = categoryMocks.map((category) => ({
@@ -30,6 +31,7 @@ const TaskAddSheet = ({ handleFullOpen }: { handleFullOpen: () => void }) => {
 	const { dismiss } = useBottomSheetModal();
 	const [value, setValue] = useState<PickerSingleValue>(pickerItems[0].value);
 	const { colors } = useTheme();
+	const tint = useTintColor();
 
 	const styles = StyleSheet.create({
 		headerContainer: {
@@ -98,12 +100,10 @@ const TaskAddSheet = ({ handleFullOpen }: { handleFullOpen: () => void }) => {
 				{/* main container  */}
 				<View style={styles.inputFieldContainer}>
 					{/* title input  */}
-					<View>
-						<AddTaskInput
-							handleFullOpen={handleFullOpen}
-							label="タイトル"
-						/>
-					</View>
+					<AddTaskInput
+						handleFullOpen={handleFullOpen}
+						label="タイトル"
+					/>
 
 					{/* desc input  */}
 					<AddTaskInput
@@ -114,16 +114,15 @@ const TaskAddSheet = ({ handleFullOpen }: { handleFullOpen: () => void }) => {
 					{/* category input  */}
 					<View style={{ flexDirection: "row", gap: 20 }}>
 						<View style={{ flex: 1 }}>
-							<Picker
+							{/* <Picker
 								label="Category"
 								labelStyle={styles.inputLabel}
 								fieldStyle={styles.inputField}
 								placeholder="Pick a Category"
 								useWheelPicker
 								value={value}
-								onChange={(item) => setValue(item as string)}
 								items={pickerItems}
-							/>
+							/> */}
 						</View>
 						<View
 							style={{ backgroundColor: "cyan", flex: 1 }}

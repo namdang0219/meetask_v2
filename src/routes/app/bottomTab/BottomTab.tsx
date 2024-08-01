@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
 	AnalyticIcon,
@@ -15,9 +15,10 @@ import AnalyticStack from "../stacks/AnalyticStack";
 import CalendarStack from "../stacks/CalendarStack";
 import HomeStack from "../stacks/HomeStack";
 import MenuStack from "../stacks/MenuStack";
-import { BottomSheetModal, useBottomSheetModal } from "@gorhom/bottom-sheet";
+import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import { CustomBottomSheetModal } from "components/customs";
 import { TaskAddSheet } from "modules/app/sheets";
+import { isIOS } from "utils/functions/isIOS";
 
 const Tab = createBottomTabNavigator();
 
@@ -34,8 +35,9 @@ const BottomTab = () => {
 			<Tab.Navigator
 				screenOptions={({ route }) => {
 					return {
-						tabBarStyle: { paddingHorizontal: 15, height: 90 },
+						tabBarStyle: { paddingHorizontal: 15, height: isIOS() ? 90 : 75},
 						tabBarLabelStyle: { fontSize: 10 },
+						tabBarShowLabel: isIOS() ? true : false,
 						headerShown: false,
 						tabBarActiveTintColor: primaryColor,
 						tabBarLabel: ({ focused }) => {
