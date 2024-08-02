@@ -34,7 +34,7 @@ const LoginMethod = () => {
 
 	return (
 		<View style={{ marginTop: "auto", marginBottom: 10 }}>
-			<Text style={styles.text}>Or continue with</Text>
+			<Text style={styles.text}>他のログイン方法</Text>
 			<View style={styles.methodContainer}>
 				{[<GoogleIcon />, <FacebookIcon />, <AppleIcon />].map(
 					(item, index) => (

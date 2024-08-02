@@ -146,7 +146,7 @@ const Register = () => {
 				/>
 			</View>
 			<CheckBox
-				title="Accept all terms and privacy "
+				title="すべての利用規約とプライバシーに同意する"
 				checked={checked}
 				onPress={() => setChecked(!checked)}
 				textStyle={styles.checkboxText}

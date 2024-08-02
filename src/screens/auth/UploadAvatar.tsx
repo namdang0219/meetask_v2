@@ -11,7 +11,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { updateProfile } from "firebase/auth";
 import { auth, storage } from "firebase-config";
 import { SafeView } from "layouts";
-import { useAuth } from "contexts/auth-context";
+import { globalConstants } from "utils/constants/constant";
 
 const UploadAvatar = () => {
 	const { navigate } = useNavigation<any>();
@@ -19,7 +19,7 @@ const UploadAvatar = () => {
 	const { showActionSheetWithOptions } = useActionSheet();
 	const [image, setImage] = useState<string>("");
 	const [loading, setLoading] = useState<boolean>(false);
-	const { user } = useAuth();
+	// const { user } = useAuth();
 
 	const handleSelectAvatar = () => {
 		const options = ["写真を撮る", "ギャラリーから選択する", "キャンセル"];
@@ -208,7 +208,7 @@ const UploadAvatar = () => {
 	};
 
 	return (
-		<SafeView>
+		<SafeView style={{paddingHorizontal: globalConstants.padding}}>
 			<TitleLarge style={{ marginTop: 54, marginBottom: 40 }}>
 				アバターをアップロード
 			</TitleLarge>
@@ -231,7 +231,7 @@ const UploadAvatar = () => {
 					</CustomTouchableOpacity>
 				)}
 			</View>
-			<Text style={styles.userName}>{user.displayName}</Text>
+			<Text style={styles.userName}>{auth?.currentUser?.displayName}</Text>
 			<View style={{ marginTop: "auto", marginBottom: 16 }}>
 				<CustomTouchableOpacity
 					style={{ alignItems: "center", marginBottom: 18 }}

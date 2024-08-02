@@ -22,13 +22,13 @@ interface CreateUserInfoProps {
 const userInfoSchema = Yup.object().shape({
 	firstName: Yup.string()
 		.required("名（ファーストネーム）は必須です")
-		.min(3, "名（ファーストネーム）は3文字以上でなければなりません")
-		.max(8, "名（ファーストネーム）は8文字を超えてはいけません"),
+		.min(3, "性（ファーストネーム）は3文字以上でなければなりません")
+		.max(8, "性（ファーストネーム）は8文字を超えてはいけません"),
 
 	lastName: Yup.string()
 		.required("姓（ラストネーム）は必須です")
-		.min(3, "姓（ラストネーム）は3文字以上でなければなりません")
-		.max(8, "姓（ラストネーム）は8文字を超えてはいけません"),
+		.min(3, "名（ラストネーム）は3文字以上でなければなりません")
+		.max(8, "名（ラストネーム）は8文字を超えてはいけません"),
 });
 
 const CreateUserInfo = () => {
@@ -85,7 +85,7 @@ const CreateUserInfo = () => {
 					render={({ field: { onChange, onBlur } }) => (
 						<Input
 							style={styles.input}
-							placeholder="First Name"
+							placeholder="性"
 							onBlur={onBlur}
 							onChangeText={onChange}
 							error={errors.firstName?.message}
@@ -101,7 +101,7 @@ const CreateUserInfo = () => {
 					render={({ field: { onChange, onBlur } }) => (
 						<Input
 							style={styles.input}
-							placeholder="Last Name"
+							placeholder="名"
 							onBlur={onBlur}
 							onChangeText={onChange}
 							error={errors.lastName?.message}
