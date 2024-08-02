@@ -10,7 +10,7 @@ import {
 import { primaryColor } from "utils/constants/ThemeColors";
 import { useTheme } from "@react-navigation/native";
 import CreateTask from "screens/app/stacks/CreateTask";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, useWindowDimensions, View } from "react-native";
 import AnalyticStack from "../stacks/AnalyticStack";
 import CalendarStack from "../stacks/CalendarStack";
 import HomeStack from "../stacks/HomeStack";
@@ -26,6 +26,7 @@ const Tab = createBottomTabNavigator();
 const BottomTab = () => {
 	const { colors } = useTheme();
 	const bottomSheetRef = useRef<BottomSheetModal>(null);
+	const {width} = useWindowDimensions()
 
 	const handlePresentModalPress = () => bottomSheetRef.current?.present();
 
@@ -39,10 +40,10 @@ const BottomTab = () => {
 					return {
 						tabBarStyle: {
 							paddingHorizontal: 15,
-							height: isIOS() ? 90 : 75,
+							height: isIOS() ? (width > 600 ? 75: 90) : 75,
 						},
 						tabBarLabelStyle: { fontSize: 10 },
-						tabBarShowLabel: isIOS() ? true : false,
+						tabBarShowLabel: isIOS() ? (width > 600 ? false: true) : false,
 						headerShown: false,
 						tabBarActiveTintColor: primaryColor,
 						tabBarLabel: ({ focused }) => {

@@ -5,9 +5,17 @@ import { Button } from "components/buttons";
 import { useNavigation } from "@react-navigation/native";
 import { SafeView } from "layouts";
 import { globalConstants } from "utils/constants/constant";
+import { auth } from "firebase-config";
 
 const WalkThrough = () => {
 	const { navigate } = useNavigation<any>();
+
+	useEffect(() => {
+		if(auth.currentUser) {
+			navigate("BottomTab");
+		}
+	})
+
 	return (
 		<SafeView style={{paddingHorizontal: globalConstants.padding}}>
 			<View

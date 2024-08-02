@@ -210,7 +210,7 @@ const UploadAvatar = () => {
 	return (
 		<SafeView style={{paddingHorizontal: globalConstants.padding}}>
 			<TitleLarge style={{ marginTop: 54, marginBottom: 40 }}>
-				アバターをアップロード
+				写真をアップロード
 			</TitleLarge>
 			<View style={styles.avatarContainer}>
 				{image ? (

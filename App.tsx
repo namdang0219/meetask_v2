@@ -10,6 +10,7 @@ import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { TaskProvider } from "contexts/task-context";
 import { CategoryProvider } from "contexts/category-context";
+import { ActionSheetProvider } from "@expo/react-native-action-sheet";
 
 const App = () => {
 	const scheme = useColorScheme();
@@ -19,25 +20,27 @@ const App = () => {
 		<>
 			<StatusBar style={scheme === "dark" ? "light" : "dark"} />
 			<SafeAreaProvider>
-				<GestureHandlerRootView style={{ flex: 1 }}>
-					<BottomSheetModalProvider>
-						<NavigationContainer
-							theme={
-								scheme === "dark"
-									? CustomDarkTheme
-									: CustomLightTheme
-							}
-						>
-							<TaskProvider>
-								<CategoryProvider>
-									{/* Here is your application  */}
-									<RootNavigation></RootNavigation>
-									{/* -----------  */}
-								</CategoryProvider>
-							</TaskProvider>
-						</NavigationContainer>
-					</BottomSheetModalProvider>
-				</GestureHandlerRootView>
+				<ActionSheetProvider>
+					<GestureHandlerRootView style={{ flex: 1 }}>
+						<BottomSheetModalProvider>
+							<NavigationContainer
+								theme={
+									scheme === "dark"
+										? CustomDarkTheme
+										: CustomLightTheme
+								}
+							>
+								<TaskProvider>
+									<CategoryProvider>
+										{/* Here is your application  */}
+										<RootNavigation></RootNavigation>
+										{/* -----------  */}
+									</CategoryProvider>
+								</TaskProvider>
+							</NavigationContainer>
+						</BottomSheetModalProvider>
+					</GestureHandlerRootView>
+				</ActionSheetProvider>
 			</SafeAreaProvider>
 		</>
 	);
