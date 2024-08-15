@@ -1,12 +1,13 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text } from "react-native";
+import React from "react";
+import { MainLayout } from "layouts";
 
 const CalendarScreen = () => {
-  return (
-    <View>
-      <Text>CalendarScreen</Text>
-    </View>
-  )
-}
+	return (
+		<MainLayout>
+			<Text>CalendarScreen</Text>
+		</MainLayout>
+	);
+};
 
-export default CalendarScreen
+export default CalendarScreen;

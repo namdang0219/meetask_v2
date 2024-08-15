@@ -2,12 +2,12 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { MainLayout } from 'layouts'
 
-const AnalyticScreen = () => {
+const AboutScreen = () => {
   return (
     <MainLayout>
-      <Text>AnalyticScreen</Text>
+      <Text>AboutScreen</Text>
     </MainLayout>
   )
 }
 
-export default AnalyticScreen
+export default AboutScreen
