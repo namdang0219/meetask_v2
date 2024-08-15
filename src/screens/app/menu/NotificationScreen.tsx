@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import { MainLayout } from 'layouts'
+
 
 const NotificationScreen = () => {
   return (
-    <MainLayout>
+    <View>
       <Text>NotificationScreen</Text>
-    </MainLayout>
+    </View>
   )
 }
 

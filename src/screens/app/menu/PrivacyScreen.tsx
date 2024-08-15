@@ -1,12 +1,11 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import { MainLayout } from 'layouts'
 
 const PrivacyScreen = () => {
   return (
-    <MainLayout>
+    <View>
       <Text>PrivacyScreen</Text>
-    </MainLayout>
+    </View>
   )
 }
 

@@ -1,12 +1,11 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import { MainLayout } from 'layouts'
 
 const HelpScreen = () => {
   return (
-    <MainLayout>
+    <View>
       <Text>HelpScreen</Text>
-    </MainLayout>
+    </View>
   )
 }
 

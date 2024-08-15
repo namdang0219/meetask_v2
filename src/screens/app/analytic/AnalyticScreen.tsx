@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import { MainLayout } from 'layouts'
+
 
 const AnalyticScreen = () => {
   return (
-    <MainLayout>
+    <View>
       <Text>AnalyticScreen</Text>
-    </MainLayout>
+    </View>
   )
 }
 

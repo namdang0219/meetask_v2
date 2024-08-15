@@ -1,12 +1,11 @@
 import { View, Text } from "react-native";
 import React from "react";
-import { MainLayout } from "layouts";
 
 const CalendarScreen = () => {
 	return (
-		<MainLayout>
+		<View>
 			<Text>CalendarScreen</Text>
-		</MainLayout>
+		</View>
 	);
 };
 
