@@ -1,6 +1,10 @@
 export default {
-	padding: 14,
+	padding: 16,
 	colors: {
-		border: "#D9D9D9",
+		light: {
+			primary: "#6250EF",
+			gray: "#B7B7B7",
+			lightGray: "#F4F4F4",
+		},
 	},
 };

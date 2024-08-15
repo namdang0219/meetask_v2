@@ -10,23 +10,14 @@ import {
 	ProfileScreen,
 	SettingScreen,
 } from "screens/app/menu";
-import { Header } from "components/header";
 
 const Stack = createNativeStackNavigator();
 
 const MenuStack = () => {
+	
 	return (
-		<Stack.Navigator
-			initialRouteName="MenuScreen"
-			screenOptions={({ route }) => ({
-				header: () => <Header>{route.name}</Header>,
-			})}
-		>
-			<Stack.Screen
-				name="MenuScreen"
-				component={MenuScreen}
-				options={{ header: () => <Header title="Menu" /> }}
-			/>
+		<Stack.Navigator initialRouteName="MenuScreen" screenOptions={{headerShown: false}}>
+			<Stack.Screen name="MenuScreen" component={MenuScreen} />
 			<Stack.Screen name="ProfileScreen" component={ProfileScreen} />
 			<Stack.Screen
 				name="NotificationScreen"
