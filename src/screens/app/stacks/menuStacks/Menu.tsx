@@ -11,7 +11,6 @@ import { Path } from "react-native-svg";
 
 const Menu = () => {
 	const { colors } = useTheme();
-	const { navigate } = useNavigation<any>();
 	return (
 		<ThemedView>
 			<View style={{ backgroundColor: colors.inputBackground, gap: 8 }}>
