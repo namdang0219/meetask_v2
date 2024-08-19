@@ -4,7 +4,7 @@ import { CustomTouchableOpacity } from "components/custom";
 import Global from "utils/constants/Global";
 import { TouchableOpacityProps } from "react-native-gesture-handler";
 
-const Button = ({ children, style }: TouchableOpacityProps) => {
+const Button = ({ children, style, ...props }: TouchableOpacityProps) => {
 	return (
 		<CustomTouchableOpacity
 			style={[
@@ -18,8 +18,9 @@ const Button = ({ children, style }: TouchableOpacityProps) => {
 				},
 				style,
 			]}
+			{...props}
 		>
-			<Text style={{ color: "white", fontSize: 18 }}>{children}</Text>
+			<Text style={{ color: "white", fontSize: 18, lineHeight: 22 }}>{children}</Text>
 		</CustomTouchableOpacity>
 	);
 };

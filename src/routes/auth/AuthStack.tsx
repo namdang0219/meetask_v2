@@ -6,6 +6,7 @@ import {
 	LoginScreen,
 	SignupScreen,
 	UploadAvatarScreen,
+	WalkThrought,
 } from "screens/auth";
 
 const Stack = createNativeStackNavigator();
@@ -13,6 +14,7 @@ const Stack = createNativeStackNavigator();
 const AuthStack = () => {
 	return (
 		<Stack.Navigator screenOptions={{ headerShown: false }}>
+			<Stack.Screen name="WalkThrought" component={WalkThrought} />
 			<Stack.Screen name="SignupScreen" component={SignupScreen} />
 			<Stack.Screen name="LoginScreen" component={LoginScreen} />
 			<Stack.Screen

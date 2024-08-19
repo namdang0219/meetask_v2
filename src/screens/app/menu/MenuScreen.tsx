@@ -33,7 +33,6 @@ const MenuScreen = () => {
 		},
 		icon: {
 			flexDirection: "row",
-			alignItems: "center",
 			gap: 10,
 		},
 	});
@@ -73,6 +72,8 @@ const MenuScreen = () => {
 export default MenuScreen;
 
 function MenuHeader() {
+	const {navigate} = useNavigation<any>()
+
 	const styles = StyleSheet.create({
 		container: {
 			flexDirection: "row",
@@ -89,7 +90,7 @@ function MenuHeader() {
 			type="custom"
 			title="Menu"
 			customHeaderRight={
-				<CustomTouchableOpacity style={styles.container}>
+				<CustomTouchableOpacity onPress={() => navigate('WalkThrought')} style={styles.container}>
 					<Text style={styles.text}>ログアウト</Text>
 					<MaterialIcons
 						name="logout"

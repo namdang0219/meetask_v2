@@ -1,12 +1,16 @@
 import React from "react";
 import { ViewInset } from "components/view";
-import { Text, View } from "react-native";
+import { Pressable, Text, TouchableOpacity, View } from "react-native";
 import Global from "utils/constants/Global";
 import { Input } from "components/input";
 import { Button } from "components/button";
 import { LoginMethod } from "modules";
+import { CustomTouchableOpacity } from "components/custom";
+import { useNavigation } from "@react-navigation/native";
 
 const SignupScreen = () => {
+	const { navigate } = useNavigation<any>();
+
 	return (
 		<ViewInset
 			style={{
@@ -39,6 +43,32 @@ const SignupScreen = () => {
 				<Input label="Password" placeholder="パスワード" />
 				<Input label="Confirm Password" placeholder="パスワード確認" />
 				<Button>登録</Button>
+
+				<View
+					style={{
+						flexDirection: "row",
+						gap: 4,
+						alignItems: "center",
+						justifyContent: "center",
+						marginTop: 14,
+					}}
+				>
+					<Text style={{ color: "gray" }}>
+						既にアカウントをお持ちの方？
+					</Text>
+					<CustomTouchableOpacity
+						onPress={() => navigate("LoginScreen")}
+					>
+						<Text
+							style={{
+								color: Global.colors.light.primary,
+								fontWeight: "600",
+							}}
+						>
+							ログイン
+						</Text>
+					</CustomTouchableOpacity>
+				</View>
 			</View>
 
 			<View>

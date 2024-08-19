@@ -2,6 +2,7 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import BottomTab from "routes/app/bottomTab/BottomTab";
 import AuthStack from "routes/auth/AuthStack";
+import AppStack from "routes/app/AppStack";
 
 const Stack = createNativeStackNavigator();
 
@@ -12,8 +13,8 @@ const RootNavigation = () => {
 				headerShown: false,
 			})}
 		>
-			{/* <Stack.Screen name="BottomTab" component={BottomTab} /> */}
-			<Stack.Screen name="AuthStack" component={AuthStack} />
+			{/* <Stack.Screen name="AuthStack" component={AuthStack} /> */}
+			<Stack.Screen name="AppStack" component={AppStack} />
 		</Stack.Navigator>
 	);
 };

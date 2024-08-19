@@ -1,12 +1,34 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text, Switch } from "react-native";
+import React, { useState } from "react";
+import { ViewFull } from "components/view";
+import { Header } from "components/header";
+import Global from "utils/constants/Global";
 
 const SettingScreen = () => {
-  return (
-    <View>
-      <Text>SettingScreen</Text>
-    </View>
-  )
-}
+	const [isDarkmode, setIsDarkmode] = useState(false);
 
-export default SettingScreen
+	return (
+		<ViewFull>
+			<Header type="titleWithBack" title="設定" />
+			<ViewFull style={{paddingHorizontal: Global.padding}}>
+				<View
+					style={{
+						flexDirection: "row",
+						alignItems: "center",
+						justifyContent: "space-between",
+					}}
+				>
+					<Text style={{ fontSize: 18 }}>ダークモード</Text>
+					<Switch
+						value={isDarkmode}
+						onChange={() => setIsDarkmode(!isDarkmode)}
+						trackColor={{ true: Global.colors.light.primary }}
+            thumbColor={'white'}
+					></Switch>
+				</View>
+			</ViewFull>
+		</ViewFull>
+	);
+};
+
+export default SettingScreen;
