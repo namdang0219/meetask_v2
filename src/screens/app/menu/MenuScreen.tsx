@@ -1,7 +1,7 @@
 import { View, Text, Image, StyleSheet } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import { ViewFull } from "components/view";
+import { ViewInsetTop } from "components/view";
 import { Header } from "components/header";
 import {
 	MaterialIcons,
@@ -53,7 +53,7 @@ const MenuScreen = () => {
 	};
 
 	return (
-		<ViewFull>
+		<ViewInsetTop>
 			<MenuHeader />
 			<View style={styles.mainContainer}>
 				<MenuProfile />
@@ -65,14 +65,14 @@ const MenuScreen = () => {
 					</View>
 				))}
 			</View>
-		</ViewFull>
+		</ViewInsetTop>
 	);
 };
 
 export default MenuScreen;
 
 function MenuHeader() {
-	const {navigate} = useNavigation<any>()
+	const { navigate } = useNavigation<any>();
 
 	const styles = StyleSheet.create({
 		container: {
@@ -90,7 +90,10 @@ function MenuHeader() {
 			type="custom"
 			title="Menu"
 			customHeaderRight={
-				<CustomTouchableOpacity onPress={() => navigate('WalkThrought')} style={styles.container}>
+				<CustomTouchableOpacity
+					onPress={() => navigate("WalkThrought")}
+					style={styles.container}
+				>
 					<Text style={styles.text}>ログアウト</Text>
 					<MaterialIcons
 						name="logout"

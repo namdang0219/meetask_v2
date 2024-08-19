@@ -1,13 +1,13 @@
 import { CustomTouchableOpacity } from "components/custom";
 import { Header } from "components/header";
-import { ViewFull } from "components/view";
+import { ViewInsetTop } from "components/view";
 import React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import Global from "utils/constants/Global";
 
 const PrivacyScreen = () => {
 	return (
-		<ViewFull>
+		<ViewInsetTop>
 			<Header type="titleWithBack" title="プライバシー" />
 			<ScrollView style={{ paddingHorizontal: Global.padding }}>
 				{privacies.map((privacy) => (
@@ -17,7 +17,7 @@ const PrivacyScreen = () => {
 					></PrivacyItem>
 				))}
 			</ScrollView>
-		</ViewFull>
+		</ViewInsetTop>
 	);
 };
 

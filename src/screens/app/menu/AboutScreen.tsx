@@ -8,7 +8,7 @@ import {
 	StyleSheet,
 } from "react-native";
 import React from "react";
-import { ViewFull } from "components/view";
+import { ViewInsetTop } from "components/view";
 import { Header } from "components/header";
 import Global from "utils/constants/Global";
 import {
@@ -40,7 +40,7 @@ const AboutScreen = () => {
 	};
 
 	return (
-		<ViewFull>
+		<ViewInsetTop>
 			<Header type="titleWithBack" title="アバウト"></Header>
 			<ScrollView style={styles.container}>
 				<View>
@@ -84,7 +84,7 @@ const AboutScreen = () => {
 					友達にシェア
 				</Button>
 			</ScrollView>
-		</ViewFull>
+		</ViewInsetTop>
 	);
 };
 

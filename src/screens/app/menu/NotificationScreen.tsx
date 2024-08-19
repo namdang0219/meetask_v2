@@ -1,13 +1,13 @@
 import { CustomTouchableOpacity } from "components/custom";
 import { Header } from "components/header";
-import { ViewFull } from "components/view";
+import { ViewInsetTop } from "components/view";
 import React from "react";
 import { FlatList, Image, StyleSheet, Text, View } from "react-native";
 import Global from "utils/constants/Global";
 
 const NotificationScreen = () => {
 	return (
-		<ViewFull>
+		<ViewInsetTop>
 			<Header type="titleWithBack" title="通知"></Header>
 			<FlatList
 				data={Array(15).fill(null)}
@@ -62,7 +62,7 @@ const NotificationScreen = () => {
 					</CustomTouchableOpacity>
 				)}
 			/>
-		</ViewFull>
+		</ViewInsetTop>
 	);
 };
 

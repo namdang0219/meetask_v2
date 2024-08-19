@@ -6,7 +6,7 @@ import {
 	useWindowDimensions,
 } from "react-native";
 import React, { useState } from "react";
-import { ViewFull } from "components/view";
+import { ViewInsetTop } from "components/view";
 import { Header } from "components/header";
 import Global from "utils/constants/Global";
 import { ExpandableSection } from "react-native-ui-lib";
@@ -40,7 +40,7 @@ const HelpScreen = () => {
 		}
 	};
 	return (
-		<ViewFull>
+		<ViewInsetTop>
 			<Header type="titleWithBack" title="ヘルプ"></Header>
 			<ScrollView style={styles.container}>
 				{QA.map((item) => (
@@ -110,7 +110,7 @@ const HelpScreen = () => {
 					</View>
 				))}
 			</ScrollView>
-		</ViewFull>
+		</ViewInsetTop>
 	);
 };
 

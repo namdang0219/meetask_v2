@@ -1,6 +1,5 @@
-import { View, Text, ViewProps, StyleSheet } from "react-native";
+import { View, Text, ViewProps, StyleSheet, TextProps } from "react-native";
 import React, { ReactNode } from "react";
-import { ViewInsetTop } from "components/view";
 import Global from "utils/constants/Global";
 import { Entypo } from "@expo/vector-icons";
 import { currentRoute } from "utils/func";
@@ -12,7 +11,8 @@ type HeaderProps = ViewProps & {
 	title: string;
 	customHeaderRight?: ReactNode;
 	containerStyle?: ViewProps["style"];
-	titleStyle?: ViewProps["style"];
+	titleStyle?: TextProps["style"];
+	backButtonColor?: string;
 };
 
 const Header = ({
@@ -21,10 +21,10 @@ const Header = ({
 	customHeaderRight = <></>,
 	containerStyle = {},
 	titleStyle = {},
+	backButtonColor = Global.colors.light.primary,
 }: HeaderProps) => {
 	const { goBack } = useNavigation();
 	return (
-		<ViewInsetTop>
 			<View style={[styles.container, containerStyle]}>
 				{/* only title  */}
 				{type === "onlyTitle" && (
@@ -42,7 +42,7 @@ const Header = ({
 						<Entypo
 							name="chevron-thin-left"
 							size={20}
-							color={Global.colors.light.primary}
+							color={backButtonColor}
 						/>
 						<Text style={[styles.titleWithBackText, titleStyle]}>
 							{title ? title : currentRoute().name}
@@ -60,7 +60,6 @@ const Header = ({
 					</>
 				)}
 			</View>
-		</ViewInsetTop>
 	);
 };
 

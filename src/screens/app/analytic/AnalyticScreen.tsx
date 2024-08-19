@@ -1,14 +1,14 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import { ViewFull } from 'components/view'
+import { ViewInsetTop } from 'components/view'
 import { Header } from 'components/header'
 
 
 const AnalyticScreen = () => {
   return (
-    <ViewFull>
+    <ViewInsetTop>
       <Header type='onlyTitle' title='Analytic'></Header>
-    </ViewFull>
+    </ViewInsetTop>
   )
 }
 
