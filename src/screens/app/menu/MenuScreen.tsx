@@ -13,6 +13,8 @@ import {
 import Global from "utils/constants/Global";
 import { CustomTouchableOpacity } from "components/custom";
 import { MenuItemType } from "utils/types/MenuItemType";
+import { useSelector } from "react-redux";
+import { RootState } from "store/configureStore";
 
 const MenuScreen = () => {
 	const { navigate } = useNavigation<any>();
@@ -107,9 +109,10 @@ function MenuHeader() {
 }
 
 function MenuProfile() {
+	const { displayName, photoUrl, email } = useSelector(
+		(state: RootState) => state.user
+	);
 	const { navigate } = useNavigation<any>();
-	const avatar: string =
-		"https://i.pinimg.com/736x/99/3f/b5/993fb5dcd16e38347b0a4433c86af758.jpg";
 	const styles = StyleSheet.create({
 		container: {
 			backgroundColor: "white",
@@ -150,13 +153,13 @@ function MenuProfile() {
 			<View style={styles.leftContainer}>
 				<Image
 					source={{
-						uri: avatar,
+						uri: photoUrl,
 					}}
 					style={styles.avatar}
 				/>
 				<View>
-					<Text style={styles.displayName}>MeowCopter</Text>
-					<Text style={styles.email}>meowcopter@gmail.com</Text>
+					<Text style={styles.displayName}>{displayName}</Text>
+					<Text style={styles.email}>{email}</Text>
 				</View>
 			</View>
 

@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+	uid: 1,
 	displayName: "MeowCopter",
 	email: "meowcopter@gmail.com",
 	photoUrl:

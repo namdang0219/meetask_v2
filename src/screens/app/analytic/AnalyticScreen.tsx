@@ -1,4 +1,3 @@
-import { View, Text } from 'react-native'
 import React from 'react'
 import { ViewInsetTop } from 'components/view'
 import { Header } from 'components/header'

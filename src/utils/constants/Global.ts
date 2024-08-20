@@ -1,5 +1,9 @@
 export default {
 	padding: 16,
+	categoryIcon: {
+		size: 40,
+		color: "gray",
+	},
 	colors: {
 		light: {
 			primary: "#6250EF",
