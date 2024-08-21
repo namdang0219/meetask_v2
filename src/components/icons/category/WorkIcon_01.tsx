@@ -7,7 +7,7 @@ const WorkIcon_01 = () => {
 		<MaterialIcons
 			name="work-outline"
 			size={Global.categoryIcon.size}
-			color="gray"
+			color={Global.categoryIcon.color}
 		/>
 	);
 };

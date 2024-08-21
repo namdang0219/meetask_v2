@@ -1,8 +1,8 @@
 export default {
 	padding: 16,
 	categoryIcon: {
-		size: 40,
-		color: "gray",
+		size: 24,
+		color: "white",
 	},
 	colors: {
 		light: {
