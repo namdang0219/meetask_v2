@@ -13,7 +13,8 @@ export type TaskType = {
 	isRecurring?: boolean;
 	scope?: "PERSONAL" | "GROUP";
 
-  // For target is GROUP
+	taskType?: "CHECKLIST" | "TIMEBOUND";
+	// For target is GROUP
 	assignedTo?: string;
 	member?: string[];
 	comments?: string[];
