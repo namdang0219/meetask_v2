@@ -5,9 +5,12 @@ import React, { useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import Global from "utils/constants/Global";
 import { Feather } from "@expo/vector-icons";
+import { useTheme } from "@react-navigation/native";
 
 const LanguageScreen = () => {
 	const [currentLanguage, setCurrentLanguage] = useState(2);
+	const { colors } = useTheme();
+
 	const styles = StyleSheet.create({
 		container: { paddingHorizontal: Global.padding },
 		item: {
@@ -33,8 +36,8 @@ const LanguageScreen = () => {
 							{
 								backgroundColor:
 									language.id === currentLanguage
-										? Global.colors.light.lightGray
-										: "white",
+										? colors.input
+										: "transparent",
 							},
 						]}
 					>
@@ -43,8 +46,8 @@ const LanguageScreen = () => {
 								fontSize: 18,
 								color:
 									language.id === currentLanguage
-										? Global.colors.light.primary
-										: "black",
+										? colors.primary
+										: colors.text,
 							}}
 						>
 							{language.name}
@@ -53,7 +56,7 @@ const LanguageScreen = () => {
 							<Feather
 								name="check"
 								size={18}
-								color={Global.colors.light.primary}
+								color={colors.primary}
 							/>
 						)}
 					</CustomTouchableOpacity>

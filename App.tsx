@@ -5,7 +5,7 @@ import { useColorScheme } from "react-native";
 import { Provider } from "react-redux";
 import RootNavigation from "routes/global/RootNavigation";
 import { store } from "store/configureStore";
-import { darkTheme, lightTheme } from "utils/theme/theme";
+import { darkTheme, lightTheme } from "utils/theme/themeColors";
 
 const App = () => {
 	const colorScheme = useColorScheme();

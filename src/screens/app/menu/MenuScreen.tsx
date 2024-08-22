@@ -1,6 +1,6 @@
 import { View, Text, Image, StyleSheet } from "react-native";
 import React from "react";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useTheme } from "@react-navigation/native";
 import { ViewInsetTop } from "components/view";
 import { Header } from "components/header";
 import {
@@ -18,9 +18,11 @@ import { RootState } from "store/configureStore";
 
 const MenuScreen = () => {
 	const { navigate } = useNavigation<any>();
+	const { colors } = useTheme();
+
 	const styles = StyleSheet.create({
 		mainContainer: {
-			backgroundColor: Global.colors.light.lightGray,
+			backgroundColor: colors.input,
 			gap: 6,
 		},
 		itemContainer: {
@@ -30,8 +32,6 @@ const MenuScreen = () => {
 			alignItems: "center",
 			backgroundColor: "white",
 			paddingVertical: 12,
-			// borderBottomColor: Global.colors.light.lightGray,
-			// borderBottomWidth: index == list.length - 1 ? 0 : 1,
 		},
 		icon: {
 			flexDirection: "row",
@@ -47,7 +47,7 @@ const MenuScreen = () => {
 			>
 				<View style={styles.icon}>
 					{item.icon}
-					<Text style={{ fontSize: 18 }}>{item.label}</Text>
+					<Text style={{ fontSize: 18, color: colors.text }}>{item.label}</Text>
 				</View>
 				<Entypo name="chevron-thin-right" size={22} />
 			</CustomTouchableOpacity>
@@ -75,6 +75,7 @@ export default MenuScreen;
 
 function MenuHeader() {
 	const { navigate } = useNavigation<any>();
+	const { colors } = useTheme();
 
 	const styles = StyleSheet.create({
 		container: {
@@ -84,7 +85,7 @@ function MenuHeader() {
 		},
 		text: {
 			fontSize: 16,
-			color: Global.colors.light.primary,
+			color: colors.primary,
 		},
 	});
 	return (
@@ -100,7 +101,7 @@ function MenuHeader() {
 					<MaterialIcons
 						name="logout"
 						size={20}
-						color={Global.colors.light.primary}
+						color={colors.primary}
 					/>
 				</CustomTouchableOpacity>
 			}
@@ -113,6 +114,8 @@ function MenuProfile() {
 		(state: RootState) => state.user
 	);
 	const { navigate } = useNavigation<any>();
+	const { colors } = useTheme();
+
 	const styles = StyleSheet.create({
 		container: {
 			backgroundColor: "white",
@@ -141,7 +144,7 @@ function MenuProfile() {
 		email: {
 			fontSize: 16,
 			fontWeight: "400",
-			color: Global.colors.light.gray,
+			color: colors.icon,
 		},
 	});
 	return (

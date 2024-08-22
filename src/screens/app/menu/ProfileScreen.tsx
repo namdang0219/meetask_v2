@@ -16,12 +16,14 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Global from "utils/constants/Global";
 import { useSelector } from "react-redux";
 import { RootState } from "store/configureStore";
+import { useTheme } from "@react-navigation/native";
 
 const ProfileScreen = () => {
 	const user = useSelector((state: RootState) => state.user);
 	const scrollY = useRef(new Animated.Value(0)).current;
 	const [scrollFromTop, setScrollFromTop] = useState<number>(1);
 	const { top } = useSafeAreaInsets();
+	const { colors } = useTheme();
 
 	const bannerHeight = scrollY.interpolate({
 		inputRange: [-100, 0],
@@ -160,7 +162,7 @@ const ProfileScreen = () => {
 							style={{
 								textAlign: "center",
 								marginTop: 2,
-								color: Global.colors.light.gray,
+								color: colors.icon,
 							}}
 						>
 							{user.email}

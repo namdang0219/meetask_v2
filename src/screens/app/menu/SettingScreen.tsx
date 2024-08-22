@@ -3,9 +3,11 @@ import React, { useState } from "react";
 import { ViewInsetTop } from "components/view";
 import { Header } from "components/header";
 import Global from "utils/constants/Global";
+import { useTheme } from "@react-navigation/native";
 
 const SettingScreen = () => {
 	const [isDarkmode, setIsDarkmode] = useState(false);
+	const { colors } = useTheme();
 
 	return (
 		<ViewInsetTop>
@@ -22,7 +24,7 @@ const SettingScreen = () => {
 					<Switch
 						value={isDarkmode}
 						onChange={() => setIsDarkmode(!isDarkmode)}
-						trackColor={{ true: Global.colors.light.primary }}
+						trackColor={{ true: colors.primary }}
             thumbColor={'white'}
 					></Switch>
 				</View>

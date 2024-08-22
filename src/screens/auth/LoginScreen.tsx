@@ -2,14 +2,15 @@ import { View, Text } from "react-native";
 import React from "react";
 import { Input } from "components/input";
 import { ViewInset } from "components/view";
-import { LoginMethod } from "modules";
 import Global from "utils/constants/Global";
 import { Button } from "components/button";
 import { CustomTouchableOpacity } from "components/custom";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useTheme } from "@react-navigation/native";
+import LoginMethod from "modules/LoginMethod";
 
 const LoginScreen = () => {
 	const { navigate } = useNavigation<any>();
+	const { colors } = useTheme();
 
 	return (
 		<ViewInset
@@ -65,7 +66,7 @@ const LoginScreen = () => {
 					>
 						<Text
 							style={{
-								color: Global.colors.light.primary,
+								color: colors.primary,
 								fontWeight: "600",
 							}}
 						>
@@ -80,7 +81,7 @@ const LoginScreen = () => {
 					style={{
 						textAlign: "center",
 						marginBottom: 20,
-						color: Global.colors.light.gray,
+						color: colors.icon,
 					}}
 				>
 					他の方法

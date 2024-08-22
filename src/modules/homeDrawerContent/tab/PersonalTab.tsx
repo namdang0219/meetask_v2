@@ -4,15 +4,15 @@ import { RootState } from "store/configureStore";
 import Global from "utils/constants/Global";
 import HomeCategory from "./personal/HomeCategory";
 import CustomListCategory from "./personal/CustomListCategory";
+import { useTheme } from "@react-navigation/native";
 
 const PersonalTab = () => {
 	const { drawerCategory } = useSelector((state: RootState) => state.global);
+	const { colors } = useTheme();
 
 	// handle category item color
 	const handleCategoryItemColor = (categoryName: string): string => {
-		return drawerCategory === categoryName
-			? Global.colors.light.iconActiveTintColor
-			: Global.colors.light.iconInActiveTintColor;
+		return drawerCategory === categoryName ? "white" : colors.icon;
 	};
 
 	return (

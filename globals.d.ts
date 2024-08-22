@@ -1,5 +1,5 @@
-import type { Theme } from "./src/theme";
+import { ThemeTypes } from "utils/theme/themeColors";
 
 declare module "@react-navigation/native" {
-  export function useTheme(): Theme;
+  export function useTheme(): ThemeTypes;
 }

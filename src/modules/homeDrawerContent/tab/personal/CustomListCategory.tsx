@@ -4,7 +4,7 @@ import { CustomTouchableOpacity } from "components/custom";
 import { categoryMocks } from "mock/categoryMocks";
 import Global from "utils/constants/Global";
 import { setCategoryIcon } from "utils/func";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useTheme } from "@react-navigation/native";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "store/configureStore";
 import { setDrawerCategory } from "store/global/globalSlice";
@@ -17,6 +17,7 @@ const CustomListCategory = ({
 	handleCategoryItemColor: (categoryName: string) => string;
 }) => {
 	const { navigate } = useNavigation<any>();
+	const { colors } = useTheme();
 	const { drawerCategory } = useSelector((state: RootState) => state.global);
 	const dispatch = useDispatch();
 
@@ -41,8 +42,8 @@ const CustomListCategory = ({
 						style={{
 							backgroundColor:
 								drawerCategory === category.name
-									? Global.colors.light.primary
-									: "white",
+									? colors.primary
+									: "transparent",
 							paddingHorizontal: Global.padding,
 							height: 50,
 							borderRadius: 10,

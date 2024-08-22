@@ -4,7 +4,8 @@ import Global from "utils/constants/Global";
 import { Entypo } from "@expo/vector-icons";
 import { currentRoute } from "utils/func";
 import { CustomTouchableOpacity } from "components/custom";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useTheme } from "@react-navigation/native";
+import { lightTheme } from "utils/theme/themeColors";
 
 type HeaderProps = ViewProps & {
 	type: "onlyTitle" | "titleWithBack" | "custom";
@@ -21,9 +22,33 @@ const Header = ({
 	customHeaderRight = <></>,
 	containerStyle = {},
 	titleStyle = {},
-	backButtonColor = Global.colors.light.primary,
+	backButtonColor =lightTheme.colors.primary,
 }: HeaderProps) => {
 	const { goBack } = useNavigation();
+	const { colors } = useTheme();
+
+	const styles = StyleSheet.create({
+		container: {
+			height: 50,
+			flexDirection: "row",
+			alignItems: "center",
+			paddingHorizontal: Global.padding,
+			justifyContent: "space-between",
+		},
+		onlyTitleText: { fontSize: 24, fontWeight: "500" },
+		titleWithBackContainer: {
+			flexDirection: "row",
+			alignItems: "center",
+			gap: 6,
+		},
+		titleWithBackText: {
+			fontSize: 18,
+			fontWeight: "400",
+			marginTop: -4,
+			color: colors.primary,
+		},
+	});
+
 	return (
 			<View style={[styles.container, containerStyle]}>
 				{/* only title  */}
@@ -63,26 +88,6 @@ const Header = ({
 	);
 };
 
-const styles = StyleSheet.create({
-	container: {
-		height: 45,
-		flexDirection: "row",
-		alignItems: "center",
-		paddingHorizontal: Global.padding,
-		justifyContent: "space-between",
-	},
-	onlyTitleText: { fontSize: 24, fontWeight: "500" },
-	titleWithBackContainer: {
-		flexDirection: "row",
-		alignItems: "center",
-		gap: 6,
-	},
-	titleWithBackText: {
-		fontSize: 18,
-		fontWeight: "400",
-		marginTop: -4,
-		color: Global.colors.light.primary,
-	},
-});
+
 
 export default Header;

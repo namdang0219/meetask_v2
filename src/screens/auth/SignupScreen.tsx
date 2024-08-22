@@ -4,12 +4,13 @@ import { Pressable, Text, TouchableOpacity, View } from "react-native";
 import Global from "utils/constants/Global";
 import { Input } from "components/input";
 import { Button } from "components/button";
-import { LoginMethod } from "modules";
 import { CustomTouchableOpacity } from "components/custom";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useTheme } from "@react-navigation/native";
+import LoginMethod from "modules/LoginMethod";
 
 const SignupScreen = () => {
 	const { navigate } = useNavigation<any>();
+	const { colors } = useTheme();
 
 	return (
 		<ViewInset
@@ -61,7 +62,7 @@ const SignupScreen = () => {
 					>
 						<Text
 							style={{
-								color: Global.colors.light.primary,
+								color: colors.primary,
 								fontWeight: "600",
 							}}
 						>
@@ -76,7 +77,7 @@ const SignupScreen = () => {
 					style={{
 						textAlign: "center",
 						marginBottom: 20,
-						color: Global.colors.light.gray,
+						color: colors.icon,
 					}}
 				>
 					他の方法

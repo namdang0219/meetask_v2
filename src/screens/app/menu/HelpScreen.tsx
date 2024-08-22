@@ -11,10 +11,12 @@ import { Header } from "components/header";
 import Global from "utils/constants/Global";
 import { ExpandableSection } from "react-native-ui-lib";
 import { Entypo } from "@expo/vector-icons";
+import { useTheme } from "@react-navigation/native";
 
 const HelpScreen = () => {
 	const [QAData, setQAData] = useState<QAType>(QA);
 	const { width } = useWindowDimensions();
+	const { colors } = useTheme();
 
 	const styles = StyleSheet.create({
 		container: {
@@ -66,9 +68,8 @@ const HelpScreen = () => {
 												color: QA.find(
 													(i) => item.id === i.id
 												)?.showing
-													? Global.colors.light
-															.primary
-													: "black",
+													? colors.primary
+													: colors.text,
 											},
 										]}
 									>

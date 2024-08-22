@@ -3,12 +3,13 @@ import React from "react";
 import { CustomTouchableOpacity } from "components/custom";
 import { GoogleIcon, FacebookIcon, AppleIcon } from "components/icons/loginMethod";
 import Global from "utils/constants/Global";
+import { useTheme } from "@react-navigation/native";
 
 const LoginMethod = () => {
 	const handleLoginMethod = () => {
 		Alert.alert("警告","この機能は開発中ですから、ご利用できません！")
 	}
-
+	const { colors } = useTheme();
 	return (
 		<View
 			style={{
@@ -23,7 +24,7 @@ const LoginMethod = () => {
 					key={method.name}
 					onPress={handleLoginMethod}
 					style={{
-						backgroundColor: Global.colors.light.lightGray,
+						backgroundColor: colors.input,
 						width: 40,
 						height: 40,
 						borderRadius: 100,

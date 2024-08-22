@@ -1,4 +1,4 @@
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useTheme } from "@react-navigation/native";
 import { CustomTouchableOpacity } from "components/custom";
 import { DrawerHomeIcon } from "components/icons/category";
 import React from "react";
@@ -17,6 +17,7 @@ const HomeCategory = ({
 	const { navigate } = useNavigation<any>();
 	const { drawerCategory } = useSelector((state: RootState) => state.global);
 	const dispatch = useDispatch();
+	const { colors } = useTheme();
 
 	const handleChangeToHome = () => {
 		navigate("HomeScreen");
@@ -26,9 +27,7 @@ const HomeCategory = ({
 	const styles = StyleSheet.create({
 		container: {
 			backgroundColor:
-				drawerCategory === "Home"
-					? Global.colors.light.primary
-					: "white",
+				drawerCategory === "Home" ? colors.primary : "transparent",
 			paddingHorizontal: Global.padding,
 			height: 50,
 			borderRadius: 10,

@@ -1,3 +1,4 @@
+import { useTheme } from "@react-navigation/native";
 import { CustomTouchableOpacity } from "components/custom";
 import { Header } from "components/header";
 import { ViewInsetTop } from "components/view";
@@ -6,6 +7,8 @@ import { FlatList, Image, StyleSheet, Text, View } from "react-native";
 import Global from "utils/constants/Global";
 
 const NotificationScreen = () => {
+	const { colors } = useTheme();
+
 	return (
 		<ViewInsetTop>
 			<Header type="titleWithBack" title="通知"></Header>
@@ -20,7 +23,7 @@ const NotificationScreen = () => {
 							backgroundColor:
 								index % 2 === 0
 									? "white"
-									: Global.colors.light.lightGray,
+									: colors.input,
 							paddingVertical: 10,
 						}}
 					>
@@ -43,13 +46,14 @@ const NotificationScreen = () => {
 										fontWeight: "500",
 										fontSize: 16,
 										marginBottom: 2,
+										color: colors.text,
 									}}
 								>
 									Mai Ngoc
 								</Text>
                 <Text style={{color: 'gray', fontSize: 12}}>5分前</Text>
 							</View>
-							<Text numberOfLines={2} style={{lineHeight: 20}}>
+							<Text numberOfLines={2} style={{lineHeight: 20, color: colors.text}}>
 								Đồng thời, Ủy ban Thường vụ Quốc hội sẽ cho ý
 								kiến về dự thảo Kế hoạch giám sát và đề cương
 								báo cáo của Đoàn giám sát của Ủy ban Thường vụ

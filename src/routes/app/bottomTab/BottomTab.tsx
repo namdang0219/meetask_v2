@@ -13,11 +13,13 @@ import {
 	HomeIcon,
 	MenuIcon,
 } from "components/icons/bottomTab";
-import Global from "utils/constants/Global";
+import { useTheme } from "@react-navigation/native";
 
 const Tab = createBottomTabNavigator();
 
 const BottomTab = () => {
+	const { colors } = useTheme();
+
 	return (
 		<Tab.Navigator
 			screenOptions={({ route }) => ({
@@ -26,9 +28,9 @@ const BottomTab = () => {
 				tabBarIcon: ({ focused }) => {
 					function setColor() {
 						if (focused) {
-							return Global.colors.light.primary;
+							return colors.primary;
 						}
-						return Global.colors.light.gray;
+						return colors.icon;
 					}
 					return (
 						<>

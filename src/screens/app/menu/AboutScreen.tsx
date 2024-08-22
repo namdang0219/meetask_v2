@@ -17,6 +17,7 @@ import {
 	XIcon,
 } from "components/icons/aboutSocial";
 import { Button } from "components/button";
+import { useTheme } from "@react-navigation/native";
 
 const AboutScreen = () => {
 	const handleAppShare = async () => {
@@ -38,6 +39,33 @@ const AboutScreen = () => {
 			Alert.alert(error.message);
 		}
 	};
+	const { colors } = useTheme();
+
+	const styles = StyleSheet.create({
+		container: { paddingHorizontal: Global.padding },
+		text: { fontSize: 18, lineHeight: 26 },
+		highlightText: { color: colors.primary },
+		image: {
+			width: 255,
+			height: 255,
+			marginHorizontal: "auto",
+			backgroundColor: "cyan",
+			marginTop: 40,
+		},
+		shareContainer: { alignItems: "center", marginTop: 30 },
+		shareItemContainer: {
+			flexDirection: "row",
+			gap: 20,
+			alignItems: "center",
+			marginTop: 16,
+		},
+		button: {
+			width: 160,
+			height: 40,
+			marginTop: 20,
+			marginHorizontal: "auto",
+		},
+	});
 
 	return (
 		<ViewInsetTop>
@@ -87,32 +115,6 @@ const AboutScreen = () => {
 		</ViewInsetTop>
 	);
 };
-
-const styles = StyleSheet.create({
-	container: { paddingHorizontal: Global.padding },
-	text: { fontSize: 18, lineHeight: 26 },
-	highlightText: { color: Global.colors.light.primary },
-	image: {
-		width: 255,
-		height: 255,
-		marginHorizontal: "auto",
-		backgroundColor: "cyan",
-		marginTop: 40,
-	},
-	shareContainer: { alignItems: "center", marginTop: 30 },
-	shareItemContainer: {
-		flexDirection: "row",
-		gap: 20,
-		alignItems: "center",
-		marginTop: 16,
-	},
-	button: {
-		width: 160,
-		height: 40,
-		marginTop: 20,
-		marginHorizontal: "auto",
-	},
-});
 
 const followSocials = [
 	{ name: "facebook", icon: <FacebookIcon /> },

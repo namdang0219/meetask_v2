@@ -3,14 +3,17 @@ import React from "react";
 import { CustomTouchableOpacity } from "components/custom";
 import Global from "utils/constants/Global";
 import { TouchableOpacityProps } from "react-native-gesture-handler";
+import { useTheme } from "@react-navigation/native";
 
 const Button = ({ children, style, ...props }: TouchableOpacityProps) => {
+	const { colors } = useTheme();
+
 	return (
 		<CustomTouchableOpacity
 			style={[
 				{
 					height: 60,
-					backgroundColor: Global.colors.light.primary,
+					backgroundColor: colors.primary,
 					alignItems: "center",
 					justifyContent: "center",
 					borderRadius: 10,

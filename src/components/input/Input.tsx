@@ -1,6 +1,7 @@
 import { View, Text, TextInput, TextInputProps } from "react-native";
 import React from "react";
 import Global from "utils/constants/Global";
+import { useTheme } from "@react-navigation/native";
 
 type InputProps = TextInputProps & {
 	label?: string;
@@ -13,6 +14,7 @@ const Input = ({
 	placeholder = "example...",
 	error = "",
 }: InputProps) => {
+	const { colors } = useTheme();
 	return (
 		<View style={{ marginBottom: 24, position: "relative" }}>
 			{label && (
@@ -23,7 +25,7 @@ const Input = ({
 			<TextInput
 				placeholder={placeholder}
 				style={{
-					backgroundColor: Global.colors.light.lightGray,
+					backgroundColor: colors.input,
 					paddingHorizontal: Global.padding,
 					paddingVertical: 14,
 					borderRadius: 10,

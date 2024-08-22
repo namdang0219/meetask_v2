@@ -38,6 +38,8 @@ const HomeDrawerContent = () => {
 					/>
 				)}
 			/>
+
+			<View style={{height: 1, backgroundColor: 'gray'}} />
 		</View>
 	);
 };

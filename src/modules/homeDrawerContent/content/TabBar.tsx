@@ -1,3 +1,4 @@
+import { useTheme } from "@react-navigation/native";
 import { CustomTouchableOpacity } from "components/custom";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
@@ -32,11 +33,12 @@ const TabBar = ({ routes, index, jumpTo, navigationState }: TabBarProps) => {
 			fontWeight: "600",
 		},
 	});
-
+	const { colors } = useTheme();
+	
 	const handleTextColor = (route: { key: string; title: string }) => {
 		return navigationState.routes[index].key === route.key
-			? Global.colors.light.primary
-			: Global.colors.light.gray;
+			? colors.primary
+			: colors.icon;
 	};
 
 	return (
