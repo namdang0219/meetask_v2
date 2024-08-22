@@ -9,7 +9,7 @@ export const taskMocks: TaskType[] = [
 		category: "Work",
 		status: "PROCESSING",
 		dueDate: new Date("2024-08-25"),
-		priority: "HIGH",
+		priority: "NORMAL",
 		createdAt: new Date("2024-08-01"),
 		updatedAt: new Date("2024-08-20"),
 		tags: ["report", "client", "Q3"],

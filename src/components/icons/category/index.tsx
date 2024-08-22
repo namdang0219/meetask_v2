@@ -1,3 +1,6 @@
+// Default
+export { default as DrawerHomeIcon } from "./DrawerHomeIcon";
+
 // Study
 export { default as StudyIcon_01 } from "./StudyIcon_01";
 export { default as StudyIcon_02 } from "./StudyIcon_02";

@@ -1,17 +1,21 @@
 import React from "react";
 import Svg, { G, Rect, Path } from "react-native-svg";
 import Global from "utils/constants/Global";
+import { IconComponentProps } from "utils/types/dataTypes";
 
-const HealthIcon_02 = () => {
+const HealthIcon_02 = ({
+	size = Global.categoryIcon.size,
+	color = "black",
+}: IconComponentProps) => {
 	return (
 		<Svg
-			width={Global.categoryIcon.size}
-			height={Global.categoryIcon.size}
+			width={size}
+			height={size}
 			viewBox="0 0 24 24"
 		>
 			<G
 				fill="none"
-				stroke={Global.categoryIcon.color}
+				stroke={color}
 				strokeWidth={1.55}
 			>
 				<Rect

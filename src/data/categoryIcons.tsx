@@ -15,43 +15,43 @@ export const categoryIcons: IconType[] = [
 	{
 		iid: "1",
 		type: "WORK",
-		icon: <WorkIcon_01 />,
+		icon: WorkIcon_01,
 	},
 	{
 		iid: "2",
 		type: "WORK",
-		icon: <WorkIcon_02 />,
+		icon: WorkIcon_02,
 	},
 	// study icons
 	{
 		iid: "3",
 		type: "STUDY",
-		icon: <StudyIcon_01 />,
+		icon: StudyIcon_01,
 	},
 	{
 		iid: "4",
 		type: "STUDY",
-		icon: <StudyIcon_02 />,
+		icon: StudyIcon_02,
 	},
 	// shopping icons
 	{
 		iid: "5",
 		type: "SHOPPING",
-		icon: <ShoppingIcon_01 />,
+		icon: ShoppingIcon_01,
 	},
 	{
 		iid: "6",
 		type: "SHOPPING",
-		icon: <ShoppingIcon_02 />,
+		icon: ShoppingIcon_02,
 	},
 	{
 		iid: "7",
 		type: "HEALTH",
-		icon: <HealthIcon_01 />,
+		icon: HealthIcon_01,
 	},
 	{
 		iid: "8",
 		type: "HEALTH",
-		icon: <HealthIcon_02 />,
+		icon: HealthIcon_02,
 	},
 ];

@@ -1,3 +1,3 @@
 export { TaskType } from "./TaskType";
 export { CategoryType } from "./CategoryType";
-export { IconType } from "./IconType";
+export { IconType, IconComponentProps } from "./IconType";

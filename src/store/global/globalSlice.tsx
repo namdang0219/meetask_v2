@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
 	darkMode: false,
-	
+	drawerCategory: "Home",
 };
 
 const globalSlice = createSlice({
@@ -13,9 +13,13 @@ const globalSlice = createSlice({
 			...state,
 			darkMode: !state.darkMode,
 		}),
+		setDrawerCategory: (state, action) => ({
+			...state,
+			drawerCategory: action.payload,
+		}),
 	},
 });
 
-export const { toggleDarkMode } = globalSlice.actions;
+export const { toggleDarkMode, setDrawerCategory } = globalSlice.actions;
 
 export default globalSlice.reducer;
