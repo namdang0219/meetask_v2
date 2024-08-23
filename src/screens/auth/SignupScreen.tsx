@@ -1,6 +1,6 @@
 import React from "react";
 import { ViewInset } from "components/view";
-import { Pressable, Text, TouchableOpacity, View } from "react-native";
+import { Text, View } from "react-native";
 import Global from "utils/constants/Global";
 import { Input } from "components/input";
 import { Button } from "components/button";
@@ -38,7 +38,7 @@ const SignupScreen = () => {
 						marginBottom: 25,
 					}}
 				>
-					MeeTaskへようこそ！
+					MeeTaskへようこそ!
 				</Text>
 				<Input label="Email" placeholder="メール" />
 				<Input label="Password" placeholder="パスワード" />

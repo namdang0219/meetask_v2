@@ -75,7 +75,7 @@ export const taskMocks: TaskType[] = [
 		tid: "6",
 		title: "Monthly budget planning",
 		description: "Plan and allocate budget for the next month.",
-		category: "Finance",
+		category: "Study",
 		status: "COMPLETE",
 		dueDate: new Date("2024-08-20"),
 		priority: "NORMAL",

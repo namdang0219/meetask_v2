@@ -70,14 +70,16 @@ const HomeDrawer = () => {
 								</Text>
 							</Text>
 						</View>
-						<Image
-							source={{ uri: photoUrl }}
-							style={{
-								width: 38,
-								height: 38,
-								borderRadius: 1000,
-							}}
-						/>
+						<CustomTouchableOpacity onPress={() => navigation.navigate('ProfileScreen')}>
+							<Image
+								source={{ uri: photoUrl }}
+								style={{
+									width: 38,
+									height: 38,
+									borderRadius: 1000,
+								}}
+							/>
+						</CustomTouchableOpacity>
 					</View>
 				),
 			})}
