@@ -1,48 +1,25 @@
-import React from "react";
-import RootNavigation from "routes/global/RootNavigation";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
+import "./gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
-import { CustomDarkTheme, CustomLightTheme } from "utils/constants/ThemeColors";
+import React from "react";
 import { LogBox, useColorScheme } from "react-native";
-import { StatusBar } from "expo-status-bar";
-import { logMessage } from "utils/ignores/LogBoxMessage";
-import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { TaskProvider } from "contexts/task-context";
-import { CategoryProvider } from "contexts/category-context";
-import { ActionSheetProvider } from "@expo/react-native-action-sheet";
+import { Provider } from "react-redux";
+import RootNavigation from "routes/global/RootNavigation";
+import { store } from "store/configureStore";
+import { darkTheme, lightTheme } from "utils/theme/themeColors";
 
 const App = () => {
-	const scheme = useColorScheme();
-	LogBox.ignoreLogs(logMessage);
-
+	const colorScheme = useColorScheme();
+	LogBox.ignoreLogs([
+		"Warning: IGNORE: Support for defaultProps will be removed from function components in a future major release. Use JavaScript default parameters instead.",
+	]);
 	return (
-		<>
-			<StatusBar style={scheme === "dark" ? "light" : "dark"} />
-			<SafeAreaProvider>
-				<ActionSheetProvider>
-					<GestureHandlerRootView style={{ flex: 1 }}>
-						<BottomSheetModalProvider>
-							<NavigationContainer
-								theme={
-									scheme === "dark"
-										? CustomDarkTheme
-										: CustomLightTheme
-								}
-							>
-								<TaskProvider>
-									<CategoryProvider>
-										{/* Here is your application  */}
-										<RootNavigation></RootNavigation>
-										{/* -----------  */}
-									</CategoryProvider>
-								</TaskProvider>
-							</NavigationContainer>
-						</BottomSheetModalProvider>
-					</GestureHandlerRootView>
-				</ActionSheetProvider>
-			</SafeAreaProvider>
-		</>
+		<Provider store={store}>
+			<NavigationContainer
+				theme={colorScheme === "dark" ? darkTheme : lightTheme}
+			>
+				<RootNavigation></RootNavigation>
+			</NavigationContainer>
+		</Provider>
 	);
 };
 

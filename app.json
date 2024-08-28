@@ -1,46 +1,27 @@
 {
   "expo": {
     "name": "mee-task-v2",
-    "slug": "mee-task-app",
+    "slug": "mee-task-v2",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "resizeMode": "contain"
+      // "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true,
-      "userInterfaceStyle": "automatic",
-      "bundleIdentifier": "com.meowcopter.meetaskapp"
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      },
-      "userInterfaceStyle": "automatic",
-      "package": "com.meowcopter.meetaskapp"
-    },
-    "web": {
-      "favicon": "./assets/favicon.png",
-      "output": "server",
-      "bundler": "metro"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "bfd196f0-2248-44b1-acb5-6691c595be6d"
-      },
-      "router": {
-        "origin": false
       }
     },
-    "owner": "meowcopter",
-    "plugins": [
-      "expo-router",
-      "expo-font"
-    ]
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
   }
 }
