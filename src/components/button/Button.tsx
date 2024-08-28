@@ -1,7 +1,6 @@
 import { Text } from "react-native";
 import React from "react";
 import { CustomTouchableOpacity } from "components/custom";
-import Global from "utils/constants/Global";
 import { TouchableOpacityProps } from "react-native-gesture-handler";
 import { useTheme } from "@react-navigation/native";
 

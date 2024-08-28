@@ -2,7 +2,6 @@ import { Alert, View } from "react-native";
 import React from "react";
 import { CustomTouchableOpacity } from "components/custom";
 import { GoogleIcon, FacebookIcon, AppleIcon } from "components/icons/loginMethod";
-import Global from "utils/constants/Global";
 import { useTheme } from "@react-navigation/native";
 
 const LoginMethod = () => {
