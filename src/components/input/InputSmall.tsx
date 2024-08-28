@@ -8,9 +8,10 @@ const InputSmall = ({ ...props }: TextInputProps) => {
 	return (
 		<TextInput
 			style={{
-				paddingVertical: 1,
+				paddingVertical: 2.5,
 				borderBottomColor: colors.icon,
 				borderBottomWidth: 0.5,
+				fontSize: 16,
 			}}
 			{...props}
 		/>

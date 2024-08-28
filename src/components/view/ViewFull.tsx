@@ -1,11 +1,28 @@
-import { View, ViewProps } from "react-native";
+import {
+	Keyboard,
+	TouchableWithoutFeedback,
+	View,
+	ViewProps,
+} from "react-native";
 import React from "react";
 
 const ViewFull = ({ children, style }: ViewProps) => {
+	const handleKeyboard = () => {
+		console.log("clicked");
+		if (Keyboard.isVisible()) {
+			Keyboard.dismiss();
+			return;
+		}
+	};
 	return (
-		<View style={[{ flex: 1, backgroundColor: "white" }, style]}>
-			{children}
-		</View>
+		<TouchableWithoutFeedback
+			onPress={() => handleKeyboard()}
+			style={{ flex: 1 }}
+		>
+			<View style={[{ flex: 1, backgroundColor: "white" }, style]}>
+				{children}
+			</View>
+		</TouchableWithoutFeedback>
 	);
 };
 

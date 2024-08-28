@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
 	AnalyticStack,
@@ -15,21 +15,17 @@ import {
 	MenuIcon,
 } from "components/icons/bottomTab";
 import { useTheme } from "@react-navigation/native";
-import { Platform, Text, View } from "react-native";
-import Global from "utils/constants/Global";
-import BottomSheet, { BottomSheetMethods } from "@devvie/bottom-sheet";
-import FieldSmall from "../../../components/common/FieldSmall";
-import { InputSmall } from "components/input";
-import { categoryMocks } from "mock/categoryMocks";
+import { Platform, Text } from "react-native";
+import { CustomBottomSheet } from "components/custom";
+import { BottomSheetRef } from "components/custom/CustomBottomSheet";
+import { TaskForm } from "modules/form";
 
 const Tab = createBottomTabNavigator();
 
 const BottomTab = () => {
 	const { colors } = useTheme();
-	const sheetRef = useRef<BottomSheetMethods>(null);
-	const [choosedCategory, setChoosedCategory] = useState<string>(
-		categoryMocks[1].cid
-	);
+	const bottomSheetRef = useRef<BottomSheetRef>(null);
+
 	return (
 		<>
 			<Tab.Navigator
@@ -90,7 +86,9 @@ const BottomTab = () => {
 					options={{
 						tabBarButton: () => (
 							<CreateTaskIcon
-								onPress={() => sheetRef.current?.open()}
+								onPress={() =>
+									bottomSheetRef.current?.snapToIndex(1)
+								}
 							/>
 						),
 					}}
@@ -99,51 +97,9 @@ const BottomTab = () => {
 				<Tab.Screen name="MenuStack" component={MenuStack} />
 			</Tab.Navigator>
 
-			<BottomSheet
-				ref={sheetRef}
-				height="90%"
-				style={{ backgroundColor: "white" }}
-			>
-				<View style={{ paddingHorizontal: Global.padding, gap: 10 }}>
-					<FieldSmall label="タイトル">
-						<InputSmall />
-					</FieldSmall>
-					<FieldSmall label="説明">
-						<InputSmall />
-					</FieldSmall>
-					<FieldSmall label="カテゴリ" style={{ gap: 12 }}>
-						<View style={{ flexDirection: "row", gap: 10 }}>
-							{categoryMocks.length > 0 &&
-								categoryMocks.map((c) => (
-									<View
-										key={c.cid}
-										style={{
-											backgroundColor:
-												choosedCategory === c.cid
-													? colors.primary
-													: colors.input,
-											paddingHorizontal: 14,
-											paddingVertical: 6,
-											borderRadius: 6,
-										}}
-									>
-										<Text
-											style={{
-												fontSize: 16,
-												color:
-													choosedCategory === c.cid
-														? "white"
-														: "black",
-											}}
-										>
-											{c.name}
-										</Text>
-									</View>
-								))}
-						</View>
-					</FieldSmall>
-				</View>
-			</BottomSheet>
+			<CustomBottomSheet ref={bottomSheetRef}>
+				<TaskForm />
+			</CustomBottomSheet>
 		</>
 	);
 };

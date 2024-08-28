@@ -5,7 +5,7 @@ import { useTheme } from "@react-navigation/native";
 const LabelSmall = ({ children, ...props }: TextProps) => {
 	const { colors } = useTheme();
 	return (
-		<Text style={{ color: colors.icon }} {...props}>
+		<Text style={{ color: colors.icon, fontSize: 16 }} {...props}>
 			{children}
 		</Text>
 	);

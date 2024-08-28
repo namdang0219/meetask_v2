@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
 	darkMode: false,
 	drawerCategory: "Home",
+	showBottomSheet: false,
 };
 
 const globalSlice = createSlice({
@@ -16,6 +17,10 @@ const globalSlice = createSlice({
 		setDrawerCategory: (state, action) => ({
 			...state,
 			drawerCategory: action.payload,
+		}),
+		toggleBottomSheet: (state, action) => ({
+			...state,
+			showBottomSheet: action.payload,
 		}),
 	},
 });

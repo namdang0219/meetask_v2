@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import RootNavigation from "routes/global/RootNavigation";
 import { store } from "store/configureStore";
 import { darkTheme, lightTheme } from "utils/theme/themeColors";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const App = () => {
 	const colorScheme = useColorScheme();
@@ -13,13 +14,15 @@ const App = () => {
 		"Warning: IGNORE: Support for defaultProps will be removed from function components in a future major release. Use JavaScript default parameters instead.",
 	]);
 	return (
-		<Provider store={store}>
-			<NavigationContainer
-				theme={colorScheme === "dark" ? darkTheme : lightTheme}
-			>
-				<RootNavigation></RootNavigation>
-			</NavigationContainer>
-		</Provider>
+		<GestureHandlerRootView style={{flex: 1}}>
+			<Provider store={store}>
+				<NavigationContainer
+					theme={colorScheme === "dark" ? darkTheme : lightTheme}
+				>
+					<RootNavigation></RootNavigation>
+				</NavigationContainer>
+			</Provider>
+		</GestureHandlerRootView>
 	);
 };
 

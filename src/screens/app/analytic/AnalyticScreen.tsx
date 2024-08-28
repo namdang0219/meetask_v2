@@ -1,23 +1,14 @@
-import React, { useRef } from "react";
+import React, { useCallback, useMemo, useRef } from "react";
 import { ViewInsetTop } from "components/view";
 import { Header } from "components/header";
-import { Button, Text, View } from "react-native";
-import BottomSheet, { BottomSheetMethods } from "@devvie/bottom-sheet";
+import { Button, StyleSheet, Text, View } from "react-native";
+import BottomSheet, { BottomSheetBackdrop } from "@gorhom/bottom-sheet";
+import { CustomBottomSheet } from "components/custom";
 
 const AnalyticScreen = () => {
-	const sheetRef = useRef<BottomSheetMethods>(null);
 	return (
-		<ViewInsetTop>
+		<ViewInsetTop style={{flex: 1}}>
 			<Header type="onlyTitle" title="Analytic"></Header>
-			<View style={{flex: 1}}>
-				<Button title="Open" onPress={() => sheetRef.current?.open()} />
-				<BottomSheet ref={sheetRef}>
-					<Text>
-						The smart 😎, tiny 📦, and flexible 🎗 bottom sheet your
-						app craves 🚀
-					</Text>
-				</BottomSheet>
-			</View>
 		</ViewInsetTop>
 	);
 };

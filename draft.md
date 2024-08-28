@@ -17,3 +17,4 @@
 -   Tỷ lệ task đã hoàn thành: Số lượng task hoàn thành so với tổng số task được tạo.
 
 -   Tỷ lệ task quá hạn: Số lượng task bị trễ hạn so với tổng số task đã tạo
+
