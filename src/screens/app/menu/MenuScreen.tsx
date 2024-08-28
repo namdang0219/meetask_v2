@@ -203,7 +203,7 @@ const menuItems: MenuItemType[][] = [
 		},
 		{
 			label: "ヘルプ",
-			icon: <Ionicons name="help" size={26} />,
+			icon: <Feather name="help-circle" size={26} />,
 			navigate: "HelpScreen",
 		},
 	],
