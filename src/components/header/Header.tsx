@@ -8,9 +8,13 @@ import { useNavigation, useTheme } from "@react-navigation/native";
 import { lightTheme } from "utils/theme/themeColors";
 
 type HeaderProps = ViewProps & {
-	type: "onlyTitle" | "titleWithBack" | "custom";
+	type:
+		| "onlyTitle"
+		| "titleWithBack"
+		| "customOnlyTitle"
+		| "customTitleWithBack";
 	title: string;
-	customHeaderRight?: ReactNode;
+	renderHeaderRight?: ReactNode;
 	containerStyle?: ViewProps["style"];
 	titleStyle?: TextProps["style"];
 	backButtonColor?: string;
@@ -19,10 +23,10 @@ type HeaderProps = ViewProps & {
 const Header = ({
 	type = "onlyTitle",
 	title = "",
-	customHeaderRight = <></>,
+	renderHeaderRight = <></>,
 	containerStyle = {},
 	titleStyle = {},
-	backButtonColor =lightTheme.colors.primary,
+	backButtonColor = lightTheme.colors.primary,
 }: HeaderProps) => {
 	const { goBack } = useNavigation();
 	const { colors } = useTheme();
@@ -50,16 +54,42 @@ const Header = ({
 	});
 
 	return (
-			<View style={[styles.container, containerStyle]}>
-				{/* only title  */}
-				{type === "onlyTitle" && (
+		<View style={[styles.container, containerStyle]}>
+			{/* only title  */}
+			{type === "onlyTitle" && (
+				<Text style={[styles.onlyTitleText, titleStyle]}>{title}</Text>
+			)}
+
+			{/* title with back button  */}
+			{type === "titleWithBack" && (
+				<CustomTouchableOpacity
+					style={styles.titleWithBackContainer}
+					onPress={goBack}
+				>
+					<Entypo
+						name="chevron-thin-left"
+						size={20}
+						color={backButtonColor}
+					/>
+					<Text style={[styles.titleWithBackText, titleStyle]}>
+						{title ? title : currentRoute().name}
+					</Text>
+				</CustomTouchableOpacity>
+			)}
+
+			{/* custom right container for only title header  */}
+			{type === "customOnlyTitle" && (
+				<>
 					<Text style={[styles.onlyTitleText, titleStyle]}>
 						{title}
 					</Text>
-				)}
+					{renderHeaderRight}
+				</>
+			)}
 
-				{/* title with back button  */}
-				{type === "titleWithBack" && (
+			{/* custom right container for title with back header  */}
+			{type === "customTitleWithBack" && (
+				<>
 					<CustomTouchableOpacity
 						style={styles.titleWithBackContainer}
 						onPress={goBack}
@@ -73,21 +103,11 @@ const Header = ({
 							{title ? title : currentRoute().name}
 						</Text>
 					</CustomTouchableOpacity>
-				)}
-
-				{/* custom right container  */}
-				{type === "custom" && (
-					<>
-						<Text style={[styles.onlyTitleText, titleStyle]}>
-							{title}
-						</Text>
-						{customHeaderRight}
-					</>
-				)}
-			</View>
+					{renderHeaderRight}
+				</>
+			)}
+		</View>
 	);
 };
-
-
 
 export default Header;

@@ -11,12 +11,13 @@ import {
 	Platform,
 	Text,
 } from "react-native";
-import { Feather } from "@expo/vector-icons";
+import { Feather, Ionicons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Global from "utils/constants/Global";
 import { useSelector } from "react-redux";
 import { RootState } from "store/configureStore";
-import { useTheme } from "@react-navigation/native";
+import { useNavigation, useTheme } from "@react-navigation/native";
+import { CustomTouchableOpacity } from "components/custom";
 
 const ProfileScreen = () => {
 	const user = useSelector((state: RootState) => state.user);
@@ -24,6 +25,7 @@ const ProfileScreen = () => {
 	const [scrollFromTop, setScrollFromTop] = useState<number>(1);
 	const { top } = useSafeAreaInsets();
 	const { colors } = useTheme();
+	const { navigate } = useNavigation<any>();
 
 	const bannerHeight = scrollY.interpolate({
 		inputRange: [-100, 0],
@@ -72,7 +74,7 @@ const ProfileScreen = () => {
 				}
 			/>
 			<Header
-				type="titleWithBack"
+				type="customTitleWithBack"
 				title="プロフィール"
 				containerStyle={{
 					position: "absolute",
@@ -84,6 +86,17 @@ const ProfileScreen = () => {
 				}}
 				titleStyle={{ color: "white" }}
 				backButtonColor="white"
+				renderHeaderRight={
+					<CustomTouchableOpacity
+						onPress={() => navigate("QrScanScreen")}
+					>
+						<Ionicons
+							name="qr-code-outline"
+							size={24}
+							color="white"
+						/>
+					</CustomTouchableOpacity>
+				}
 			/>
 			<Animated.Image
 				source={{

@@ -14,9 +14,11 @@ import {
 const Stack = createNativeStackNavigator();
 
 const MenuStack = () => {
-	
 	return (
-		<Stack.Navigator initialRouteName="MenuScreen" screenOptions={{headerShown: false}}>
+		<Stack.Navigator
+			initialRouteName="MenuScreen"
+			screenOptions={{ headerShown: false }}
+		>
 			<Stack.Screen name="MenuScreen" component={MenuScreen} />
 			<Stack.Screen name="ProfileScreen" component={ProfileScreen} />
 			<Stack.Screen

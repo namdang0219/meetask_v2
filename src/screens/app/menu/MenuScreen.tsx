@@ -90,9 +90,9 @@ function MenuHeader() {
 	});
 	return (
 		<Header
-			type="custom"
+			type="customOnlyTitle"
 			title="Menu"
-			customHeaderRight={
+			renderHeaderRight={
 				<CustomTouchableOpacity
 					onPress={() => navigate("WalkThrought")}
 					style={styles.container}

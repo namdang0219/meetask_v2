@@ -3,6 +3,7 @@ export { default as MenuScreen } from "./MenuScreen";
 
 // Main
 export { default as ProfileScreen } from "./ProfileScreen";
+export { default as QrScanScreen } from "./QrScanScreen";
 
 // Item block 1
 export { default as NotificationScreen } from "./NotificationScreen";
