@@ -2,16 +2,20 @@ import { TextInput, TextInputProps } from "react-native";
 import React from "react";
 import { useTheme } from "@react-navigation/native";
 
-const InputSmall = ({ ...props }: TextInputProps) => {
+const InputSmall = ({ placeholder = '入力...', ...props }: TextInputProps) => {
 	const { colors } = useTheme();
 
 	return (
 		<TextInput
+			placeholder={placeholder}
+			placeholderTextColor={colors.icon}
 			style={{
-				paddingVertical: 2.5,
-				borderBottomColor: colors.icon,
-				borderBottomWidth: 0.5,
-				fontSize: 16,
+				height: 45,
+				paddingHorizontal: 12,
+				borderColor: colors.icon,
+				borderWidth: 0.5,
+				fontSize: 15,
+				borderRadius: 6,
 			}}
 			{...props}
 		/>

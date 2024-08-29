@@ -8,7 +8,6 @@ import React from "react";
 
 const ViewFull = ({ children, style }: ViewProps) => {
 	const handleKeyboard = () => {
-		console.log("clicked");
 		if (Keyboard.isVisible()) {
 			Keyboard.dismiss();
 			return;

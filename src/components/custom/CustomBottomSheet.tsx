@@ -46,6 +46,7 @@ const CustomBottomSheet = forwardRef<BottomSheetRef, Props>((props, ref) => {
 				handleIndicatorStyle={{ backgroundColor: colors.icon }}
 				// backgroundStyle={{ backgroundColor: "#1d0f4e" }}
 				backdropComponent={renderBackdrop}
+				enableContentPanningGesture={false}
 			>
 				{children}
 			</BottomSheet>

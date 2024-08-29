@@ -1,59 +1,51 @@
-import { View, Text, Pressable } from "react-native";
+import { View, useWindowDimensions } from "react-native";
 import React, { useState } from "react";
-import { FieldSmall } from "components/common";
-import { InputSmall } from "components/input";
-import { categoryMocks } from "mock/categoryMocks";
 import Global from "utils/constants/Global";
+import { Button } from "components/button";
+import { SceneMap, TabBar, TabView } from "react-native-tab-view";
+import TaskPersionalTab from "./tab/TaskPersionalTab";
+import TaskGroupTab from "./tab/TaskGroupTab";
 import { useTheme } from "@react-navigation/native";
-import { ViewFull } from "components/view";
 
 const TaskForm = () => {
+	const layout = useWindowDimensions();
+	const [index, setIndex] = useState(0);
 	const { colors } = useTheme();
-	const [choosedCategory, setChoosedCategory] = useState<string>(
-		categoryMocks[0].cid
-	);
+
+	const [routes] = useState([
+		{ key: "first", title: "個人" },
+		{ key: "second", title: "グループ" },
+	]);
+
+	const sceneMap = SceneMap({
+		first: TaskPersionalTab,
+		second: TaskGroupTab,
+	});
 
 	return (
-		<ViewFull style={{ paddingHorizontal: Global.padding, gap: 10 }}>
-			<FieldSmall label="タイトル">
-				<InputSmall />
-			</FieldSmall>
-			<FieldSmall label="説明">
-				<InputSmall />
-			</FieldSmall>
-			<FieldSmall label="カテゴリ" style={{ gap: 14 }}>
-				<View style={{ flexDirection: "row", gap: 10, flexWrap: "wrap" }}>
-					{categoryMocks.length > 0 &&
-						categoryMocks.map((c) => (
-							<Pressable
-								key={c.cid}
-								onPress={() => setChoosedCategory(c.cid)}
-								style={{
-									backgroundColor:
-										choosedCategory === c.cid
-											? colors.primary
-											: colors.input,
-									paddingHorizontal: 14,
-									paddingVertical: 6,
-									borderRadius: 6,
-								}}
-							>
-								<Text
-									style={{
-										fontSize: 16,
-										color:
-											choosedCategory === c.cid
-												? "white"
-												: "black",
-									}}
-								>
-									{c.name}
-								</Text>
-							</Pressable>
-						))}
-				</View>
-			</FieldSmall>
-		</ViewFull>
+		<View style={{ flex: 1 }}>
+			<TabView
+				navigationState={{ index, routes }}
+				renderScene={sceneMap}
+				onIndexChange={setIndex}
+				swipeEnabled={false}
+				initialLayout={{ width: layout.width }}
+				renderTabBar={(props) => (
+					<TabBar
+						style={{
+							backgroundColor: colors.background,
+							elevation: 0,
+						}}
+						pressColor={colors.background}
+						labelStyle={{ color: colors.text }}
+						indicatorStyle={{ backgroundColor: colors.primary }}
+						{...props}
+					/>
+				)}
+			/>
+
+			<Button style={{ margin: Global.padding }}>タスクを追加</Button>
+		</View>
 	);
 };
 

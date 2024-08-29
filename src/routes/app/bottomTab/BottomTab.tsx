@@ -18,7 +18,7 @@ import { useTheme } from "@react-navigation/native";
 import { Platform, Text } from "react-native";
 import { CustomBottomSheet } from "components/custom";
 import { BottomSheetRef } from "components/custom/CustomBottomSheet";
-import { TaskForm } from "modules/form";
+import TaskForm from "modules/form/TaskForm";
 
 const Tab = createBottomTabNavigator();
 

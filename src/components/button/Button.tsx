@@ -22,7 +22,7 @@ const Button = ({ children, style, ...props }: TouchableOpacityProps) => {
 			]}
 			{...props}
 		>
-			<Text style={{ color: "white", fontSize: 18, lineHeight: 22 }}>{children}</Text>
+			<Text style={{ color: "white", fontSize: 18, lineHeight: 22, fontWeight: '500' }}>{children}</Text>
 		</CustomTouchableOpacity>
 	);
 };

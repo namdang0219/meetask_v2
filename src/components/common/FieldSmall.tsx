@@ -6,10 +6,10 @@ type FieldSmallProps = ViewProps & {
 	label: string;
 };
 
-const FieldSmall = ({ label, children, ...props }: FieldSmallProps) => {
+const FieldSmall = ({ label = 'label', children, ...props }: FieldSmallProps) => {
 	return (
-		<View {...props}>
-			<LabelSmall>{label}</LabelSmall>
+		<View style={{gap: 10}} {...props}>
+			{label && <LabelSmall>{label}</LabelSmall>}
 			{children}
 		</View>
 	);
