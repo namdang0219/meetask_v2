@@ -6,11 +6,14 @@ import { SceneMap, TabBar, TabView } from "react-native-tab-view";
 import TaskPersionalTab from "./tab/TaskPersionalTab";
 import TaskGroupTab from "./tab/TaskGroupTab";
 import { useTheme } from "@react-navigation/native";
+import { ViewInsetBottom } from "components/view";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const TaskForm = () => {
 	const layout = useWindowDimensions();
 	const [index, setIndex] = useState(0);
 	const { colors } = useTheme();
+	const { bottom } = useSafeAreaInsets();
 
 	const [routes] = useState([
 		{ key: "first", title: "個人" },
@@ -23,7 +26,7 @@ const TaskForm = () => {
 	});
 
 	return (
-		<View style={{ flex: 1 }}>
+		<View style={{ flex: 1, paddingBottom: bottom }}>
 			<TabView
 				navigationState={{ index, routes }}
 				renderScene={sceneMap}

@@ -52,7 +52,7 @@ const TaskPersionalTab = () => {
 									style={{
 										backgroundColor:
 											choosedCategory === c.cid
-												? colors.primary
+												? c.color
 												: colors.input,
 										paddingHorizontal: 14,
 										paddingVertical: 6,
