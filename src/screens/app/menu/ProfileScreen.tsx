@@ -63,7 +63,7 @@ const ProfileScreen = () => {
 	};
 
 	return (
-		<ViewFull>
+		<View>
 			<StatusBar
 				barStyle={
 					scrollFromTop > 240
@@ -212,7 +212,7 @@ const ProfileScreen = () => {
 					</View>
 				</View>
 			</ScrollView>
-		</ViewFull>
+		</View>
 	);
 };
 

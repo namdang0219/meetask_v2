@@ -11,6 +11,7 @@ import { RootState } from "store/configureStore";
 import { Ionicons } from "@expo/vector-icons";
 import { CustomTouchableOpacity } from "components/custom";
 import { DrawerActions, useTheme } from "@react-navigation/native";
+import { ViewInsetTop } from "components/view";
 
 const Drawer = createDrawerNavigator();
 
@@ -18,7 +19,6 @@ const HomeDrawer = () => {
 	const { photoUrl, displayName } = useSelector(
 		(state: RootState) => state.user
 	);
-	const { top } = useSafeAreaInsets();
 	const { colors } = useTheme();
 
 	return (
@@ -27,61 +27,67 @@ const HomeDrawer = () => {
 			drawerContent={() => <HomeDrawerContent></HomeDrawerContent>}
 			screenOptions={({}) => ({
 				header: ({ navigation }) => (
-					<View
-						style={{
-							height: 50,
-							paddingTop: top,
-							paddingHorizontal: Global.padding,
-							flexDirection: "row",
-							justifyContent: "space-between",
-							alignItems: "center",
-							gap: 10,
-						}}
-					>
+					<ViewInsetTop>
 						<View
 							style={{
+								height: 50,
+								paddingHorizontal: Global.padding,
 								flexDirection: "row",
+								justifyContent: "space-between",
 								alignItems: "center",
 								gap: 10,
-								flex: 1,
 							}}
 						>
+							<View
+								style={{
+									flexDirection: "row",
+									alignItems: "center",
+									gap: 10,
+									flex: 1,
+								}}
+							>
+								<CustomTouchableOpacity
+									onPress={() =>
+										navigation.dispatch(
+											DrawerActions.toggleDrawer()
+										)
+									}
+								>
+									<Ionicons name="menu-outline" size={36} />
+								</CustomTouchableOpacity>
+								<Text
+									style={{
+										fontSize: 24,
+										fontWeight: "500",
+										flex: 1,
+										marginTop: -2,
+									}}
+									numberOfLines={1}
+								>
+									Good Morning,{" "}
+									<Text style={{ color: colors.primary }}>
+										{displayName}
+									</Text>
+								</Text>
+							</View>
 							<CustomTouchableOpacity
 								onPress={() =>
-									navigation.dispatch(
-										DrawerActions.toggleDrawer()
-									)
+									navigation.navigate("ProfileScreen")
 								}
 							>
-								<Ionicons name="menu-outline" size={36} />
+								<Image
+									source={{ uri: photoUrl }}
+									style={{
+										width: 38,
+										height: 38,
+										borderRadius: 1000,
+									}}
+								/>
 							</CustomTouchableOpacity>
-							<Text
-								style={{
-									fontSize: 24,
-									fontWeight: "500",
-									flex: 1,
-									marginTop: -2,
-								}}
-								numberOfLines={1}
-							>
-								Good Morning,{" "}
-								<Text style={{ color: colors.primary }}>
-									{displayName}
-								</Text>
-							</Text>
 						</View>
-						<CustomTouchableOpacity onPress={() => navigation.navigate('ProfileScreen')}>
-							<Image
-								source={{ uri: photoUrl }}
-								style={{
-									width: 38,
-									height: 38,
-									borderRadius: 1000,
-								}}
-							/>
-						</CustomTouchableOpacity>
-					</View>
+					</ViewInsetTop>
 				),
+				drawerType: "front",
 			})}
 		>
 			<Drawer.Screen name="HomeScreen" component={HomeScreen} />

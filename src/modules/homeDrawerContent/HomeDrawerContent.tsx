@@ -5,6 +5,7 @@ import GroupTab from "./tab/GroupTab";
 import PersonalTab from "./tab/PersonalTab";
 import LogoSection from "./content/LogoSection";
 import TabBar from "./content/TabBar";
+import { ViewInsetTop } from "components/view";
 
 const HomeDrawerContent = () => {
 	const layout = useWindowDimensions();
@@ -21,12 +22,13 @@ const HomeDrawerContent = () => {
 	});
 
 	return (
-		<View style={styles.container}>
+		<ViewInsetTop style={styles.container}>
 			<LogoSection />
 
 			<TabView
 				navigationState={{ index, routes }}
 				renderScene={sceneMap}
+				swipeEnabled={false}
 				onIndexChange={setIndex}
 				initialLayout={{ width: layout.width }}
 				renderTabBar={({ jumpTo, navigationState }) => (
@@ -39,7 +41,7 @@ const HomeDrawerContent = () => {
 				)}
 			/>
 
-		</View>
+		</ViewInsetTop>
 	);
 };
 
