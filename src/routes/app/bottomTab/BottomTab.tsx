@@ -149,7 +149,7 @@ const BottomTab = () => {
 						borderRadius: 14,
 						padding: Global.padding,
 						gap: Global.padding,
-						position: 'relative'
+						position: "relative",
 					}}
 				>
 					<View>
@@ -166,7 +166,7 @@ const BottomTab = () => {
 						</Text>
 						<CustomTouchableOpacity
 							onPress={() => setTaskModalVisible(false)}
-							style={{position: 'absolute', right: 0, top: 0}}
+							style={{ position: "absolute", right: 0, top: 0 }}
 						>
 							<Feather name="x" color={colors.icon} size={20} />
 						</CustomTouchableOpacity>

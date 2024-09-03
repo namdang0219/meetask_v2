@@ -4,7 +4,6 @@ import { CategoryScreen, HomeScreen } from "screens/app/home";
 import { categoryMocks } from "mock/categoryMocks";
 import HomeDrawerContent from "modules/homeDrawerContent/HomeDrawerContent";
 import { Image, Text, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Global from "utils/constants/Global";
 import { useSelector } from "react-redux";
 import { RootState } from "store/configureStore";

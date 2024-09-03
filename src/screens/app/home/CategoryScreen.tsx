@@ -12,8 +12,16 @@ const CategoryScreen = ({ route }: { route: any }) => {
 	);
 
 	return (
-		<View>
-			<Text style={{fontSize: 20, marginVertical: 10, textAlign: 'center'}}>Tasks for {category}:</Text>
+		<View style={{ marginTop: 50 }}>
+			<Text
+				style={{
+					fontSize: 20,
+					marginVertical: 10,
+					textAlign: "center",
+				}}
+			>
+				Tasks for {category}:
+			</Text>
 			<FlatList
 				data={filteredTasks}
 				contentContainerStyle={{ minHeight: 1000 }}

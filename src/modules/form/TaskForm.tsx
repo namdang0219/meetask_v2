@@ -37,7 +37,7 @@ const TaskForm = () => {
 					<TabBar
 						style={{
 							backgroundColor: colors.background,
-							elevation: 0,
+							// elevation: 0,
 						}}
 						pressColor={colors.background}
 						labelStyle={{ color: colors.text }}
