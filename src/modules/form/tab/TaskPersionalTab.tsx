@@ -3,16 +3,18 @@ import React, { useState } from "react";
 import { FieldSmall } from "components/common";
 import { InputSmall } from "components/input";
 import { ViewFull } from "components/view";
-import { categoryMocks } from "mock/categoryMocks";
 import { DateTimePicker } from "react-native-ui-lib";
 import Global from "utils/constants/Global";
 import { useTheme } from "@react-navigation/native";
 import { Feather, Ionicons } from '@expo/vector-icons';
+import { useSelector } from "react-redux";
+import { RootState } from "store/configureStore";
 
 const TaskPersionalTab = () => {
 	const { colors } = useTheme();
+	const categories = useSelector((state: RootState) => state.category)
 	const [choosedCategory, setChoosedCategory] = useState<string>(
-		categoryMocks[0].cid
+		categories[0].cid
 	);
 
 	return (
@@ -44,8 +46,8 @@ const TaskPersionalTab = () => {
 							flexWrap: "wrap",
 						}}
 					>
-						{categoryMocks.length > 0 &&
-							categoryMocks.map((c) => (
+						{categories.length > 0 &&
+							categories.map((c) => (
 								<Pressable
 									key={c.cid}
 									onPress={() => setChoosedCategory(c.cid)}

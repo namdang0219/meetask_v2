@@ -1,11 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { categoryMocks } from "mock/categoryMocks";
 
 const initialState = {
 	darkMode: false,
 	drawerCategory: "Home",
 	showBottomSheet: false,
-	categories: categoryMocks,
 };
 
 const globalSlice = createSlice({
@@ -23,16 +21,6 @@ const globalSlice = createSlice({
 		toggleBottomSheet: (state, action) => ({
 			...state,
 			showBottomSheet: action.payload,
-		}),
-		addCatetory: (state, action) => ({
-			...state,
-			categories: [...state.categories, action.payload],
-		}),
-		removeCategory: (state, action) => ({
-			...state,
-			categories: state.categories.filter(
-				(category) => category.cid !== action.payload
-			),
 		}),
 	},
 });

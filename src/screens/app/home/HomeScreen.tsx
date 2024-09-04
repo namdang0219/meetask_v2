@@ -6,13 +6,13 @@ import { ViewFull } from "components/view";
 import { TaskType } from "utils/types/dataTypes";
 import { useTheme } from "@react-navigation/native";
 import { RadioButton } from "react-native-ui-lib";
-import { categoryMocks } from "mock/categoryMocks";
 import { useSelector } from "react-redux";
 import { RootState } from "store/configureStore";
 
 const HomeScreen = () => {
 	const { photoUrl } = useSelector((state: RootState) => state.user);
 	const { colors } = useTheme();
+	const categories = useSelector((state: RootState) => state.category)
 	const [tasks, setTasks] = useState<TaskType[]>([
 		{
 			tid: "1",
@@ -179,7 +179,7 @@ const HomeScreen = () => {
 										}}
 										size={18}
 										color={
-											categoryMocks.find(
+											categories.find(
 												(c) => c.name === t.category
 											)?.color
 										}
@@ -244,7 +244,7 @@ const HomeScreen = () => {
 											style={{
 												height: "100%",
 												backgroundColor:
-													categoryMocks.find(
+													categories.find(
 														(c) =>
 															c.name ===
 															t.category

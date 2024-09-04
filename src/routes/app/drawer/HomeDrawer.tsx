@@ -1,7 +1,6 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { CategoryScreen, HomeScreen } from "screens/app/home";
-import { categoryMocks } from "mock/categoryMocks";
 import HomeDrawerContent from "modules/homeDrawerContent/HomeDrawerContent";
 import { Image, Text, View } from "react-native";
 import Global from "utils/constants/Global";
@@ -19,6 +18,8 @@ const HomeDrawer = () => {
 		(state: RootState) => state.user
 	);
 	const { colors } = useTheme();
+	const categories = useSelector((state: RootState) => state.category)
+
 
 	return (
 		<Drawer.Navigator
@@ -90,7 +91,7 @@ const HomeDrawer = () => {
 			})}
 		>
 			<Drawer.Screen name="HomeScreen" component={HomeScreen} />
-			{categoryMocks.map((category) => (
+			{categories.map((category) => (
 				<Drawer.Screen
 					key={category.cid}
 					name={category.name}

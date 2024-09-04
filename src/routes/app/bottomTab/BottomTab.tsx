@@ -26,16 +26,18 @@ import Global from "utils/constants/Global";
 import { Feather, Ionicons } from "@expo/vector-icons";
 import { FieldSmall } from "components/common";
 import { InputSmall } from "components/input";
-import { categoryMocks } from "mock/categoryMocks";
+import { useSelector } from "react-redux";
+import { RootState } from "store/configureStore";
 
 const Tab = createBottomTabNavigator();
 
 const BottomTab = () => {
 	const { colors } = useTheme();
 	const [taskModalVisible, setTaskModalVisible] = useState<boolean>(false);
+	const categories = useSelector((state: RootState) => state.category)
 	const bottomSheetRef = useRef<BottomSheetRef>(null);
 	const [choosedCategory, setChoosedCategory] = useState<string>(
-		categoryMocks[0].cid
+		categories[0].cid
 	);
 
 	const { showActionSheetWithOptions } = useActionSheet();
@@ -186,8 +188,8 @@ const BottomTab = () => {
 										flexWrap: "wrap",
 									}}
 								>
-									{categoryMocks.length > 0 &&
-										categoryMocks.map((c) => (
+									{categories.length > 0 &&
+										categories.map((c) => (
 											<Pressable
 												key={c.cid}
 												onPress={() =>

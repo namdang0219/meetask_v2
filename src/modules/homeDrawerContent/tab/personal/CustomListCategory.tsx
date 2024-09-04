@@ -1,7 +1,6 @@
 import { View, Text } from "react-native";
 import React from "react";
 import { CustomTouchableOpacity } from "components/custom";
-import { categoryMocks } from "mock/categoryMocks";
 import Global from "utils/constants/Global";
 import { setCategoryIcon } from "utils/func";
 import { useNavigation, useTheme } from "@react-navigation/native";
@@ -19,6 +18,7 @@ const CustomListCategory = ({
 	const { navigate } = useNavigation<any>();
 	const { colors } = useTheme();
 	const { drawerCategory } = useSelector((state: RootState) => state.global);
+	const categories = useSelector((state: RootState) => state.category);
 	const dispatch = useDispatch();
 
 	// handle change category
@@ -34,8 +34,8 @@ const CustomListCategory = ({
 
 	return (
 		<>
-			{categoryMocks &&
-				categoryMocks.map((category) => (
+			{categories &&
+				categories.map((category) => (
 					<CustomTouchableOpacity
 						key={category.cid}
 						onPress={() => handleChangeCategory(category.name)}
