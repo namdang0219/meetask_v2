@@ -32,6 +32,10 @@ const CustomListCategory = ({
 		return categoryIcons.find((i) => i.iid === category.icon)?.icon;
 	};
 
+	const handleCategoryActionSheet = (cid: string) => {
+		console.log(cid)
+	}
+
 	return (
 		<>
 			{categories &&
@@ -39,6 +43,7 @@ const CustomListCategory = ({
 					<CustomTouchableOpacity
 						key={category.cid}
 						onPress={() => handleChangeCategory(category.name)}
+						onLongPress={() => handleCategoryActionSheet(category.cid)}
 						style={{
 							backgroundColor:
 								drawerCategory === category.name
@@ -64,7 +69,9 @@ const CustomListCategory = ({
 								fontSize: 16,
 								fontWeight: "500",
 								color: handleCategoryItemColor(category.name),
+								flex: 1,
 							}}
+							numberOfLines={1}
 						>
 							{category.name}
 						</Text>
