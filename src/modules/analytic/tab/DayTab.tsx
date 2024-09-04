@@ -27,14 +27,22 @@ const DayTab = () => {
 				contentContainerStyle={{ paddingHorizontal: Global.padding }}
 				style={{ paddingTop: 8 }}
 			>
-        {/* Wheel Container  */}
+				{/* Wheel Container  */}
 				<View style={styles.wheelContainer}>
 					<DateWheelChart progressData={progressData} />
 					<DateWheelChartContent progressData={progressData} />
 				</View>
-        <View>
-
-        </View>
+				<View>
+					<Text style={{fontSize: 16}}>
+						Thủ tướng Chính phủ vừa có Công điện số 86 về chủ động
+						ứng phó bão số 3 gửi Bí thư, Chủ tịch UBND tỉnh, thành
+						phố: Quảng Ninh, Hải Phòng, Thái Bình, Nam Định, Ninh
+						Bình, Thanh Hóa, Nghệ An, Hà Tĩnh, Quảng Bình, Quảng
+						Trị, Thừa Thiên Huế, Đà Nẵng, Quảng Nam, Quảng Ngãi,
+						Lạng Sơn, Cao Bằng, Bắc Kạn, Thái Nguyên, Hà Giang, Lào
+						Cai, Yên Bái, Tuyên Quang, Phú Thọ, Hòa Bình.
+					</Text>
+				</View>
 				<View style={{ height: 1000 }} />
 			</ScrollView>
 		</>
