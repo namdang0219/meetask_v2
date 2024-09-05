@@ -1,3 +1,4 @@
+import { useTheme } from "@react-navigation/native";
 import { CustomTouchableOpacity } from "components/custom";
 import { Header } from "components/header";
 import { ViewInsetTop } from "components/view";
@@ -26,6 +27,8 @@ const PrivacyItem = ({
 }: {
 	item: { title: string; content: any };
 }) => {
+	const { colors } = useTheme();
+
 	return (
 		<View style={{ marginBottom: 10 }}>
 			<Text
@@ -33,11 +36,12 @@ const PrivacyItem = ({
 					fontSize: 20,
 					fontWeight: "600",
 					marginBottom: 2,
+					color: colors.primary,
 				}}
 			>
 				{title}
 			</Text>
-			<Text style={{ lineHeight: 18 }}>{content}</Text>
+			<Text style={{ lineHeight: 18, color: colors.text }}>{content}</Text>
 		</View>
 	);
 };

@@ -10,6 +10,8 @@ const DateWheelChartContent = ({
 }: {
 	progressData: progressDataType[];
 }) => {
+	const { colors } = useTheme();
+
 	return (
 		<View style={{ gap: 15 }}>
 			{progressData.map((item, index) => (
@@ -30,7 +32,13 @@ const DateWheelChartContent = ({
 							borderRadius: 2,
 						}}
 					/>
-					<Text style={{ fontSize: 16, fontWeight: "500" }}>
+					<Text
+						style={{
+							fontSize: 16,
+							fontWeight: "500",
+							color: colors.text,
+						}}
+					>
 						{item.progress * 100}% <Text>{item.name}</Text>
 					</Text>
 				</CustomTouchableOpacity>

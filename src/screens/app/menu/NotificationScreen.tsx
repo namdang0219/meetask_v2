@@ -22,7 +22,7 @@ const NotificationScreen = () => {
 							paddingHorizontal: Global.padding,
 							backgroundColor:
 								index % 2 === 0
-									? "white"
+									? colors.background
 									: colors.input,
 							paddingVertical: 10,
 						}}
@@ -51,7 +51,7 @@ const NotificationScreen = () => {
 								>
 									Mai Ngoc
 								</Text>
-                <Text style={{color: 'gray', fontSize: 12}}>5分前</Text>
+                <Text style={{color: colors.icon, fontSize: 12}}>5分前</Text>
 							</View>
 							<Text numberOfLines={2} style={{lineHeight: 20, color: colors.text}}>
 								Đồng thời, Ủy ban Thường vụ Quốc hội sẽ cho ý

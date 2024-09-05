@@ -62,6 +62,23 @@ const ProfileScreen = () => {
 		}
 	};
 
+	const styles = StyleSheet.create({
+		banner: {
+			width: "100%",
+			position: "absolute",
+			top: 0,
+			left: 0,
+		},
+		scrollViewContent: {
+			paddingTop: 260,
+		},
+		content: {
+			minHeight: 1000,
+			backgroundColor: colors.background,
+			paddingHorizontal: Global.padding,
+		},
+	});
+
 	return (
 		<View>
 			<StatusBar
@@ -167,6 +184,7 @@ const ProfileScreen = () => {
 								fontWeight: "500",
 								textAlign: "center",
 								marginTop: 6,
+								color: colors.text,
 							}}
 						>
 							{user.displayName}
@@ -188,10 +206,15 @@ const ProfileScreen = () => {
 							style={{
 								lineHeight: 22,
 								fontSize: 16,
-								color: "gray",
+								color: colors.text,
 							}}
 						>
-							<Text style={{ fontWeight: "600", color: "black" }}>
+							<Text
+								style={{
+									fontWeight: "600",
+									color: colors.text,
+								}}
+							>
 								自己紹介：
 							</Text>
 							{user.introduce}
@@ -201,10 +224,15 @@ const ProfileScreen = () => {
 							style={{
 								lineHeight: 22,
 								fontSize: 16,
-								color: "gray",
+								color: colors.text,
 							}}
 						>
-							<Text style={{ fontWeight: "600", color: "black" }}>
+							<Text
+								style={{
+									fontWeight: "600",
+									color: colors.text,
+								}}
+							>
 								参加日：
 							</Text>
 							{user.join}
@@ -215,22 +243,5 @@ const ProfileScreen = () => {
 		</View>
 	);
 };
-
-const styles = StyleSheet.create({
-	banner: {
-		width: "100%",
-		position: "absolute",
-		top: 0,
-		left: 0,
-	},
-	scrollViewContent: {
-		paddingTop: 260,
-	},
-	content: {
-		minHeight: 1000,
-		backgroundColor: "white",
-		paddingHorizontal: Global.padding,
-	},
-});
 
 export default ProfileScreen;

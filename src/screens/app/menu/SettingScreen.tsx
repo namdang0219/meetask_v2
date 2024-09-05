@@ -20,7 +20,7 @@ const SettingScreen = () => {
 						justifyContent: "space-between",
 					}}
 				>
-					<Text style={{ fontSize: 18 }}>ダークモード</Text>
+					<Text style={{ fontSize: 18, color: colors.text }}>ダークモード</Text>
 					<Switch
 						value={isDarkmode}
 						onChange={() => setIsDarkmode(!isDarkmode)}

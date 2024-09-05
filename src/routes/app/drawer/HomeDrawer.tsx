@@ -18,8 +18,7 @@ const HomeDrawer = () => {
 		(state: RootState) => state.user
 	);
 	const { colors } = useTheme();
-	const categories = useSelector((state: RootState) => state.category)
-
+	const categories = useSelector((state: RootState) => state.category);
 
 	return (
 		<Drawer.Navigator
@@ -53,7 +52,11 @@ const HomeDrawer = () => {
 										)
 									}
 								>
-									<Ionicons name="menu-outline" size={36} />
+									<Ionicons
+										name="menu-outline"
+										size={36}
+										color={colors.text}
+									/>
 								</CustomTouchableOpacity>
 								<Text
 									style={{
@@ -61,6 +64,7 @@ const HomeDrawer = () => {
 										fontWeight: "500",
 										flex: 1,
 										marginTop: -2,
+										color: colors.text,
 									}}
 									numberOfLines={1}
 								>

@@ -8,8 +8,10 @@ import { store } from "store/configureStore";
 import { darkTheme, lightTheme } from "utils/theme/themeColors";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { ActionSheetProvider } from "@expo/react-native-action-sheet";
-import { ApplicationProvider, Layout, Text } from "@ui-kitten/components";
+import { ApplicationProvider } from "@ui-kitten/components";
 import * as eva from "@eva-design/eva";
+import { Toasts } from "@backpackapp-io/react-native-toast";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 const App = () => {
 	const colorScheme = useColorScheme();
@@ -19,17 +21,25 @@ const App = () => {
 	]);
 	return (
 		<GestureHandlerRootView style={{ flex: 1 }}>
-			<ActionSheetProvider>
-				<Provider store={store}>
-					<NavigationContainer
-						theme={colorScheme === "dark" ? darkTheme : lightTheme}
-					>
-						<ApplicationProvider {...eva} theme={eva.light}>
-							<RootNavigation></RootNavigation>
-						</ApplicationProvider>
-					</NavigationContainer>
-				</Provider>
-			</ActionSheetProvider>
+			<SafeAreaProvider>
+				<ActionSheetProvider>
+					<Provider store={store}>
+						<NavigationContainer
+							theme={
+								colorScheme === "dark" ? darkTheme : lightTheme
+							}
+						>
+							<ApplicationProvider {...eva} theme={eva.light}>
+								<RootNavigation></RootNavigation>
+								<Toasts
+									overrideDarkMode={true}
+									defaultStyle={{ text: { fontSize: 16 } }}
+								/>
+							</ApplicationProvider>
+						</NavigationContainer>
+					</Provider>
+				</ActionSheetProvider>
+			</SafeAreaProvider>
 		</GestureHandlerRootView>
 	);
 };

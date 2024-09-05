@@ -43,7 +43,7 @@ const AboutScreen = () => {
 
 	const styles = StyleSheet.create({
 		container: { paddingHorizontal: Global.padding },
-		text: { fontSize: 18, lineHeight: 26 },
+		text: { fontSize: 18, lineHeight: 26, color: colors.text },
 		highlightText: { color: colors.primary },
 		image: {
 			width: 255,
@@ -99,7 +99,7 @@ const AboutScreen = () => {
 				></Image>
 
 				<View style={styles.shareContainer}>
-					<Text style={{ fontSize: 16 }}>
+					<Text style={{ fontSize: 16, color: colors.text }}>
 						Also follow MeeTeam on:
 					</Text>
 					<View style={styles.shareItemContainer}>

@@ -5,8 +5,10 @@ import {
 	ViewProps,
 } from "react-native";
 import React from "react";
+import { useTheme } from "@react-navigation/native";
 
 const ViewFull = ({ children, style }: ViewProps) => {
+	const { colors } = useTheme();
 	const handleKeyboard = () => {
 		if (Keyboard.isVisible()) {
 			Keyboard.dismiss();
@@ -18,7 +20,7 @@ const ViewFull = ({ children, style }: ViewProps) => {
 			onPress={() => handleKeyboard()}
 			style={{ flex: 1 }}
 		>
-			<View style={[{ flex: 1, backgroundColor: "white" }, style]}>
+			<View style={[{ flex: 1, backgroundColor: colors.background }, style]}>
 				{children}
 			</View>
 		</TouchableWithoutFeedback>

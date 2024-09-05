@@ -30,10 +30,10 @@ export const darkTheme: ThemeTypes = {
 	...DefaultTheme,
 	colors: {
 		...DefaultTheme.colors,
-		primary: "#6B00D7",
+		primary: "#8b5cf6",
 		background: "#13131A",
 		text: "#FFFFFF",
 		icon: "#A2A2A8",
-		input: "#F4F4F4",
+		input: "#262626",
 	},
 };

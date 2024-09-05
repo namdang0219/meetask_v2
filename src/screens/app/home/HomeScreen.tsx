@@ -78,11 +78,12 @@ const HomeScreen = () => {
 						fontSize: 30,
 						fontWeight: "600",
 						textAlign: "center",
+						color: colors.text,
 					}}
 				>
 					20
 				</Text>
-				<Text style={{ fontSize: 20, fontWeight: "500" }}>Today</Text>
+				<Text style={{ fontSize: 20, fontWeight: "500", color: colors.text }}>Today</Text>
 			</View>
 			<View
 				style={{
@@ -97,6 +98,7 @@ const HomeScreen = () => {
 						fontSize: 16,
 						fontWeight: "600",
 						textAlign: "center",
+						color: colors.text,
 					}}
 				>
 					Mon
@@ -274,6 +276,7 @@ const HomeScreen = () => {
 														fontSize: 16,
 														fontWeight: "500",
 														flex: 1,
+														color: colors.text,
 													}}
 													numberOfLines={1}
 												>

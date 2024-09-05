@@ -5,6 +5,7 @@ import Global from "utils/constants/Global";
 import DatePicker from "./day/DatePicker";
 import DateWheelChart from "./day/DateWheelChart";
 import DateWheelChartContent from "./day/DateWheelChartContent";
+import { useTheme } from "@react-navigation/native";
 
 export type progressDataType = {
 	name: string;
@@ -14,6 +15,8 @@ export type progressDataType = {
 };
 
 const DayTab = () => {
+	const { colors } = useTheme();
+
 	const progressData: progressDataType[] = [
 		{ name: "完成", progress: 0.7, color: "#22c55e", radius: 85 },
 		{ name: "期限切れ", progress: 0.4, color: "#f97316", radius: 60 },
@@ -32,8 +35,8 @@ const DayTab = () => {
 					<DateWheelChart progressData={progressData} />
 					<DateWheelChartContent progressData={progressData} />
 				</View>
-				<View>
-					<Text style={{fontSize: 16}}>
+				<View style={{marginTop: 20}}>
+					<Text style={{ fontSize: 16, color: colors.text }}>
 						Thủ tướng Chính phủ vừa có Công điện số 86 về chủ động
 						ứng phó bão số 3 gửi Bí thư, Chủ tịch UBND tỉnh, thành
 						phố: Quảng Ninh, Hải Phòng, Thái Bình, Nam Định, Ninh

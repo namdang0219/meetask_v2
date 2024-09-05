@@ -39,7 +39,7 @@ const Header = ({
 			paddingHorizontal: Global.padding,
 			justifyContent: "space-between",
 		},
-		onlyTitleText: { fontSize: 24, fontWeight: "500" },
+		onlyTitleText: { fontSize: 24, fontWeight: "500", color: colors.text },
 		titleWithBackContainer: {
 			flexDirection: "row",
 			alignItems: "center",

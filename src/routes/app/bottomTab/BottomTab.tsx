@@ -34,7 +34,7 @@ const Tab = createBottomTabNavigator();
 const BottomTab = () => {
 	const { colors } = useTheme();
 	const [taskModalVisible, setTaskModalVisible] = useState<boolean>(false);
-	const categories = useSelector((state: RootState) => state.category)
+	const categories = useSelector((state: RootState) => state.category);
 	const bottomSheetRef = useRef<BottomSheetRef>(null);
 	const [choosedCategory, setChoosedCategory] = useState<string>(
 		categories[0].cid
@@ -73,9 +73,15 @@ const BottomTab = () => {
 			<Tab.Navigator
 				screenOptions={({ route }) => ({
 					headerShown: false,
-					tabBarStyle: Platform.OS === "android" && {
-						height: 65,
-					},
+					tabBarStyle:
+						Platform.OS === "android"
+							? {
+									height: 65,
+									backgroundColor: colors.background,
+							  }
+							: {
+									backgroundColor: colors.background,
+							  },
 					tabBarItemStyle: {
 						height: 54,
 						marginTop: 4,

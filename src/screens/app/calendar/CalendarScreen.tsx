@@ -1,12 +1,15 @@
 import React from "react";
-import { ViewInset } from "components/view";
+import { ViewInsetTop } from "components/view";
 import { Text } from "react-native";
+import { useTheme } from "@react-navigation/native";
 
 const CalendarScreen = () => {
+	const { colors } = useTheme();
+
 	return (
-		<ViewInset>
-			<Text>Calendar</Text>
-		</ViewInset>
+		<ViewInsetTop>
+			<Text style={{ color: colors.text }}>Calendar</Text>
+		</ViewInsetTop>
 	);
 };
 

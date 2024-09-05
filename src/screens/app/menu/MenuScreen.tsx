@@ -30,7 +30,7 @@ const MenuScreen = () => {
 			justifyContent: "space-between",
 			paddingHorizontal: Global.padding + 4,
 			alignItems: "center",
-			backgroundColor: "white",
+			backgroundColor: colors.background,
 			paddingVertical: 12,
 		},
 		icon: {
@@ -38,6 +38,43 @@ const MenuScreen = () => {
 			gap: 10,
 		},
 	});
+
+	const menuItems: MenuItemType[][] = [
+		[
+			{
+				label: "通知",
+				icon: <Ionicons name="notifications-outline" size={26} color={colors.text} />,
+				navigate: "NotificationScreen",
+			},
+			{
+				label: "言語",
+				icon: <Ionicons name="language-outline" size={26} color={colors.text} />,
+				navigate: "LanguageScreen",
+			},
+			{
+				label: "設定",
+				icon: <AntDesign name="setting" size={26} color={colors.text} />,
+				navigate: "SettingScreen",
+			},
+		],
+		[
+			{
+				label: "プライバシー",
+				icon: <MaterialIcons name="privacy-tip" size={26} color={colors.text} />,
+				navigate: "PrivacyScreen",
+			},
+			{
+				label: "アバウト",
+				icon: <Feather name="info" size={26} color={colors.text} />,
+				navigate: "AboutScreen",
+			},
+			{
+				label: "ヘルプ",
+				icon: <Feather name="help-circle" size={26} color={colors.text} />,
+				navigate: "HelpScreen",
+			},
+		],
+	];
 
 	const MenuItem = ({ item }: { item: MenuItemType }) => {
 		return (
@@ -47,9 +84,11 @@ const MenuScreen = () => {
 			>
 				<View style={styles.icon}>
 					{item.icon}
-					<Text style={{ fontSize: 18, color: colors.text }}>{item.label}</Text>
+					<Text style={{ fontSize: 18, color: colors.text }}>
+						{item.label}
+					</Text>
 				</View>
-				<Entypo name="chevron-thin-right" size={22} />
+				<Entypo name="chevron-thin-right" size={22} color={colors.icon} />
 			</CustomTouchableOpacity>
 		);
 	};
@@ -118,7 +157,7 @@ function MenuProfile() {
 
 	const styles = StyleSheet.create({
 		container: {
-			backgroundColor: "white",
+			backgroundColor: colors.background,
 			flexDirection: "row",
 			alignItems: "center",
 			justifyContent: "space-between",
@@ -140,6 +179,7 @@ function MenuProfile() {
 			fontSize: 24,
 			fontWeight: "600",
 			marginBottom: 4,
+			color: colors.text,
 		},
 		email: {
 			fontSize: 16,
@@ -167,44 +207,7 @@ function MenuProfile() {
 			</View>
 
 			{/* right arrow  */}
-			<Entypo name="chevron-thin-right" size={22} />
+			<Entypo name="chevron-thin-right" size={22} color={colors.icon} />
 		</CustomTouchableOpacity>
 	);
 }
-
-const menuItems: MenuItemType[][] = [
-	[
-		{
-			label: "通知",
-			icon: <Ionicons name="notifications-outline" size={26} />,
-			navigate: "NotificationScreen",
-		},
-		{
-			label: "言語",
-			icon: <Ionicons name="language-outline" size={26} />,
-			navigate: "LanguageScreen",
-		},
-		{
-			label: "設定",
-			icon: <AntDesign name="setting" size={26} />,
-			navigate: "SettingScreen",
-		},
-	],
-	[
-		{
-			label: "プライバシー",
-			icon: <MaterialIcons name="privacy-tip" size={26} />,
-			navigate: "PrivacyScreen",
-		},
-		{
-			label: "アバウト",
-			icon: <Feather name="info" size={26} />,
-			navigate: "AboutScreen",
-		},
-		{
-			label: "ヘルプ",
-			icon: <Feather name="help-circle" size={26} />,
-			navigate: "HelpScreen",
-		},
-	],
-];

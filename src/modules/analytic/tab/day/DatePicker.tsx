@@ -2,13 +2,14 @@ import { View, Text, Platform } from "react-native";
 import React, { useState } from "react";
 import { CustomTouchableOpacity } from "components/custom";
 import moment from "moment";
-import colors from "react-native-ui-lib/src/style/colors";
 import { Entypo } from "@expo/vector-icons";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import { useTheme } from "@react-navigation/native";
 
 const DatePicker = () => {
 	const [date, setDate] = useState(new Date());
 	const [showPicker, setShowPicker] = useState(false);
+	const { colors } = useTheme();
 
 	const onDateChange = (event: any, selectedDate: any) => {
 		const currentDate = selectedDate || date;

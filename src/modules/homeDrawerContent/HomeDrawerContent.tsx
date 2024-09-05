@@ -6,9 +6,11 @@ import PersonalTab from "./tab/PersonalTab";
 import LogoSection from "./content/LogoSection";
 import TabBar from "./content/TabBar";
 import { ViewInsetTop } from "components/view";
+import { useTheme } from "@react-navigation/native";
 
 const HomeDrawerContent = () => {
 	const layout = useWindowDimensions();
+	const { colors } = useTheme();
 	const [index, setIndex] = useState(0);
 
 	const [routes] = useState([
@@ -19,6 +21,14 @@ const HomeDrawerContent = () => {
 	const sceneMap = SceneMap({
 		first: PersonalTab,
 		second: GroupTab,
+	});
+
+	const styles = StyleSheet.create({
+		container: {
+			flex: 1,
+			backgroundColor: colors.background,
+			padding: 12,
+		},
 	});
 
 	return (
@@ -40,17 +50,8 @@ const HomeDrawerContent = () => {
 					/>
 				)}
 			/>
-
 		</ViewInsetTop>
 	);
 };
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: "#fff",
-		padding: 12,
-	},
-});
 
 export default HomeDrawerContent;

@@ -4,7 +4,6 @@ import {
 	Text,
 	View,
 	Pressable,
-	useWindowDimensions,
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store/configureStore";
@@ -20,7 +19,7 @@ import Global from "utils/constants/Global";
 import { AntDesign, Feather, Ionicons } from "@expo/vector-icons";
 import { FieldSmall } from "components/common";
 import { InputSmall } from "components/input";
-import { Dialog, PanningProvider } from "react-native-ui-lib";
+import { Dialog } from "react-native-ui-lib";
 import Button from "components/button/Button";
 import { useState } from "react";
 import categoryColors from "data/categoryColors";
@@ -28,6 +27,7 @@ import { categoryIcons } from "data/categoryIcons";
 import { setCategoryIcon } from "utils/func";
 import { addCategory } from "store/category/categorySlice";
 import { CategoryType } from "utils/types/dataTypes";
+import { toast } from '@backpackapp-io/react-native-toast';
 
 const PersonalTab = () => {
 	const { drawerCategory } = useSelector((state: RootState) => state.global);
@@ -59,13 +59,13 @@ const PersonalTab = () => {
 		const timeStampId = Math.floor(Date.now() / 1000);
 		const newCategory: CategoryType = {
 			cid: String(timeStampId),
-			name: `Category ${timeStampId} ${timeStampId} ${timeStampId}`,
+			name: `Category ${timeStampId}`,
 			color: currentColor,
 			icon: currentIcon,
 		};
 		setCategoryModalVisible(false);
 		dispatch(addCategory(newCategory));
-		
+		toast.success('新しいカテゴリー追加済み！🎉')
 	};
 
 	return (

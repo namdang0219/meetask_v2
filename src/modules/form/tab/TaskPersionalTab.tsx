@@ -18,7 +18,7 @@ const TaskPersionalTab = () => {
 	);
 
 	return (
-		<ScrollView style={{ flex: 1 }}>
+		<ScrollView style={{ flex: 1, backgroundColor: colors.background }}>
 			<ViewFull
 				style={{
           paddingTop: 16,
@@ -67,7 +67,7 @@ const TaskPersionalTab = () => {
 											color:
 												choosedCategory === c.cid
 													? "white"
-													: "black",
+													: colors.text,
 										}}
 									>
 										{c.name}
@@ -96,7 +96,7 @@ const TaskPersionalTab = () => {
 								mode={"date"}
 								placeholder={"Select time"}
 								value={new Date()}
-								style={{ fontSize: 18 }}
+								style={{ fontSize: 18, color: colors.text }}
 							/>
 							<Ionicons
 								name="calendar-outline"
@@ -128,7 +128,7 @@ const TaskPersionalTab = () => {
 									mode={"time"}
 									placeholder={"Select time"}
 									value={new Date()}
-									style={{ fontSize: 18 }}
+									style={{ fontSize: 18, color: colors.text }}
 								/>
 								<Feather
 									name="clock"
@@ -153,7 +153,7 @@ const TaskPersionalTab = () => {
 									mode={"time"}
 									placeholder={"Select time"}
 									value={new Date()}
-									style={{ fontSize: 18 }}
+									style={{ fontSize: 18, color: colors.text }}
 								/>
 								<Feather
 									name="clock"
