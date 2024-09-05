@@ -26,7 +26,7 @@ const TaskForm = () => {
 	});
 
 	return (
-		<View style={{ flex: 1, paddingBottom: bottom }}>
+		<View style={{ flex: 1, paddingBottom: bottom, backgroundColor: colors.background }}>
 			<TabView
 				navigationState={{ index, routes }}
 				renderScene={sceneMap}

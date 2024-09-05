@@ -149,6 +149,7 @@ const BottomTab = () => {
 				visible={taskModalVisible}
 				onDismiss={() => setTaskModalVisible(false)}
 				panDirection={PanningProvider.Directions.DOWN}
+				ignoreBackgroundPress
 			>
 				{/* container  */}
 				<View
@@ -219,7 +220,7 @@ const BottomTab = () => {
 															choosedCategory ===
 															c.cid
 																? "white"
-																: "black",
+																: colors.text,
 													}}
 												>
 													{c.name}
@@ -256,7 +257,10 @@ const BottomTab = () => {
 											mode={"date"}
 											placeholder={"Select time"}
 											value={new Date()}
-											style={{ fontSize: 18 }}
+											style={{
+												fontSize: 18,
+												color: colors.text,
+											}}
 										/>
 										<Ionicons
 											name="calendar-outline"
@@ -283,7 +287,10 @@ const BottomTab = () => {
 											mode={"time"}
 											placeholder={"Select time"}
 											value={new Date()}
-											style={{ fontSize: 18 }}
+											style={{
+												fontSize: 18,
+												color: colors.text,
+											}}
 										/>
 										<Feather
 											name="clock"
@@ -295,7 +302,9 @@ const BottomTab = () => {
 							</FieldSmall>
 						</View>
 					</View>
-					<Button style={{ height: 50 }}>タスクを追加</Button>
+					<Button style={{ height: 50, marginTop: 20 }}>
+						タスクを追加
+					</Button>
 				</View>
 			</Dialog>
 		</>
