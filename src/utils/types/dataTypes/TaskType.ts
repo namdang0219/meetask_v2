@@ -1,21 +1,36 @@
 export type TaskType = {
+	// Both checklist and timebound type
 	tid: string;
+	taskType?: "CHECKLIST" | "TIMEBOUND";
 	title: string;
-	description?: string;
 	category: string;
 	status: "UNCOMPLETE" | "PROCESSING" | "COMPLETE";
-	dueDate?: Date;
-	priority: "LOW" | "NORMAL" | "HIGH";
-	createdAt?: Date;
-	updatedAt?: Date;
-	completedAt?: Date;
+	createdAt: string;
+	updatedAt?: string;
+	completedAt?: string;
+
+	// if task checklist type
+	date?: string;
+	timeRange?: string;
+
+	// if task Timebound type
+	description?: string;
+	priority?: "LOW" | "NORMAL" | "HIGH";
+	startDate?: string;
+	startTime?: string;
+	endDate?: string;
+	endTime?: string;
 	tags?: string[];
-	isRecurring?: boolean;
 	scope?: "PERSONAL" | "GROUP";
 
-	taskType?: "CHECKLIST" | "TIMEBOUND";
-	// For target is GROUP
+	// if task scope is GROUP
+	gid?: string;
 	assignedTo?: string;
 	member?: string[];
-	comments?: string[];
+	comments?: {
+		uid: string;
+		comment: string;
+		createdAt: string;
+		updatedAt?: string;
+	}[];
 };
